@@ -1,4 +1,4 @@
-# COMP2310 Assignment 2 - Find-a-Pet
+# COMP3120 Assignment 2 - Find-a-Pet
 Check proposal.md for the proposal of this project.
 # Getting Started with Create React App
 
