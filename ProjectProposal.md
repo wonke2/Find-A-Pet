@@ -9,7 +9,7 @@ Find-A-Pet aims to be more than just an adoption platform; it seeks to be the ce
  
 ## Outline of the Proposed Web Application
 ###  Main Purpose:
-The main purpose of Find-a-Pet is to be a centralized platform that streamlines the pet adoption process and offers access to various pet services. The application uses the MERN stack, where React will serve the front-end, Express as the back-end framework, MongDB as the database and Node.js as the back-end runtime. The application aims to connect potential pet owners, existing pet owners, and service providers (such as pet sitters, groomers, and veterinarians) in a seamless manner.
+The main purpose of Find-a-Pet is to be a centralized platform that streamlines the pet adoption process and offers access to various pet services. The application uses the MERN stack, where React will serve the front-end, Express as the back-end framework, MongoDB as the database and Node.js as the back-end runtime. The application aims to connect potential pet owners, existing pet owners, and service providers (such as pet sitters, groomers, and veterinarians) in a seamless manner.
  
 ### Target User Groups:
 - Individuals looking to adopt pets
