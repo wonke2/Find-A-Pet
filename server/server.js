@@ -2,13 +2,35 @@ const express = require('express')
 const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
+const axios = require('axios');
 require('dotenv').config()
 
 const app = express()
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 app.use(cors())
 app.use(express.static(path.join(__dirname, '..', 'static')))
+
+
+// The following endpoint can be requested by the frontend to get the Petfinder API access token
+app.get('/api/petfinder/token', async (req, res) => {
+    try {
+      const response = await axios.post(
+        'https://api.petfinder.com/v2/oauth2/token', 
+  `grant_type=client_credentials&client_id=${process.env.PETFINDER_CLIENT_ID}&client_secret=${process.env.PETFINDER_CLIENT_SECRET}`, 
+  {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        }
+      );
+      
+      res.json({ accessToken: response.data.access_token });
+    } catch (error) {
+      console.error("There was an error fetching the access token!", error);
+      res.status(500).json({ error: "Failed to fetch access token" });
+    }
+  });
 
 app.get('/api/items', (req, res) => {
 })
