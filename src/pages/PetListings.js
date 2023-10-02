@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import sanitizeHtml from 'sanitize-html';
 import he from 'he';
+import '../styles/App.css'
 
 const PetListings = () => {
   const [pets, setPets] = useState([]);
