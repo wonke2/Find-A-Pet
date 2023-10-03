@@ -81,10 +81,20 @@ The main purpose of Find-a-Pet is to be a centralized platform that streamlines 
 - We understand that pet-related emergencies can happen at any time. As such, we aim to offer a 24/7 customer support chat within the application. This feature, however, will be scoped out for a future release due to the human resource requirements.
  
 ## Project Plan with Weekly Milestones:
-### Week 9: Basic application structure up and running. User authentication using Auth0.
-- User can sign up, log in, and view a basic profile page.
-### Week 10: Basic pet listings and service listings available.
-- Pet listings are displayed from the database, service listings can be added and displayed.
+### Week 9: FrontEnd & BackEnd Initialization, Basic Pet Listings & Home Page, User Database and ServiceProvider Database.
+- FrontEnd & BackEnd Initialization (Mohammad)
+- Able to show a basic pet listing by fetching the pets from the third-party API. (Waliullah)
+- Able to load a basic home page. (Waliullah) 
+- User Database created and is ready to be used to store user's data during signup. (Avash)
+- ServiceProvider Database is created and is ready to be used to store service provider's information during signup. (Mohammad)
+
+### Week 10: User and ServiceProvider Authentication Using Auth0, Basic Service Listing, and Pet Search and Filter Functionality
+- User can sign up, log in, and view a basic profile page. (Avash)
+- ServiceProvider can sign up, log in, and view a basic profile page. (Mohammad)
+- Service listings are added and displayed. (Mohammad & Avash)
+- Pet Search and Filter Functionality is added. (Waliullah)
+- Additional (if possible): Add Map functionality for Pet Listings. (Waliullah)
+
 ### Week 11: User reviews and booking functionalities added. Designing styles added.
 - Users can review services and book them. Add styling and responsive design. Try to add payment and email notification options if possible.
 ### Week 12: Final touches and debugging.
