@@ -19,6 +19,10 @@ Pet Listings (Waliullah):
 - Used .env file to retrieve the API Key and Secret from to hide it from exposing to the repository and keet it secure. 
 
 User Database (Avash):
+- Implemented the basic user schema.
+- Has a prefunction to hash the password when a user is created.
+- Has a validator function to validate the password with the hashed password during login
+- More attributes can be added as per future requirements
 
 Service Provider Database (Mohammad):
 
