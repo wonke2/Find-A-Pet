@@ -50,7 +50,13 @@ app.get('/api/users/:id', (req, res) => {
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
 })
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`)
-})
+mongoose
+	.connect(process.env.MONGO_URL)
+	.then(() => {
+		app.listen(PORT, () => {
+			console.log(`Server is running on port ${PORT}`);
+		});
+	})
+	.catch((err) => {
+		console.log(err);
+	});
