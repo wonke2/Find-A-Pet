@@ -12,7 +12,14 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
 const serviceProviderSchema = new mongoose.Schema({
-
+    serviceProviderName: {
+        type: String,
+        required: true
+    },
+    serviceProviderLocation: String,
+    serviceProviderEmail: String,
+    serviceProviderPhone: String,
+    serviceProviderLocation: String
 })
 
 serviceProviderSchema.set('toJSON', {
