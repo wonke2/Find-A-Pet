@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import sanitizeHtml from 'sanitize-html';
-import he from 'he';
 import '../styles/App.css'
 
 const PetListings = () => {
@@ -50,11 +48,6 @@ const PetListings = () => {
   return (
     <div>
     {pets.map(pet => {
-      let cleanHtml = '';
-      if (pet.description) {
-        const decodedHtml = he.decode(pet.description);
-        cleanHtml = sanitizeHtml(decodedHtml, { allowedTags: [] });
-      }
 
       const imageUrl = pet.photos && pet.photos[0]?.medium 
                        ? pet.photos[0].medium 
@@ -62,22 +55,22 @@ const PetListings = () => {
 
       return (
           <div key={pet.id}>
+            <img 
+              src={imageUrl} 
+              alt={pet.name}
+              style={{ width: '200px', height: 'auto' }} 
+              onError={(e) => {
+                e.target.onerror = null; 
+                e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+              }}
+            />
             <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
-            <p>{cleanHtml}</p>
-          <img 
-            src={imageUrl} 
-            alt={pet.name}
-            style={{ width: '200px', height: 'auto' }} 
-            onError={(e) => {
-              e.target.onerror = null; 
-              e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-            }}
-          />
         </div>
       );
     })}
   </div>
-  );
+);
+
 }
 
 export default PetListings;
