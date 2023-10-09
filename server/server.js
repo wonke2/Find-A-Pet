@@ -3,6 +3,9 @@ const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
 const axios = require('axios');
+const mongoose = require("mongoose");
+
+
 require('dotenv').config()
 
 const app = express()
@@ -50,7 +53,13 @@ app.get('/api/users/:id', (req, res) => {
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, '..', 'build', 'index.html'))
 })
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`)
-})
+mongoose
+	.connect(process.env.MONGO_URL)
+	.then(() => {
+		app.listen(PORT, () => {
+			console.log(`Server is running on port ${PORT}`);
+		});
+	})
+	.catch((err) => {
+		console.log(err);
+	});

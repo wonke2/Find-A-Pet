@@ -19,13 +19,26 @@ Pet Listings (Waliullah):
 - Used .env file to retrieve the API Key and Secret from to hide it from exposing to the repository and keet it secure. 
 
 User Database (Avash):
+- Implemented the basic user schema.
+- Has a prefunction to hash the password when a user is created.
+- Has a validator function to validate the password with the hashed password during login
+- More attributes can be added as per future requirements
 
 Service Provider Database (Mohammad):
+- Set up collaborative MongoDB Atlas database.
+- Created a rough ER diagram for the database.
+- Created an initial service provider model.
+- Created a basic schema for the service provider.
 
 #### Challenges Faced / Discuss:
 Pet Listing:
 - The Pet Listing API only shows listings available in a few selected countries. Since Australia was not one of the options, we had to choose USA as the location. Threrefore, our entire app will use USA as the location. 
 - Since the Pet Listings are fetched from a third-party service, we do not want to include Pets for Adoption in our orders. Our orders will only include service providers. Pets for adoption has contact details of the owners that the users can contact independently and confirm adoption. Our app will only show the Pet Lists available for adoption with valuable information but will not bear any responsibility related to adoption. 
+
+Backend Security
+- While setting up the collaborative database, we noticed that having one universal user and pass for the database URI is not secure. We need to create and implement multiple separate users with different roles and permissions.
+-  We need to implement a secure way to store the database URI and share it amoung the team members easily. 
+- Storing the data in one collective database is not secure. Implementing multiple databases in a schema is ideal, however we need to solve how to allow the different entities to interact with each other.
 
 Service Provider Database:
 - For verification, we want to add the feature for service providers to upload documents. How can we use MongoDB to store documents like pdf, doc, jpg, etc? Should we keep this feature in our MVP?
