@@ -51,5 +51,29 @@ User Database:
 - User can sign up, log in, and view a basic profile page. (Avash)
 - ServiceProvider can sign up, log in, and view a basic profile page. (Mohammad)
 - Service listings are added and displayed. (Mohammad & Avash)
+- Pet Details page is added. (Waliullah)
 - Pet Search and Filter Functionality is added. (Waliullah)
 - Additional (if possible): Add Map functionality for Pet Listings. (Waliullah)
+
+#### Achievements:
+
+Pet Details (Waliullah):
+- Clicking the pet name in pet listing page allows you to get redirected to page details page.
+- The pet details page shows more information about the listing including the contact details of the pet owner and the link leading to the actual page of the listing. 
+- Remove pet description from pet listing and only shown in pet details page.
+- Used `he` and `sanitize-html` libraries to first decode any HTML entities fetched from the API and then sanitize the decoded HTML to implement protection against potential XSS attacks.
+
+Pet Search and Filter Functionality (Waliullah):
+- Implemented Real-Time Search: Users can now search through pet listings instantly by names.
+- Enhanced Filters: Introduced dynamic, toggleable dropdown filters for pet types and statuses.
+- Improved UI/UX: Added a clear button in the search bar and organized filters into nested dropdowns for a cleaner user interface.
+- Increased Robustness: Enhanced error handling and provided fallback images for listings without pictures.
+- Code Optimization: Refactored code for better readability and performance.
+
+#### Challenges Faced / Discuss:
+
+Pet Search and Filter Functionality:
+- Pet listings were fetched based on search/filter input only. Therefore, adjusted logic to display all pets initially and refine as per user input.
+- Clearing the search term didn’t instantly refresh the listings. Therefore, enhanced logic to auto-refresh listings upon clearing the search term.
+- Integrating real-time search with filters. Had to modify states and useEffect to work harmoniously for both functionalities.
+- Limited filtering options. Added checkboxes for multiple type and status selections.
