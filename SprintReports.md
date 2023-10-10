@@ -71,6 +71,9 @@ Pet Search and Filter Functionality (Waliullah):
 - Code Optimization: Refactored code for better readability and performance.
 
 User Registration and Authentication (Avash):
+- Created a login page for the user which sends a request to the backend and the backend sends a jwt token to the front end to access protected routes
+- Created a signup page for the user which allows the user to create an account
+- Create the profile page for a user to see their details 
 
 
 Service Provider Registration and Authentication (Mohammad):
