@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const userSchema = new Schema({
 	username: { type: String, required: true, unique: true },
-  email: {type:String, required: true, unique:true},
-  phoneNo: {type:number, required: true, unique:true},
-  address: {type: String, required: true},
+	email: { type: String, required: true, unique: true },
+	phoneNo: { type: Number, required: true, unique: true },
+	address: { type: String, required: true },
 	password: { type: String, required: true, select: false },
 }); //hashing password
 userSchema.pre("save", async function (next) {
