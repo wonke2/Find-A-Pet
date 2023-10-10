@@ -6,8 +6,8 @@ import '../styles/App.css'
 const PetListings = () => {
   const [pets, setPets] = useState([]);
   const [token, setToken] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // Function to get the Petfinder API token from the server
   const getApiToken = async () => {
     try {
       const response = await axios.get('http://localhost:3001/api/petfinder/token');
@@ -18,42 +18,54 @@ const PetListings = () => {
   }
 
   useEffect(() => {
-    // Get the API token when the component mounts
     getApiToken();
   }, []);
 
   useEffect(() => {
     const getPets = async () => {
-      // Make sure we have the token before trying to fetch pets
       if (token === '') return;
 
-      try {
-        const response = await axios.get('https://api.petfinder.com/v2/animals', {
-          headers: {
-            Authorization: `Bearer ${token}`
+      let params = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+
+      if (searchTerm) {
+        params = {
+          ...params,
+          params: {
+            name: searchTerm
           }
-        });
+        }
+      }
+
+      try {
+        const response = await axios.get('https://api.petfinder.com/v2/animals', params);
         setPets(response.data.animals);
       } catch (error) {
         console.error("There was an error retrieving the pets!", error);
       }
     }
 
-    // Call getPets only if the token is available
-    if (token !== '') {
-      getPets();
-    }
-  }, [token]); // Added token as a dependency, so this useEffect will run every time the token changes
+    getPets();
+  }, [token, searchTerm]);
 
   return (
     <div>
-    {pets.map(pet => {
+      <input 
+        type="text" 
+        value={searchTerm} 
+        onChange={(e) => setSearchTerm(e.target.value)} 
+        placeholder="Search pets by name" 
+      />
 
-      const imageUrl = pet.photos && pet.photos[0]?.medium 
+      {pets.map(pet => {
+        const imageUrl = pet.photos && pet.photos[0]?.medium 
                        ? pet.photos[0].medium 
                        : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
 
-      return (
+        return (
           <div key={pet.id}>
             <img 
               src={imageUrl} 
@@ -65,12 +77,11 @@ const PetListings = () => {
               }}
             />
             <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
-        </div>
-      );
-    })}
-  </div>
-);
-
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default PetListings;
