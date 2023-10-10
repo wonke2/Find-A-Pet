@@ -12,6 +12,9 @@ const PetListings = () => {
     types: [],
     status: []
   });
+  const [showFilters, setShowFilters] = useState(false);
+  const [showTypeFilter, setShowTypeFilter] = useState(false);
+  const [showStatusFilter, setShowStatusFilter] = useState(false);
 
   const getApiToken = async () => {
     try {
@@ -58,7 +61,7 @@ const PetListings = () => {
     };
 
     getPets();
-  }, [token, filters, submittedSearchTerm]); 
+  }, [token, filters, submittedSearchTerm]);
 
   const handleFilterChange = (e, filterCategory) => {
     const value = e.target.value;
@@ -81,6 +84,9 @@ const PetListings = () => {
     setSubmittedSearchTerm(searchTerm);
   }
 
+  const toggleFilters = () => setShowFilters(!showFilters);
+  const toggleTypeFilter = () => setShowTypeFilter(!showTypeFilter);
+  const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
 
   return (
     <div>
@@ -96,47 +102,54 @@ const PetListings = () => {
 
       {/* Filter by Type */}
       <div>
-        <h4>Filter</h4>
-        <div>
-          <h5>Type</h5>
-          <label>
-            <input type="checkbox" value="Dog" onChange={(e) => handleFilterChange(e, 'types')} /> Dog
-          </label>
-          <label>
-            <input type="checkbox" value="Cat" onChange={(e) => handleFilterChange(e, 'types')} /> Cat
-          </label>
-          <label>
-            <input type="checkbox" value="Rabbit" onChange={(e) => handleFilterChange(e, 'types')} /> Rabbit
-          </label>
-          <label>
-            <input type="checkbox" value="Small & Furry" onChange={(e) => handleFilterChange(e, 'types')} /> Small & Furry
-          </label>
-          <label>
-            <input type="checkbox" value="Horse" onChange={(e) => handleFilterChange(e, 'types')} /> Horse
-          </label>
-          <label>
-            <input type="checkbox" value="Bird" onChange={(e) => handleFilterChange(e, 'types')} /> Bird
-          </label>
-          <label>
-            <input type="checkbox" value="Scales, Fins & Other" onChange={(e) => handleFilterChange(e, 'types')} /> Scales, Fins & Other
-          </label>
-          <label>
-            <input type="checkbox" value="Barnyard" onChange={(e) => handleFilterChange(e, 'types')} /> Barnyard
-          </label>
-        </div>
-        
-        <div>
-          <h5>Status</h5>
-          <label>
-            <input type="checkbox" value="Adoptable" onChange={(e) => handleFilterChange(e, 'status')} /> Adoptable
-          </label>
-          <label>
-            <input type="checkbox" value="Adopted" onChange={(e) => handleFilterChange(e, 'status')} /> Adopted
-          </label>
-          <label>
-            <input type="checkbox" value="Found" onChange={(e) => handleFilterChange(e, 'status')} /> Found
-          </label>
-        </div>
+        <button onClick={toggleFilters}>Filter</button>
+        {showFilters && (
+          <div>
+            <button onClick={toggleTypeFilter}>Type</button>
+            {showTypeFilter && (
+              <div>
+                <label>
+                  <input type="checkbox" value="Dog" onChange={(e) => handleFilterChange(e, 'types')} /> Dog
+                </label>
+                <label>
+                  <input type="checkbox" value="Cat" onChange={(e) => handleFilterChange(e, 'types')} /> Cat
+                </label>
+                <label>
+                  <input type="checkbox" value="Rabbit" onChange={(e) => handleFilterChange(e, 'types')} /> Rabbit
+                </label>
+                <label>
+                  <input type="checkbox" value="Small & Furry" onChange={(e) => handleFilterChange(e, 'types')} /> Small & Furry
+                </label>
+                <label>
+                  <input type="checkbox" value="Horse" onChange={(e) => handleFilterChange(e, 'types')} /> Horse
+                </label>
+                <label>
+                  <input type="checkbox" value="Bird" onChange={(e) => handleFilterChange(e, 'types')} /> Bird
+                </label>
+                <label>
+                  <input type="checkbox" value="Scales, Fins & Other" onChange={(e) => handleFilterChange(e, 'types')} /> Scales, Fins & Other
+                </label>
+                <label>
+                  <input type="checkbox" value="Barnyard" onChange={(e) => handleFilterChange(e, 'types')} /> Barnyard
+                </label>
+              </div>
+            )}
+            <button onClick={toggleStatusFilter}>Status</button>
+            {showStatusFilter && (
+              <div>
+                <label>
+                  <input type="checkbox" value="Adoptable" onChange={(e) => handleFilterChange(e, 'status')} /> Adoptable
+                </label>
+                <label>
+                  <input type="checkbox" value="Adopted" onChange={(e) => handleFilterChange(e, 'status')} /> Adopted
+                </label>
+                <label>
+                  <input type="checkbox" value="Found" onChange={(e) => handleFilterChange(e, 'status')} /> Found
+                </label>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {pets.map(pet => {
