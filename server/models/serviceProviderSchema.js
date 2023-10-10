@@ -16,12 +16,35 @@ const serviceProviderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    serviceProviderLocation: String,
+    serviceProviderPassword: {
+        type: String,
+        required: true
+    },
+    orgName: String,
+    serviceProviderAddress: String,
     serviceProviderEmail: String,
-    serviceProviderPhone: String,
-    serviceProviderLocation: String
+    serviceProviderPhone: String
 })
 
+serviceProviderSchema.pre('save', async function (next) { 
+    try {
+        if (this.ismodified("serviceProviderPassword")) {
+            const hashedPassword = await bcrypt.hash(this.serviceProviderPassword, saltRounds)
+            this.serviceProviderPassword = hashedPassword
+        }
+        next()
+    } catch (err) {
+    }
+})
+
+serviceProviderSchema.methods.validatePassword = async function (password) {
+    try {
+        const result = bcrypt.compare(password, this.serviceProviderPassword)
+        return result
+    } catch (err) {
+        throw new Error(err)
+    }
+}
 serviceProviderSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
