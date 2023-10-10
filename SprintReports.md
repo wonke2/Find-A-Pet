@@ -80,8 +80,6 @@ Service Provider Registration and Authentication (Mohammad):
 - The React Router Routes have been created to access the registration and login pages
 - Service Providers have additional required fields compared to user signup
 
-Service listings are added and displayed (Mohammad & Avash):
-- We could not complete this in time as we need to populate Service Providers and Services with sample data in order to accomplish this, which we could not do in time. We will complete this in the next sprint and re-evaluate the completion speed of features for more realistic targets.
 #### Challenges Faced / Discuss:
 
 Pet Search and Filter Functionality:
@@ -89,6 +87,8 @@ Pet Search and Filter Functionality:
 - Clearing the search term didn’t instantly refresh the listings. Therefore, enhanced logic to auto-refresh listings upon clearing the search term.
 - Integrating real-time search with filters. Had to modify states and useEffect to work harmoniously for both functionalities.
 - Limited filtering options. Added checkboxes for multiple type and status selections.
+Service listings are added and displayed:
+- We could not complete this in time as we need to populate Service Providers and Services with sample data in order to accomplish this, which we could not do in time. We will complete this in the next sprint and re-evaluate the completion speed of features for more realistic targets.
 
 ### Week 11: User and ServiceProvider Dashboards, Maps functionality for Pets and Services, Booking Database and Search and Filter Functionality for Services
 #### Plan:
