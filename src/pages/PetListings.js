@@ -7,6 +7,7 @@ const PetListings = () => {
   const [pets, setPets] = useState([]);
   const [token, setToken] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [submittedSearchTerm, setSubmittedSearchTerm] = useState('');
 
   const getApiToken = async () => {
     try {
@@ -31,11 +32,11 @@ const PetListings = () => {
         }
       };
 
-      if (searchTerm) {
+      if (submittedSearchTerm) {
         params = {
           ...params,
           params: {
-            name: searchTerm
+            name: submittedSearchTerm
           }
         }
       }
@@ -49,16 +50,24 @@ const PetListings = () => {
     }
 
     getPets();
-  }, [token, searchTerm]);
+  }, [token, submittedSearchTerm]);
+
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    setSubmittedSearchTerm(searchTerm);
+  }
 
   return (
     <div>
-      <input 
-        type="text" 
-        value={searchTerm} 
-        onChange={(e) => setSearchTerm(e.target.value)} 
-        placeholder="Search pets by name" 
-      />
+      <form onSubmit={handleSubmitSearch}>
+        <input 
+          type="text" 
+          value={searchTerm} 
+          onChange={(e) => setSearchTerm(e.target.value)} 
+          placeholder="Search pets by name" 
+        />
+        <button type="submit">Search</button>
+      </form>
 
       {pets.map(pet => {
         const imageUrl = pet.photos && pet.photos[0]?.medium 
