@@ -9,12 +9,12 @@ require("dotenv").config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
+app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "..", "static")));
 
 // Routes
-app.use(userRoutes);
+app.use("/auth", userRoutes);
 
 // The following endpoint can be requested by the frontend to get the Petfinder API access token
 app.get("/api/petfinder/token", async (req, res) => {
