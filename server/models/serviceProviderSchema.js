@@ -21,11 +21,11 @@ const serviceProviderSchema = new mongoose.Schema({
         required: true
     },
     orgName: String,
-    serviceProviderLocation: String,
+    serviceProviderAddress: String,
     serviceProviderEmail: String,
-    serviceProviderPhone: String,
-    serviceProviderAddress: String
+    serviceProviderPhone: String
 })
+
 serviceProviderSchema.pre('save', async function (next) { 
     try {
         if (this.ismodified("serviceProviderPassword")) {
