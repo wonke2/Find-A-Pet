@@ -1,21 +1,22 @@
+// Importing necessary libraries and styles
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../styles/App.css';
 
+// Functional component for pet listings
 const PetListings = () => {
+  // State hooks for pets, API token, search term, filters, and filter visibility
   const [pets, setPets] = useState([]);
   const [token, setToken] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [submittedSearchTerm, setSubmittedSearchTerm] = useState('');
-  const [filters, setFilters] = useState({
-    types: [],
-    status: []
-  });
+  const [filters, setFilters] = useState({ types: [], status: [] });
   const [showFilters, setShowFilters] = useState(false);
   const [showTypeFilter, setShowTypeFilter] = useState(false);
   const [showStatusFilter, setShowStatusFilter] = useState(false);
 
+  // Function to get API token
   const getApiToken = async () => {
     try {
       const response = await axios.get('http://localhost:3001/api/petfinder/token');
@@ -25,33 +26,28 @@ const PetListings = () => {
     }
   };
 
+  // Effect hook to get API token on component mount
   useEffect(() => {
     getApiToken();
   }, []);
 
+  // Effect hook to fetch pets whenever token, filters or submitted search term changes
   useEffect(() => {
     const getPets = async () => {
       if (token === '') return;
 
+      // Setting up request parameters including headers and query parameters
       let params = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
         params: {}
       };
 
-      if (filters.types.length > 0) {
-        params.params.type = filters.types.join(',');
-      }
+      // Adding filters to the request parameters if they are set
+      if (filters.types.length > 0) params.params.type = filters.types.join(',');
+      if (filters.status.length > 0) params.params.status = filters.status.join(',');
+      if (submittedSearchTerm) params.params.name = submittedSearchTerm;
 
-      if (filters.status.length > 0) {
-        params.params.status = filters.status.join(',');
-      }
-
-      if (submittedSearchTerm) {
-        params.params.name = submittedSearchTerm;
-      }
-
+      // Fetching pets from the API and setting the pets state
       try {
         const response = await axios.get('https://api.petfinder.com/v2/animals', params);
         setPets(response.data.animals);
@@ -63,6 +59,7 @@ const PetListings = () => {
     getPets();
   }, [token, filters, submittedSearchTerm]);
 
+  // Handling filter changes and updating the filters state
   const handleFilterChange = (e, filterCategory) => {
     const value = e.target.value;
     setFilters((prevFilters) => ({
@@ -73,39 +70,43 @@ const PetListings = () => {
     }));
   };
 
+  // Clearing the submitted search term if the search term is cleared
   useEffect(() => {
     if (searchTerm === '') {
       setSubmittedSearchTerm('');
     }
   }, [searchTerm]);
 
+  // Handling search submission
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     setSubmittedSearchTerm(searchTerm);
   }
 
+  // Function to clear the search input
   const clearSearch = () => {
     setSearchTerm('');
   };
 
+  // Toggle functions for showing/hiding filters
   const toggleFilters = () => setShowFilters(!showFilters);
   const toggleTypeFilter = () => setShowTypeFilter(!showTypeFilter);
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
 
+  // Rendering component
   return (
     <div>
       <form onSubmit={handleSubmitSearch}>
-        <input 
-          type="text" 
-          value={searchTerm} 
-          onChange={(e) => setSearchTerm(e.target.value)} 
-          placeholder="Search pets by name" 
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search pets by name"
         />
         {searchTerm && <button type="button" onClick={clearSearch}>&times;</button>}
         <button type="submit">Search</button>
       </form>
 
-      {/* Filter by Type */}
       <div>
         <button onClick={toggleFilters}>Filter</button>
         {showFilters && (
