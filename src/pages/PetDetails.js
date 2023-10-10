@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import sanitizeHtml from 'sanitize-html';
+import he from 'he';
 
 const PetDetails = () => {
   const [petDetails, setPetDetails] = useState({});
@@ -44,9 +46,9 @@ const PetDetails = () => {
   return (
     <div>
       <h2>{petDetails.name}</h2>
-      <p>Description: {petDetails.description}</p>
       <img src={petDetails.photos?.[0]?.medium || 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg'} alt={petDetails.name} 
       style={{ width: '200px', height: 'auto' }}/>
+      <p>Description: {he.decode(sanitizeHtml(petDetails.description, { allowedTags: [] }))}</p>
       <p>Status: {petDetails.status}</p>
       {petDetails.contact && (
         <div>
@@ -64,6 +66,12 @@ const PetDetails = () => {
           )}
         </div>
       )}
+      <p>{"For More Info: "}
+          {petDetails.url ? <a href={petDetails.url} target="_blank" rel="noopener noreferrer">
+                            Click Here
+                          </a> 
+          : 'URL not provided'}
+      </p>
 
     </div>
   );
