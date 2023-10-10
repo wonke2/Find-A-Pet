@@ -70,6 +70,18 @@ Pet Search and Filter Functionality (Waliullah):
 - Increased Robustness: Enhanced error handling and provided fallback images for listings without pictures.
 - Code Optimization: Refactored code for better readability and performance.
 
+User Registration and Authentication (Avash):
+
+
+Service Provider Registration and Authentication (Mohammad):
+- Service Provider Controller is created to handle the registration and login of service providers
+- Back-end to enable Service Provider registration and login is complete
+- Passwords are hashed and salted before being stored for security
+- The React Router Routes have been created to access the registration and login pages
+- Service Providers have additional required fields compared to user signup
+
+Service listings are added and displayed (Mohammad & Avash):
+- We could not complete this in time as we need to populate Service Providers and Services with sample data in order to accomplish this, which we could not do in time. We will complete this in the next sprint and re-evaluate the completion speed of features for more realistic targets.
 #### Challenges Faced / Discuss:
 
 Pet Search and Filter Functionality:
