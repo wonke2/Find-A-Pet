@@ -84,6 +84,10 @@ const PetListings = () => {
     setSubmittedSearchTerm(searchTerm);
   }
 
+  const clearSearch = () => {
+    setSearchTerm('');
+  };
+
   const toggleFilters = () => setShowFilters(!showFilters);
   const toggleTypeFilter = () => setShowTypeFilter(!showTypeFilter);
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
@@ -91,12 +95,13 @@ const PetListings = () => {
   return (
     <div>
       <form onSubmit={handleSubmitSearch}>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search pets by name"
+        <input 
+          type="text" 
+          value={searchTerm} 
+          onChange={(e) => setSearchTerm(e.target.value)} 
+          placeholder="Search pets by name" 
         />
+        {searchTerm && <button type="button" onClick={clearSearch}>&times;</button>}
         <button type="submit">Search</button>
       </form>
 
