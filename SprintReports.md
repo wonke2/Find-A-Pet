@@ -77,3 +77,13 @@ Pet Search and Filter Functionality:
 - Clearing the search term didn’t instantly refresh the listings. Therefore, enhanced logic to auto-refresh listings upon clearing the search term.
 - Integrating real-time search with filters. Had to modify states and useEffect to work harmoniously for both functionalities.
 - Limited filtering options. Added checkboxes for multiple type and status selections.
+
+### Week 11: User and ServiceProvider Dashboards, Maps functionality for Pets and Services, Booking Database and Search and Filter Functionality for Services
+#### Plan:
+- User dashboard created and functioning (Avash).
+- ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
+- Maps functionality for pets (Waliullah).
+- Maps functionality for services (Waliullah).
+- Search and Filter functionality for services (Mohammad).
+- Booking database created and is ready to be used for storing booking information (Avash). 
+- Additional (if possible): Booking functionality (Avash).
