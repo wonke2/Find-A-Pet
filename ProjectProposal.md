@@ -95,8 +95,16 @@ The main purpose of Find-a-Pet is to be a centralized platform that streamlines 
 - Pet Search and Filter Functionality is added. (Waliullah)
 - Additional (if possible): Add Map functionality for Pet Listings. (Waliullah)
 
-### Week 11: User reviews and booking functionalities added. Designing styles added.
-- Users can review services and book them. Add styling and responsive design. Try to add payment and email notification options if possible.
+### Week 11: User and ServiceProvider Dashboards, Maps functionality for Pets and Services, Booking Database and Search and Filter Functionality for Services
+#### Plan:
+- User dashboard created and functioning (Avash).
+- ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
+- Maps functionality for pets (Waliullah).
+- Maps functionality for services (Waliullah).
+- Search and Filter functionality for services (Mohammad).
+- Booking database created and is ready to be used for storing booking information (Avash). 
+- Additional (if possible): Booking functionality (Avash).
+
 ### Week 12: Final touches and debugging.
 - All MVP features are debugged and fully functional.
 #### Note: Plans for Weeks 10, 11, and 12 may be reevaluated based on the progress in previous weeks.
