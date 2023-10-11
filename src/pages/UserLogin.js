@@ -6,7 +6,7 @@ const UserLogin = () => {
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
 	const login = async () => {
-		const res = await fetch("http://localhost:3001/auth/login", {
+		const res = await fetch("http://localhost:3000/auth/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

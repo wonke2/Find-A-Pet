@@ -9,7 +9,7 @@ const UserSignup = () => {
 	const [address, setAddress] = useState("");
 	const navigate = useNavigate();
 	const login = async () => {
-		const res = await fetch("http://localhost:3001/auth/signup", {
+		const res = await fetch("http://localhost:3000/auth/signup", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

@@ -10,7 +10,7 @@ const UserProfile = () => {
 		if (!token) {
 			navigate("/userlogin");
 		} else {
-			fetch("http://localhost:3001/auth/user", {
+			fetch("http://localhost:3000/auth/user", {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
