@@ -26,6 +26,12 @@ function App() {
 						<Link to="/petlistings">
 							<ul>PetListings</ul>
 						</Link>
+						<Link to="/userlogin">
+							<ul>UserLogin</ul>
+						</Link>
+						<Link to="/usersignup">
+							<ul>UserSignup</ul>
+						</Link>
 					</nav>
 				</header>
 				<Routes>

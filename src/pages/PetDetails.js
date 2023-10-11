@@ -17,7 +17,7 @@ const PetDetails = () => {
     // Function to retrieve API token
     const getApiToken = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/api/petfinder/token');
+            const response = await axios.get('/api/petfinder/token');
             setToken(response.data.accessToken);
         } catch (error) {
             console.error("There was an error retrieving the token!", error);
