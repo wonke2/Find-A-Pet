@@ -4,6 +4,7 @@ const path = require("path");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
+const SPRoutes = require("./routes/SPRoutes");
 
 require("dotenv").config();
 
@@ -15,6 +16,7 @@ app.use(express.static(path.join(__dirname, "..", "build")));
 
 // Routes
 app.use("/auth", userRoutes);
+app.use("/SPAuth", SPRoutes);
 
 // The following endpoint can be requested by the frontend to get the Petfinder API access token
 app.get("/api/petfinder/token", async (req, res) => {
