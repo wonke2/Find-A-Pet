@@ -14,7 +14,8 @@ data.serviceProviders.map((sp) => {
         orgName: sp.orgName,
         serviceProviderAddress: sp.serviceProviderAddress,
         serviceProviderEmail: sp.serviceProviderEmail,
-        serviceProviderPhone: sp.serviceProviderPhone
+        serviceProviderPhone: sp.serviceProviderPhone,
+        servicesProvided: sp.servicesProvided
     })
     newServiceProvider.save()
         .then(() => {

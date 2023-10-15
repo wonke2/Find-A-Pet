@@ -10,19 +10,16 @@
       "serviceProviderPhone": "1234567890",
       "servicesProvided": [
         {
-          "serviceID": "S001",
           "serviceName": "Web Development",
           "serviceDescription": "Full-stack web development using modern frameworks.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S002",
           "serviceName": "Graphic Design",
           "serviceDescription": "Creating visual content for digital and print media.",
           "serviceLocation": "Los Angeles, CA"
         },
         {
-          "serviceID": "S003",
           "serviceName": "Digital Marketing",
           "serviceDescription": "Online marketing strategies including SEO and SEM.",
           "serviceLocation": "Remote"
@@ -38,19 +35,16 @@
       "serviceProviderPhone": "2345678901",
       "servicesProvided": [
         {
-          "serviceID": "S004",
           "serviceName": "Mobile App Development",
           "serviceDescription": "Designing and building mobile applications for both Android and iOS.",
           "serviceLocation": "San Francisco, CA"
         },
         {
-          "serviceID": "S005",
           "serviceName": "UI/UX Design",
           "serviceDescription": "Designing intuitive user interfaces and ensuring a good user experience.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S006",
           "serviceName": "SEO Optimization",
           "serviceDescription": "Improving website rankings on search engines.",
           "serviceLocation": "San Francisco, CA"
@@ -66,19 +60,16 @@
       "serviceProviderPhone": "3456789012",
       "servicesProvided": [
         {
-          "serviceID": "S007",
           "serviceName": "Data Analytics",
           "serviceDescription": "Analyzing data to gain insights into business performance.",
           "serviceLocation": "Chicago, IL"
         },
         {
-          "serviceID": "S008",
           "serviceName": "Cloud Services",
           "serviceDescription": "Providing scalable and secure cloud solutions.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S009",
           "serviceName": "IT Consulting",
           "serviceDescription": "Advising businesses on how best to use IT to meet their objectives.",
           "serviceLocation": "Chicago, IL"
@@ -94,19 +85,16 @@
       "serviceProviderPhone": "4567890123",
       "servicesProvided": [
         {
-          "serviceID": "S010",
           "serviceName": "Branding",
           "serviceDescription": "Creating and managing a brand's identity and strategy.",
           "serviceLocation": "New York, NY"
         },
         {
-          "serviceID": "S011",
           "serviceName": "Digital Advertising",
           "serviceDescription": "Creating and managing digital ad campaigns.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S012",
           "serviceName": "E-commerce Solutions",
           "serviceDescription": "Building and managing online stores.",
           "serviceLocation": "New York, NY"
@@ -122,19 +110,16 @@
       "serviceProviderPhone": "5678901234",
       "servicesProvided": [
         {
-          "serviceID": "S013",
           "serviceName": "Network Security",
           "serviceDescription": "Protecting computer networks from threats and vulnerabilities.",
           "serviceLocation": "Houston, TX"
         },
         {
-          "serviceID": "S014",
           "serviceName": "Infrastructure Management",
           "serviceDescription": "Managing and overseeing the equipment, policies, processes, and data.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S015",
           "serviceName": "Database Services",
           "serviceDescription": "Offering solutions for database management, storage, and protection.",
           "serviceLocation": "Houston, TX"
@@ -150,19 +135,16 @@
       "serviceProviderPhone": "6789012345",
       "servicesProvided": [
         {
-          "serviceID": "S016",
           "serviceName": "Content Creation",
           "serviceDescription": "Producing engaging content for various platforms.",
           "serviceLocation": "Seattle, WA"
         },
         {
-          "serviceID": "S017",
           "serviceName": "Social Media Marketing",
           "serviceDescription": "Promoting brands and products on social media channels.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S018",
           "serviceName": "Lead Generation",
           "serviceDescription": "Strategies to attract and convert prospects into customers.",
           "serviceLocation": "Seattle, WA"
@@ -178,19 +160,16 @@
       "serviceProviderPhone": "7890123456",
       "servicesProvided": [
         {
-          "serviceID": "S019",
           "serviceName": "Application Testing",
           "serviceDescription": "Ensuring software applications run smoothly and bug-free.",
           "serviceLocation": "Miami, FL"
         },
         {
-          "serviceID": "S020",
           "serviceName": "Cybersecurity",
           "serviceDescription": "Protecting systems and data from cyber threats.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S021",
           "serviceName": "Web Maintenance",
           "serviceDescription": "Keeping websites updated, secure, and performing optimally.",
           "serviceLocation": "Miami, FL"
@@ -206,19 +185,16 @@
       "serviceProviderPhone": "8901234567",
       "servicesProvided": [
         {
-          "serviceID": "S022",
           "serviceName": "Print Design",
           "serviceDescription": "Design services for brochures, business cards, and other printed materials.",
           "serviceLocation": "Boston, MA"
         },
         {
-          "serviceID": "S023",
           "serviceName": "Video Production",
           "serviceDescription": "Creating promotional, educational, and entertainment videos.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S024",
           "serviceName": "Event Promotion",
           "serviceDescription": "Promoting and organizing business events and seminars.",
           "serviceLocation": "Boston, MA"
@@ -234,19 +210,16 @@
       "serviceProviderPhone": "9012345678",
       "servicesProvided": [
         {
-          "serviceID": "S025",
           "serviceName": "Consultation",
           "serviceDescription": "Providing expert advice in the field of digital technologies.",
           "serviceLocation": "Dallas, TX"
         },
         {
-          "serviceID": "S026",
           "serviceName": "B2B Marketing",
           "serviceDescription": "Targeted strategies to reach other businesses as clients.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S027",
           "serviceName": "CRM Solutions",
           "serviceDescription": "Managing a company's interactions with current and potential customers.",
           "serviceLocation": "Dallas, TX"
@@ -262,19 +235,16 @@
       "serviceProviderPhone": "0123456789",
       "servicesProvided": [
         {
-          "serviceID": "S028",
           "serviceName": "Customer Support",
           "serviceDescription": "Offering help and advice about a company's products and services.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S029",
           "serviceName": "Business Analysis",
           "serviceDescription": "Identifying business needs and finding technical solutions.",
           "serviceLocation": "Atlanta, GA"
         },
         {
-          "serviceID": "S030",
           "serviceName": "Project Management",
           "serviceDescription": "Planning, executing, and closing projects.",
           "serviceLocation": "Atlanta, GA"
@@ -290,19 +260,16 @@
       "serviceProviderPhone": "9876543210",
       "servicesProvided": [
         {
-          "serviceID": "S031",
           "serviceName": "Strategy Planning",
           "serviceDescription": "Outlining steps to achieve strategic goals.",
           "serviceLocation": "Atlanta, GA"
         },
         {
-          "serviceID": "S032",
           "serviceName": "Budgeting",
           "serviceDescription": "Allocating financial resources based on forecasted expenses.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceID": "S033",
           "serviceName": "Performance Tracking",
           "serviceDescription": "Monitoring and evaluating the current performance of a company.",
           "serviceLocation": "Atlanta, GA"
