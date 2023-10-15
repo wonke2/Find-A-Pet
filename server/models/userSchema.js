@@ -2,6 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const path = require('path')
+require('dotenv').config({path: path.join(__dirname, '../../.env')})
+
+url = process.env.MONGODB_U_URI
+
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => {
+		console.log("Connected to MongoDB")
+	})
+	.catch((error) => {
+		console.log("Error connecting to MongoDB:", error.message)
+	})
+	
 const userSchema = new Schema({
 	username: { type: String, required: true, unique: true },
 	email: { type: String, required: true, unique: true },
