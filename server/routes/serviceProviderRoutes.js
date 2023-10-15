@@ -5,6 +5,6 @@ const jwtUtils = require('../utils/jwtUtils')
 
 router.post('/SPsignup', serviceProviderController.signUp)
 router.post('/SPlogin', serviceProviderController.logIn)
-router.get('/SPuser', jwtUtils.SPverifyToken, serviceProviderController.getUser)
+router.get('/SPuser', jwtUtils.SPverifyToken, serviceProviderController.getServiceProvider)
 
 module.exports = router
