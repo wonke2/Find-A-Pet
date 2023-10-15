@@ -7,6 +7,7 @@ import UserLogin from "./pages/UserLogin";
 import UserSignup from "./pages/UserSignup";
 import "./styles/App.css";
 import UserProfile from "./pages/UserProfile";
+import Navbar from "./components/Navbar";
 
 function App() {
 	const Home = () => {
@@ -20,20 +21,7 @@ function App() {
 	return (
 		<div className="App">
 			<Router>
-				<header className="App-header">
-					<h1>Find-a-Pet</h1>
-					<nav>
-						<Link to="/petlistings">
-							<ul>PetListings</ul>
-						</Link>
-						<Link to="/userlogin">
-							<ul>UserLogin</ul>
-						</Link>
-						<Link to="/usersignup">
-							<ul>UserSignup</ul>
-						</Link>
-					</nav>
-				</header>
+				<Navbar />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/petlistings" element={<PetListings />} />
