@@ -88,5 +88,78 @@
       "serviceProviderLocation": "909 Pear St, Atlanta, GA 30301",
       "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     }
+  ],
+  "users": [
+    {
+      "username": "JohnDoe01",
+      "email": "john.doe01@example.com",
+      "phoneNo": "1234567890",
+      "address": "123 Main St, Los Angeles, CA 90001",
+      "password": "$2a$10$N9qo8uLOickgx2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "JaneSmith02",
+      "email": "jane.smith02@example.com",
+      "phoneNo": "2345678901",
+      "address": "456 Elm St, San Francisco, CA 94101",
+      "password": "$2a$10$7xcy4TXl8jT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "RobertBrown03",
+      "email": "robert.brown03@example.com",
+      "phoneNo": "3456789012",
+      "address": "789 Maple St, Chicago, IL 60601",
+      "password": "$2a$10$5wzDZTdu5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "EmilyWhite04",
+      "email": "emily.white04@example.com",
+      "phoneNo": "4567890123",
+      "address": "101 Pine St, New York, NY 10001",
+      "password": "$2a$10$Gp2Hx2GPm1gQs2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "MichaelGreen05",
+      "email": "michael.green05@example.com",
+      "phoneNo": "5678901234",
+      "address": "202 Oak St, Houston, TX 77001",
+      "password": "$2a$10$O3uZTTyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "SophiaBlack06",
+      "email": "sophia.black06@example.com",
+      "phoneNo": "6789012345",
+      "address": "303 Birch St, Seattle, WA 98101",
+      "password": "$2a$10$C2xYz3Vp4mT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "WilliamBlue07",
+      "email": "william.blue07@example.com",
+      "phoneNo": "7890123456",
+      "address": "404 Cedar St, Miami, FL 33101",
+      "password": "$2a$10$Z5wDFXyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "OliviaRed08",
+      "email": "olivia.red08@example.com",
+      "phoneNo": "8901234567",
+      "address": "505 Walnut St, Boston, MA 02101",
+      "password": "$2a$10$D1yZP4Dp2lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "JamesGray09",
+      "email": "james.gray09@example.com",
+      "phoneNo": "9012345678",
+      "address": "606 Cherry St, Dallas, TX 75201",
+      "password": "$2a$10$B6zEF5bu3nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    },
+    {
+      "username": "IsabellaPurple10",
+      "email": "isabella.purple10@example.com",
+      "phoneNo": "0123456789",
+      "address": "707 Peach St, Atlanta, GA 30301",
+      "password": "$2a$10$F8xWP3Wp0lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+    }
   ]
 }
+
