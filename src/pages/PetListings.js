@@ -94,13 +94,11 @@ const PetListings = () => {
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
 
   const initMap = async () => {
-    const map = L.map('map').setView([34.05, -118.24], 13);
+    const map = L.map('map').setView([34.05, -118.24], 10); // Adjust the zoom level here
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-
-    console.log('Pets:', pets); // Log the pets array to inspect its data
 
     for (const pet of pets) {
         const address = pet.contact.address.address1 + ', ' +
@@ -111,15 +109,21 @@ const PetListings = () => {
 
         const { latitude, longitude } = await getGeolocation(address);
 
-        console.log('Coordinates:', latitude, longitude); // Log the coordinates to check their validity
-
         if (latitude && longitude) {
-            L.marker([latitude, longitude]).addTo(map)
-                .bindPopup(pet.name)
+            // Creating a custom icon
+            const icon = L.icon({
+                iconUrl: pet.photos && pet.photos[0]?.medium ? pet.photos[0].medium : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg',
+                iconSize: [32, 32], // size of the icon
+            });
+
+            // Creating a marker with the custom icon
+            L.marker([latitude, longitude], { icon: icon }).addTo(map)
+                .bindPopup(`<b>${pet.name}</b><br><img src="${icon.options.iconUrl}" width="50" height="50">`) // Adding pet name and image to the popup
                 .openPopup();
         }
     }
 };
+
 
 
 useEffect(() => {
@@ -205,7 +209,6 @@ useEffect(() => {
     ) : (
       // The existing code for listing view
       pets.map((pet) => {
-          // Ensure pet location data is valid before creating markers
             const imageUrl = pet.photos && pet.photos[0]?.medium
               ? pet.photos[0].medium
               : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
