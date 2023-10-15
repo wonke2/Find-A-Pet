@@ -14,6 +14,25 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log('Error connecting to MongoDB:', error.message)
     })
 
+const serviceSchema = new mongoose.Schema({
+    serviceID: {
+        type: String,
+        required: true
+    },
+    serviceName: {
+        type: String,
+        required: true
+    },
+    serviceDescription: {
+        type: String,
+        required: true
+    },
+    serviceLocation: {
+        type: String,
+        required: true
+    }
+})
+
 const serviceProviderSchema = new mongoose.Schema({
     serviceProviderName: {
         type: String,
@@ -26,7 +45,8 @@ const serviceProviderSchema = new mongoose.Schema({
     orgName: String,
     serviceProviderAddress: String,
     serviceProviderEmail: String,
-    serviceProviderPhone: String
+    serviceProviderPhone: String,
+    servicesProvided: [serviceSchema] 
 })
 
 serviceProviderSchema.pre('save', async function (next) { 

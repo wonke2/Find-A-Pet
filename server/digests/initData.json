@@ -1,92 +1,313 @@
-{
+
+  {
   "serviceProviders": [
     {
-      "serviceProviderID": "SP001",
       "serviceProviderName": "John Doe Services",
+      "serviceProviderPassword": "$2a$10$N9qo8uLOickgx2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Doe Tech",
+      "serviceProviderAddress": "123 Main St, Los Angeles, CA 90001",
       "serviceProviderEmail": "john1@example.com",
       "serviceProviderPhone": "1234567890",
-      "serviceProviderLocation": "123 Main St, Los Angeles, CA 90001",
-      "serviceProviderPassword": "$2a$10$N9qo8uLOickgx2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S001",
+          "serviceName": "Web Development",
+          "serviceDescription": "Full-stack web development using modern frameworks.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S002",
+          "serviceName": "Graphic Design",
+          "serviceDescription": "Creating visual content for digital and print media.",
+          "serviceLocation": "Los Angeles, CA"
+        },
+        {
+          "serviceID": "S003",
+          "serviceName": "Digital Marketing",
+          "serviceDescription": "Online marketing strategies including SEO and SEM.",
+          "serviceLocation": "Remote"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP002",
       "serviceProviderName": "Jane Smith Services",
+      "serviceProviderPassword": "$2a$10$7xcy4TXl8jT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Jane Digital",
+      "serviceProviderAddress": "456 Elm St, San Francisco, CA 94101",
       "serviceProviderEmail": "jane2@example.com",
       "serviceProviderPhone": "2345678901",
-      "serviceProviderLocation": "456 Elm St, San Francisco, CA 94101",
-      "serviceProviderPassword": "$2a$10$7xcy4TXl8jT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S004",
+          "serviceName": "Mobile App Development",
+          "serviceDescription": "Designing and building mobile applications for both Android and iOS.",
+          "serviceLocation": "San Francisco, CA"
+        },
+        {
+          "serviceID": "S005",
+          "serviceName": "UI/UX Design",
+          "serviceDescription": "Designing intuitive user interfaces and ensuring a good user experience.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S006",
+          "serviceName": "SEO Optimization",
+          "serviceDescription": "Improving website rankings on search engines.",
+          "serviceLocation": "San Francisco, CA"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP003",
       "serviceProviderName": "Robert Brown Services",
+      "serviceProviderPassword": "$2a$10$5wzDZTdu5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Brown Tech",
+      "serviceProviderAddress": "789 Maple St, Chicago, IL 60601",
       "serviceProviderEmail": "robert3@example.com",
       "serviceProviderPhone": "3456789012",
-      "serviceProviderLocation": "789 Maple St, Chicago, IL 60601",
-      "serviceProviderPassword": "$2a$10$5wzDZTdu5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S007",
+          "serviceName": "Data Analytics",
+          "serviceDescription": "Analyzing data to gain insights into business performance.",
+          "serviceLocation": "Chicago, IL"
+        },
+        {
+          "serviceID": "S008",
+          "serviceName": "Cloud Services",
+          "serviceDescription": "Providing scalable and secure cloud solutions.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S009",
+          "serviceName": "IT Consulting",
+          "serviceDescription": "Advising businesses on how best to use IT to meet their objectives.",
+          "serviceLocation": "Chicago, IL"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP004",
       "serviceProviderName": "Emily White Services",
+      "serviceProviderPassword": "$2a$10$Gp2Hx2GPm1gQs2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "White Digital",
+      "serviceProviderAddress": "101 Pine St, New York, NY 10001",
       "serviceProviderEmail": "emily4@example.com",
       "serviceProviderPhone": "4567890123",
-      "serviceProviderLocation": "101 Pine St, New York, NY 10001",
-      "serviceProviderPassword": "$2a$10$Gp2Hx2GPm1gQs2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S010",
+          "serviceName": "Branding",
+          "serviceDescription": "Creating and managing a brand's identity and strategy.",
+          "serviceLocation": "New York, NY"
+        },
+        {
+          "serviceID": "S011",
+          "serviceName": "Digital Advertising",
+          "serviceDescription": "Creating and managing digital ad campaigns.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S012",
+          "serviceName": "E-commerce Solutions",
+          "serviceDescription": "Building and managing online stores.",
+          "serviceLocation": "New York, NY"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP005",
       "serviceProviderName": "Michael Green Services",
+      "serviceProviderPassword": "$2a$10$O3uZTTyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Green Tech Innovations",
+      "serviceProviderAddress": "202 Oak St, Houston, TX 77001",
       "serviceProviderEmail": "michael5@example.com",
       "serviceProviderPhone": "5678901234",
-      "serviceProviderLocation": "202 Oak St, Houston, TX 77001",
-      "serviceProviderPassword": "$2a$10$O3uZTTyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S013",
+          "serviceName": "Network Security",
+          "serviceDescription": "Protecting computer networks from threats and vulnerabilities.",
+          "serviceLocation": "Houston, TX"
+        },
+        {
+          "serviceID": "S014",
+          "serviceName": "Infrastructure Management",
+          "serviceDescription": "Managing and overseeing the equipment, policies, processes, and data.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S015",
+          "serviceName": "Database Services",
+          "serviceDescription": "Offering solutions for database management, storage, and protection.",
+          "serviceLocation": "Houston, TX"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP006",
       "serviceProviderName": "Sophia Black Services",
+      "serviceProviderPassword": "$2a$10$C2xYz3Vp4mT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Black Media Studios",
+      "serviceProviderAddress": "303 Birch St, Seattle, WA 98101",
       "serviceProviderEmail": "sophia6@example.com",
       "serviceProviderPhone": "6789012345",
-      "serviceProviderLocation": "303 Birch St, Seattle, WA 98101",
-      "serviceProviderPassword": "$2a$10$C2xYz3Vp4mT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S016",
+          "serviceName": "Content Creation",
+          "serviceDescription": "Producing engaging content for various platforms.",
+          "serviceLocation": "Seattle, WA"
+        },
+        {
+          "serviceID": "S017",
+          "serviceName": "Social Media Marketing",
+          "serviceDescription": "Promoting brands and products on social media channels.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S018",
+          "serviceName": "Lead Generation",
+          "serviceDescription": "Strategies to attract and convert prospects into customers.",
+          "serviceLocation": "Seattle, WA"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP007",
       "serviceProviderName": "William Blue Services",
+      "serviceProviderPassword": "$2a$10$Z5wDFXyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Blue Wave Tech",
+      "serviceProviderAddress": "404 Cedar St, Miami, FL 33101",
       "serviceProviderEmail": "william7@example.com",
       "serviceProviderPhone": "7890123456",
-      "serviceProviderLocation": "404 Cedar St, Miami, FL 33101",
-      "serviceProviderPassword": "$2a$10$Z5wDFXyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S019",
+          "serviceName": "Application Testing",
+          "serviceDescription": "Ensuring software applications run smoothly and bug-free.",
+          "serviceLocation": "Miami, FL"
+        },
+        {
+          "serviceID": "S020",
+          "serviceName": "Cybersecurity",
+          "serviceDescription": "Protecting systems and data from cyber threats.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S021",
+          "serviceName": "Web Maintenance",
+          "serviceDescription": "Keeping websites updated, secure, and performing optimally.",
+          "serviceLocation": "Miami, FL"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP008",
       "serviceProviderName": "Olivia Red Services",
+      "serviceProviderPassword": "$2a$10$D1yZP4Dp2lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Red Innovations",
+      "serviceProviderAddress": "505 Walnut St, Boston, MA 02101",
       "serviceProviderEmail": "olivia8@example.com",
       "serviceProviderPhone": "8901234567",
-      "serviceProviderLocation": "505 Walnut St, Boston, MA 02101",
-      "serviceProviderPassword": "$2a$10$D1yZP4Dp2lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S022",
+          "serviceName": "Print Design",
+          "serviceDescription": "Design services for brochures, business cards, and other printed materials.",
+          "serviceLocation": "Boston, MA"
+        },
+        {
+          "serviceID": "S023",
+          "serviceName": "Video Production",
+          "serviceDescription": "Creating promotional, educational, and entertainment videos.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S024",
+          "serviceName": "Event Promotion",
+          "serviceDescription": "Promoting and organizing business events and seminars.",
+          "serviceLocation": "Boston, MA"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP009",
       "serviceProviderName": "James Gray Services",
+      "serviceProviderPassword": "$2a$10$B6zEF5bu3nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Gray Digital Hub",
+      "serviceProviderAddress": "606 Cherry St, Dallas, TX 75201",
       "serviceProviderEmail": "james9@example.com",
       "serviceProviderPhone": "9012345678",
-      "serviceProviderLocation": "606 Cherry St, Dallas, TX 75201",
-      "serviceProviderPassword": "$2a$10$B6zEF5bu3nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S025",
+          "serviceName": "Consultation",
+          "serviceDescription": "Providing expert advice in the field of digital technologies.",
+          "serviceLocation": "Dallas, TX"
+        },
+        {
+          "serviceID": "S026",
+          "serviceName": "B2B Marketing",
+          "serviceDescription": "Targeted strategies to reach other businesses as clients.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S027",
+          "serviceName": "CRM Solutions",
+          "serviceDescription": "Managing a company's interactions with current and potential customers.",
+          "serviceLocation": "Dallas, TX"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP010",
       "serviceProviderName": "Isabella Purple Services",
+      "serviceProviderPassword": "$2a$10$F8xWP3Wp0lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Purple Rain Tech",
+      "serviceProviderAddress": "707 Peach St, Atlanta, GA 30301",
       "serviceProviderEmail": "isabella10@example.com",
       "serviceProviderPhone": "0123456789",
-      "serviceProviderLocation": "707 Peach St, Atlanta, GA 30301",
-      "serviceProviderPassword": "$2a$10$F8xWP3Wp0lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S028",
+          "serviceName": "Customer Support",
+          "serviceDescription": "Offering help and advice about a company's products and services.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S029",
+          "serviceName": "Business Analysis",
+          "serviceDescription": "Identifying business needs and finding technical solutions.",
+          "serviceLocation": "Atlanta, GA"
+        },
+        {
+          "serviceID": "S030",
+          "serviceName": "Project Management",
+          "serviceDescription": "Planning, executing, and closing projects.",
+          "serviceLocation": "Atlanta, GA"
+        }
+      ]
     },
     {
-      "serviceProviderID": "SP011",
       "serviceProviderName": "Jacob Yellow Services",
+      "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
+      "orgName": "Yellow Sun Innovations",
+      "serviceProviderAddress": "909 Pear St, Atlanta, GA 30301",
       "serviceProviderEmail": "jacob11@example.com",
       "serviceProviderPhone": "9876543210",
-      "serviceProviderLocation": "909 Pear St, Atlanta, GA 30301",
-      "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
+      "servicesProvided": [
+        {
+          "serviceID": "S031",
+          "serviceName": "Strategy Planning",
+          "serviceDescription": "Outlining steps to achieve strategic goals.",
+          "serviceLocation": "Atlanta, GA"
+        },
+        {
+          "serviceID": "S032",
+          "serviceName": "Budgeting",
+          "serviceDescription": "Allocating financial resources based on forecasted expenses.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceID": "S033",
+          "serviceName": "Performance Tracking",
+          "serviceDescription": "Monitoring and evaluating the current performance of a company.",
+          "serviceLocation": "Atlanta, GA"
+        }
+      ]
     }
   ],
   "users": [
