@@ -1,4 +1,5 @@
-require("dotenv").config()
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '../../.env') })
 const mongoose = require("mongoose")
 const serviceProvider = require("../models/serviceProviderSchema")
 const fs = require("fs")
@@ -6,7 +7,7 @@ const fs = require("fs")
 const rawData = fs.readFileSync("./initData.json")
 const data = JSON.parse(rawData)
 
-data.serviceProvider.map((sp) => {
+data.serviceProviders.map((sp) => {
     const newServiceProvider = new serviceProvider({
         serviceProviderName: sp.serviceProviderName,
         serviceProviderPassword: sp.serviceProviderPassword,

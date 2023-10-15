@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 const bcrypt = require("bcrypt")
 const saltRounds = 10
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({path: path.join(__dirname, '../../.env')})
 
-const url = process.env.MONGODB_URI
+const url = process.env.MONGODB_SP_URI
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
@@ -30,7 +31,7 @@ const serviceProviderSchema = new mongoose.Schema({
 
 serviceProviderSchema.pre('save', async function (next) { 
     try {
-        if (this.ismodified("serviceProviderPassword")) {
+        if (this.isModified("serviceProviderPassword")) {
             const hashedPassword = await bcrypt.hash(this.serviceProviderPassword, saltRounds)
             this.serviceProviderPassword = hashedPassword
         }
@@ -41,7 +42,7 @@ serviceProviderSchema.pre('save', async function (next) {
 
 serviceProviderSchema.methods.validatePassword = async function (password) {
     try {
-        const result = bcrypt.compare(password, this.serviceProviderPassword)
+        const result = await bcrypt.compare(password, this.serviceProviderPassword)
         return result
     } catch (err) {
         throw new Error(err)

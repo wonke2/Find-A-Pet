@@ -5,77 +5,88 @@
       "serviceProviderName": "John Doe Services",
       "serviceProviderEmail": "john1@example.com",
       "serviceProviderPhone": "1234567890",
-      "serviceProviderLocation": "123 Main St, Los Angeles, CA 90001"
+      "serviceProviderLocation": "123 Main St, Los Angeles, CA 90001",
+      "serviceProviderPassword": "$2a$10$N9qo8uLOickgx2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP002",
       "serviceProviderName": "Jane Smith Services",
       "serviceProviderEmail": "jane2@example.com",
       "serviceProviderPhone": "2345678901",
-      "serviceProviderLocation": "456 Elm St, San Francisco, CA 94101"
+      "serviceProviderLocation": "456 Elm St, San Francisco, CA 94101",
+      "serviceProviderPassword": "$2a$10$7xcy4TXl8jT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP003",
       "serviceProviderName": "Robert Brown Services",
       "serviceProviderEmail": "robert3@example.com",
       "serviceProviderPhone": "3456789012",
-      "serviceProviderLocation": "789 Maple St, Chicago, IL 60601"
+      "serviceProviderLocation": "789 Maple St, Chicago, IL 60601",
+      "serviceProviderPassword": "$2a$10$5wzDZTdu5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP004",
       "serviceProviderName": "Emily White Services",
       "serviceProviderEmail": "emily4@example.com",
       "serviceProviderPhone": "4567890123",
-      "serviceProviderLocation": "101 Pine St, New York, NY 10001"
+      "serviceProviderLocation": "101 Pine St, New York, NY 10001",
+      "serviceProviderPassword": "$2a$10$Gp2Hx2GPm1gQs2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP005",
       "serviceProviderName": "Michael Green Services",
       "serviceProviderEmail": "michael5@example.com",
       "serviceProviderPhone": "5678901234",
-      "serviceProviderLocation": "202 Oak St, Houston, TX 77001"
+      "serviceProviderLocation": "202 Oak St, Houston, TX 77001",
+      "serviceProviderPassword": "$2a$10$O3uZTTyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP006",
       "serviceProviderName": "Sophia Black Services",
       "serviceProviderEmail": "sophia6@example.com",
       "serviceProviderPhone": "6789012345",
-      "serviceProviderLocation": "303 Birch St, Seattle, WA 98101"
+      "serviceProviderLocation": "303 Birch St, Seattle, WA 98101",
+      "serviceProviderPassword": "$2a$10$C2xYz3Vp4mT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP007",
       "serviceProviderName": "William Blue Services",
       "serviceProviderEmail": "william7@example.com",
       "serviceProviderPhone": "7890123456",
-      "serviceProviderLocation": "404 Cedar St, Miami, FL 33101"
+      "serviceProviderLocation": "404 Cedar St, Miami, FL 33101",
+      "serviceProviderPassword": "$2a$10$Z5wDFXyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP008",
       "serviceProviderName": "Olivia Red Services",
       "serviceProviderEmail": "olivia8@example.com",
       "serviceProviderPhone": "8901234567",
-      "serviceProviderLocation": "505 Walnut St, Boston, MA 02101"
+      "serviceProviderLocation": "505 Walnut St, Boston, MA 02101",
+      "serviceProviderPassword": "$2a$10$D1yZP4Dp2lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP009",
       "serviceProviderName": "James Gray Services",
       "serviceProviderEmail": "james9@example.com",
       "serviceProviderPhone": "9012345678",
-      "serviceProviderLocation": "606 Cherry St, Dallas, TX 75201"
+      "serviceProviderLocation": "606 Cherry St, Dallas, TX 75201",
+      "serviceProviderPassword": "$2a$10$B6zEF5bu3nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
       "serviceProviderID": "SP010",
       "serviceProviderName": "Isabella Purple Services",
       "serviceProviderEmail": "isabella10@example.com",
       "serviceProviderPhone": "0123456789",
-      "serviceProviderLocation": "707 Peach St, Atlanta, GA 30301"
+      "serviceProviderLocation": "707 Peach St, Atlanta, GA 30301",
+      "serviceProviderPassword": "$2a$10$F8xWP3Wp0lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     },
     {
-    "serviceProviderID": "SP011",
-    "serviceProviderName": "Jacob Yellow Services",
-    "serviceProviderEmail": "jacob11@example.com",
-    "serviceProviderPhone": "9876543210",
-    "serviceProviderLocation": "909 Pear St, Atlanta, GA 30301"
+      "serviceProviderID": "SP011",
+      "serviceProviderName": "Jacob Yellow Services",
+      "serviceProviderEmail": "jacob11@example.com",
+      "serviceProviderPhone": "9876543210",
+      "serviceProviderLocation": "909 Pear St, Atlanta, GA 30301",
+      "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK"
     }
   ]
 }
