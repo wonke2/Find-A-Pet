@@ -56,3 +56,16 @@ exports.logIn = async (req, res) => {
         })
     }
 }
+exports.getServiceProvider = async (req, res) => {
+    try {
+        res.status(200).json({
+            status: "success",
+            data: req.serviceP
+        })
+    } catch (err) {
+        res.status(500).json({
+            status: "fail",
+            message: err.message
+        })
+    }
+}
