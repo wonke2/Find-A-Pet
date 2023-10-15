@@ -1,12 +1,11 @@
-// Importing necessary libraries and styles
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import '../styles/App.css';
 
-// Functional component for pet listings
 const PetListings = () => {
-  // State hooks for pets, API token, search term, filters, and filter visibility
   const [pets, setPets] = useState([]);
   const [token, setToken] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,8 +14,8 @@ const PetListings = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [showTypeFilter, setShowTypeFilter] = useState(false);
   const [showStatusFilter, setShowStatusFilter] = useState(false);
+  const [mapView, setMapView] = useState(false);
 
-  // Function to get API token
   const getApiToken = async () => {
     try {
       const response = await axios.get('/api/petfinder/token');
@@ -26,40 +25,49 @@ const PetListings = () => {
     }
   };
 
-  // Effect hook to get API token on component mount
+  const getPets = async () => {
+    if (token === '') return;
+
+    let params = {
+      headers: { Authorization: `Bearer ${token}` },
+      params: {}
+    };
+
+    if (filters.types.length > 0) params.params.type = filters.types.join(',');
+    if (filters.status.length > 0) params.params.status = filters.status.join(',');
+    if (submittedSearchTerm) params.params.name = submittedSearchTerm;
+
+    try {
+      const response = await axios.get('https://api.petfinder.com/v2/animals', params);
+      setPets(response.data.animals);
+    } catch (error) {
+      console.error('There was an error retrieving the pets!', error);
+    }
+  };
+
+  const getGeolocation = async (address) => {
+    try {
+      const response = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.MAP_API}&q=${encodeURIComponent(address)}&format=json`);
+      if (response.data && response.data.length > 0) {
+        return {
+          latitude: parseFloat(response.data[0].lat),
+          longitude: parseFloat(response.data[0].lon)
+        };
+      }
+    } catch (error) {
+      console.error('There was an error retrieving the geolocation!', error);
+    }
+    return { latitude: null, longitude: null };
+  };
+
   useEffect(() => {
     getApiToken();
   }, []);
 
-  // Effect hook to fetch pets whenever token, filters or submitted search term changes
   useEffect(() => {
-    const getPets = async () => {
-      if (token === '') return;
-
-      // Setting up request parameters including headers and query parameters
-      let params = {
-        headers: { Authorization: `Bearer ${token}` },
-        params: {}
-      };
-
-      // Adding filters to the request parameters if they are set
-      if (filters.types.length > 0) params.params.type = filters.types.join(',');
-      if (filters.status.length > 0) params.params.status = filters.status.join(',');
-      if (submittedSearchTerm) params.params.name = submittedSearchTerm;
-
-      // Fetching pets from the API and setting the pets state
-      try {
-        const response = await axios.get('https://api.petfinder.com/v2/animals', params);
-        setPets(response.data.animals);
-      } catch (error) {
-        console.error('There was an error retrieving the pets!', error);
-      }
-    };
-
     getPets();
   }, [token, filters, submittedSearchTerm]);
 
-  // Handling filter changes and updating the filters state
   const handleFilterChange = (e, filterCategory) => {
     const value = e.target.value;
     setFilters((prevFilters) => ({
@@ -70,20 +78,11 @@ const PetListings = () => {
     }));
   };
 
-  // Clearing the submitted search term if the search term is cleared
-  useEffect(() => {
-    if (searchTerm === '') {
-      setSubmittedSearchTerm('');
-    }
-  }, [searchTerm]);
-
-  // Handling search submission
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     setSubmittedSearchTerm(searchTerm);
-  }
+  };
 
-  // Function to clear the search input
   const clearSearch = () => {
     setSearchTerm('');
   };
@@ -92,6 +91,38 @@ const PetListings = () => {
   const toggleFilters = () => setShowFilters(!showFilters);
   const toggleTypeFilter = () => setShowTypeFilter(!showTypeFilter);
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
+
+  const initMap = async () => {
+    const map = L.map('map').setView([34.05, -118.24], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    for (const pet of pets) {
+        const address = pet.contact.address.address1 + ', ' +
+            pet.contact.address.city + ', ' +
+            pet.contact.address.state + ', ' +
+            pet.contact.address.postcode + ', ' +
+            pet.contact.address.country;
+
+        const { latitude, longitude } = await getGeolocation(address);
+
+        if (latitude && longitude) {
+            L.marker([latitude, longitude]).addTo(map)
+                .bindPopup(pet.name)
+                .openPopup();
+        }
+    }
+};
+
+  useEffect(() => {
+    if (mapView && window.google) {
+      console.log('Attempting to initialize map.');
+      initMap();
+    }
+  }, [mapView, pets]);
+  
 
   // Rendering component
   return (
@@ -158,28 +189,38 @@ const PetListings = () => {
         )}
       </div>
 
-      {pets.map(pet => {
-        const imageUrl = pet.photos && pet.photos[0]?.medium
-          ? pet.photos[0].medium
-          : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+      {/* Button to toggle between map and list view */}
+      <button onClick={() => setMapView(!mapView)}>
+        {mapView ? 'Show Listings' : 'Show Map'}
+      </button>
 
-        return (
-          <div key={pet.id}>
-            <img
-              src={imageUrl}
-              alt={pet.name}
-              style={{ width: '200px', height: 'auto' }}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-              }}
-            />
-            <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
-          </div>
-        );
-      })}
+      {mapView ? (
+      <div id="map" style={{ height: '500px', width: '100%' }}></div>
+    ) : (
+      // The existing code for listing view
+      pets.map((pet) => {
+            const imageUrl = pet.photos && pet.photos[0]?.medium
+              ? pet.photos[0].medium
+              : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+
+            return (
+              <div key={pet.id}>
+                <img
+                  src={imageUrl}
+                  alt={pet.name}
+                  style={{ width: '200px', height: 'auto' }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+                  }}
+                />
+                <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
+              </div>
+            );
+        })
+      )}
     </div>
   );
-};
+}
 
 export default PetListings;
