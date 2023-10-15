@@ -46,7 +46,7 @@ const PetListings = () => {
   };
 
   const getGeolocation = async (address) => {
-  
+
     try {
       const response = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_MAP_API}&q=${encodeURIComponent(address)}&format=json`);
       if (response.data && response.data.length > 0) {
@@ -94,45 +94,54 @@ const PetListings = () => {
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
 
   const initMap = async () => {
-    const map = L.map('map').setView([34.05, -118.24], 10); // Adjust the zoom level here
+    const map = L.map('map').setView([34.05, -118.24], 4);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     for (const pet of pets) {
-        const address = pet.contact.address.address1 + ', ' +
-            pet.contact.address.city + ', ' +
-            pet.contact.address.state + ', ' +
-            pet.contact.address.postcode + ', ' +
-            pet.contact.address.country;
+      const address = pet.contact.address.address1 + ', ' +
+        pet.contact.address.city + ', ' +
+        pet.contact.address.state + ', ' +
+        pet.contact.address.postcode + ', ' +
+        pet.contact.address.country;
 
-        const { latitude, longitude } = await getGeolocation(address);
+      const { latitude, longitude } = await getGeolocation(address);
 
-        if (latitude && longitude) {
-            // Creating a custom icon
-            const icon = L.icon({
-                iconUrl: pet.photos && pet.photos[0]?.medium ? pet.photos[0].medium : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg',
-                iconSize: [32, 32], // size of the icon
-            });
+      if (latitude && longitude) {
+        // Creating a custom icon
+        const icon = L.icon({
+          iconUrl: pet.photos && pet.photos[0]?.medium
+            ? pet.photos[0].medium
+            : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg',
+          iconSize: [32, 32], // size of the icon
+        });
 
-            // Creating a marker with the custom icon
-            L.marker([latitude, longitude], { icon: icon }).addTo(map)
-                .bindPopup(`<b>${pet.name}</b><br><img src="${icon.options.iconUrl}" width="50" height="50">`) // Adding pet name and image to the popup
-                .openPopup();
-        }
+        // Creating a marker with the custom icon
+        const marker = L.marker([latitude, longitude], { icon: icon }).addTo(map);
+        marker.bindPopup(`<b><a href="/pet/${pet.id}" id="petLink${pet.id}">${pet.name}</a></b><br><img src="${icon.options.iconUrl}" width="50" height="50">`); // Making pet name clickable and adding image to the popup
+
+        // Event listener for popupopen to add a click event listener to the pet name link
+        marker.on('popupopen', () => {
+          const link = document.getElementById(`petLink${pet.id}`);
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = `/pet/${pet.id}`;  // Redirecting to the pet detail page
+          });
+        });
+      }
     }
-};
+  };
 
 
+  useEffect(() => {
+    if (mapView) {
+      console.log('Attempting to initialize map.');
+      initMap();
+    }
+  }, [mapView, pets]);
 
-useEffect(() => {
-  if (mapView) {
-    console.log('Attempting to initialize map.');
-    initMap();
-  }
-}, [mapView, pets]);
-  
 
   // Rendering component
   return (
@@ -205,28 +214,28 @@ useEffect(() => {
       </button>
 
       {mapView ? (
-      <div id="map" style={{ height: '500px', width: '100%' }}></div>
-    ) : (
-      // The existing code for listing view
-      pets.map((pet) => {
-            const imageUrl = pet.photos && pet.photos[0]?.medium
-              ? pet.photos[0].medium
-              : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+        <div id="map" style={{ height: '500px', width: '100%' }}></div>
+      ) : (
+        // The existing code for listing view
+        pets.map((pet) => {
+          const imageUrl = pet.photos && pet.photos[0]?.medium
+            ? pet.photos[0].medium
+            : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
 
-            return (
-              <div key={pet.id}>
-                <img
-                  src={imageUrl}
-                  alt={pet.name}
-                  style={{ width: '200px', height: 'auto' }}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-                  }}
-                />
-                <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
-              </div>
-            );
+          return (
+            <div key={pet.id}>
+              <img
+                src={imageUrl}
+                alt={pet.name}
+                style={{ width: '200px', height: 'auto' }}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+                }}
+              />
+              <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
+            </div>
+          );
         })
       )}
     </div>
