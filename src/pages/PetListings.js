@@ -46,8 +46,9 @@ const PetListings = () => {
   };
 
   const getGeolocation = async (address) => {
+  
     try {
-      const response = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.MAP_API}&q=${encodeURIComponent(address)}&format=json`);
+      const response = await axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_MAP_API}&q=${encodeURIComponent(address)}&format=json`);
       if (response.data && response.data.length > 0) {
         return {
           latitude: parseFloat(response.data[0].lat),
@@ -99,6 +100,8 @@ const PetListings = () => {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    console.log('Pets:', pets); // Log the pets array to inspect its data
+
     for (const pet of pets) {
         const address = pet.contact.address.address1 + ', ' +
             pet.contact.address.city + ', ' +
@@ -108,6 +111,8 @@ const PetListings = () => {
 
         const { latitude, longitude } = await getGeolocation(address);
 
+        console.log('Coordinates:', latitude, longitude); // Log the coordinates to check their validity
+
         if (latitude && longitude) {
             L.marker([latitude, longitude]).addTo(map)
                 .bindPopup(pet.name)
@@ -116,12 +121,13 @@ const PetListings = () => {
     }
 };
 
-  useEffect(() => {
-    if (mapView && window.google) {
-      console.log('Attempting to initialize map.');
-      initMap();
-    }
-  }, [mapView, pets]);
+
+useEffect(() => {
+  if (mapView) {
+    console.log('Attempting to initialize map.');
+    initMap();
+  }
+}, [mapView, pets]);
   
 
   // Rendering component
@@ -199,6 +205,7 @@ const PetListings = () => {
     ) : (
       // The existing code for listing view
       pets.map((pet) => {
+          // Ensure pet location data is valid before creating markers
             const imageUrl = pet.photos && pet.photos[0]?.medium
               ? pet.photos[0].medium
               : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
