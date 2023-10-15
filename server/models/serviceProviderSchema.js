@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const bcrypt = require("bcrypt")
+const saltRounds = 10
 require('dotenv').config()
 
 const url = process.env.MONGODB_URI
