@@ -29,6 +29,11 @@ const Navbar = () => {
 						User Signup
 					</Link>
 				</li>
+				<li>
+					<Link to="/services" className="nav-element">
+						Services
+					</Link>
+				</li>
 			</ul>
 		</nav>
 	);
