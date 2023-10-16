@@ -55,7 +55,25 @@ app.get("/api/services", async (req, res) => {
 	}
 });
 
-app.get("/api/services/:id", (req, res) => {});
+app.get("/api/services/:id", async (req, res) => {
+    const serviceId = req.params.id;
+
+    try {
+        const provider = await serviceProvider.findOne({ "servicesProvided._id": new mongoose.Types.ObjectId(serviceId) });
+        if (!provider) {
+            return res.status(404).json({ error: "Service not found" });
+        }
+        const service = provider.servicesProvided.id(serviceId);
+        if (!service) {
+            return res.status(404).json({ error: "Service not found" });
+        }
+    res.json(service);
+    } catch (error) {
+        console.error("Error fetching the service:", error.message);
+        res.status(500).json({ error: "Failed to fetch service" });
+    }
+});
+
 
 app.get("/api/users/:id", (req, res) => {});
 
