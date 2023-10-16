@@ -5,6 +5,7 @@ const axios = require("axios");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const SPRoutes = require("./routes/serviceProviderRoutes");
+const serviceProvider = require("./models/serviceProviderSchema");
 
 require("dotenv").config();
 
@@ -42,7 +43,17 @@ app.get("/api/items", (req, res) => {});
 
 app.get("/api/items/:id", (req, res) => {});
 
-app.get("/api/services", (req, res) => {});
+app.get("/api/services", async (req, res) => {
+	try {
+		const providers = await serviceProvider.find()
+		const allServices = providers.map(provider => provider.servicesProvided).flat()
+		res.json(allServices);
+	}
+	catch (error) {
+		console.error("There was an error fetching the services!", error);
+		res.status(500).json({ error: "Failed to fetch services" });
+	}
+});
 
 app.get("/api/services/:id", (req, res) => {});
 
