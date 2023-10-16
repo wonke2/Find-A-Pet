@@ -30,7 +30,8 @@ const ServiceListings = () => {
     };
 
     const initMap = async () => {
-        const map = L.map('map').setView([34.05, -118.24], 4);
+        const map = L.map('map').setView([35, -115], 3.5);
+
     
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -52,9 +53,12 @@ const ServiceListings = () => {
     
                 // Creating a marker with the custom icon and adding it to the map
                 L.marker([latitude, longitude], { icon }).addTo(map)
-                    .bindPopup(`<b>${service.serviceName}</b><br>${service.serviceDescription}`);          }
+                    .bindPopup(`<b>${service.serviceName}</b><br>${service.serviceDescription}`);
+            }
         }
     };
+    
+    
 
     useEffect(() => {
         if (mapView) {

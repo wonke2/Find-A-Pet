@@ -94,7 +94,7 @@ const PetListings = () => {
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
 
   const initMap = async () => {
-    const map = L.map('map').setView([34.05, -118.24], 4);
+    const map = L.map('map').setView([35, -115], 3.5);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
