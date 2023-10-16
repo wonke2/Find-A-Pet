@@ -2,277 +2,450 @@
   {
   "serviceProviders": [
     {
-      "serviceProviderName": "John Doe Services",
-      "serviceProviderPassword": "$2a$10$N9qo8uLOickgx2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Doe Tech",
+      "serviceProviderName": "Paws & Play Pet Services",
+      "serviceProviderPassword": "$2a$10$N9qo8uLOickgx2ZMRZoMye...",
+      "orgName": "Paws & Play",
       "serviceProviderAddress": "123 Main St, Los Angeles, CA 90001",
-      "serviceProviderEmail": "john1@example.com",
+      "serviceProviderEmail": "pawsandplay@example.com",
       "serviceProviderPhone": "1234567890",
       "servicesProvided": [
         {
-          "serviceName": "Web Development",
-          "serviceDescription": "Full-stack web development using modern frameworks.",
-          "serviceLocation": "Remote"
-        },
-        {
-          "serviceName": "Graphic Design",
-          "serviceDescription": "Creating visual content for digital and print media.",
+          "serviceProviderName": "Paws & Play Pet Services",
+          "serviceName": "Pet Grooming",
+          "serviceDescription": "Professional grooming services including baths, nail trims, and haircuts.",
           "serviceLocation": "Los Angeles, CA"
         },
         {
-          "serviceName": "Digital Marketing",
-          "serviceDescription": "Online marketing strategies including SEO and SEM.",
+          "serviceProviderName": "Paws & Play Pet Services",
+          "serviceName": "Dog Training",
+          "serviceDescription": "Behavioral training for puppies and older dogs.",
           "serviceLocation": "Remote"
+        },
+        {
+          "serviceProviderName": "Paws & Play Pet Services",
+          "serviceName": "Pet Boarding",
+          "serviceDescription": "Safe and comfortable overnight stays for pets.",
+          "serviceLocation": "Los Angeles, CA"
         }
       ]
     },
     {
-      "serviceProviderName": "Jane Smith Services",
-      "serviceProviderPassword": "$2a$10$7xcy4TXl8jT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Jane Digital",
+      "serviceProviderName": "Whiskers & Woof Pet Care",
+      "serviceProviderPassword": "$2a$10$7xcy4TXl8jT/WNox4tBmTO...",
+      "orgName": "Whiskers & Woof",
       "serviceProviderAddress": "456 Elm St, San Francisco, CA 94101",
-      "serviceProviderEmail": "jane2@example.com",
+      "serviceProviderEmail": "whiskerswoof@example.com",
       "serviceProviderPhone": "2345678901",
       "servicesProvided": [
         {
-          "serviceName": "Mobile App Development",
-          "serviceDescription": "Designing and building mobile applications for both Android and iOS.",
+          "serviceProviderName": "Whiskers & Woof Pet Care",
+          "serviceName": "Cat Sitting",
+          "serviceDescription": "Personalized cat care including feeding, play, and litter box maintenance.",
           "serviceLocation": "San Francisco, CA"
         },
         {
-          "serviceName": "UI/UX Design",
-          "serviceDescription": "Designing intuitive user interfaces and ensuring a good user experience.",
+          "serviceProviderName": "Whiskers & Woof Pet Care",
+          "serviceName": "Dog Walking",
+          "serviceDescription": "Regular walks and playtime for dogs of all sizes.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceName": "SEO Optimization",
-          "serviceDescription": "Improving website rankings on search engines.",
+          "serviceProviderName": "Whiskers & Woof Pet Care",
+          "serviceName": "Pet Taxi",
+          "serviceDescription": "Transportation for pets to vet appointments, groomers, etc.",
           "serviceLocation": "San Francisco, CA"
         }
       ]
     },
     {
-      "serviceProviderName": "Robert Brown Services",
-      "serviceProviderPassword": "$2a$10$5wzDZTdu5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Brown Tech",
+      "serviceProviderName": "Feather & Fur Pet Spa",
+      "serviceProviderPassword": "$2a$10$5wzDZTdu5nhIl4uB4BMdSe...",
+      "orgName": "Feather & Fur",
       "serviceProviderAddress": "789 Maple St, Chicago, IL 60601",
-      "serviceProviderEmail": "robert3@example.com",
+      "serviceProviderEmail": "featherfur@example.com",
       "serviceProviderPhone": "3456789012",
       "servicesProvided": [
         {
-          "serviceName": "Data Analytics",
-          "serviceDescription": "Analyzing data to gain insights into business performance.",
+          "serviceProviderName": "Feather & Fur Pet Spa",
+          "serviceName": "Bird Grooming",
+          "serviceDescription": "Wing clipping, beak trimming, and bathing for pet birds.",
           "serviceLocation": "Chicago, IL"
         },
         {
-          "serviceName": "Cloud Services",
-          "serviceDescription": "Providing scalable and secure cloud solutions.",
+          "serviceProviderName": "Feather & Fur Pet Spa",
+          "serviceName": "Reptile Care",
+          "serviceDescription": "Safe handling, feeding, and habitat cleaning for reptiles.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceName": "IT Consulting",
-          "serviceDescription": "Advising businesses on how best to use IT to meet their objectives.",
+          "serviceProviderName": "Feather & Fur Pet Spa",
+          "serviceName": "Pet Massage",
+          "serviceDescription": "Relaxing massage techniques for pets to improve circulation and reduce stress.",
           "serviceLocation": "Chicago, IL"
         }
       ]
     },
     {
-      "serviceProviderName": "Emily White Services",
-      "serviceProviderPassword": "$2a$10$Gp2Hx2GPm1gQs2ZMRZoMye.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "White Digital",
+      "serviceProviderName": "Aquatic Companions Aquarium Services",
+      "serviceProviderPassword": "$2a$10$Gp2Hx2GPm1gQs2ZMRZoMye...",
+      "orgName": "Aquatic Companions",
       "serviceProviderAddress": "101 Pine St, New York, NY 10001",
-      "serviceProviderEmail": "emily4@example.com",
+      "serviceProviderEmail": "aquaticcompanions@example.com",
       "serviceProviderPhone": "4567890123",
       "servicesProvided": [
         {
-          "serviceName": "Branding",
-          "serviceDescription": "Creating and managing a brand's identity and strategy.",
+          "serviceProviderName": "Aquatic Companions Aquarium Services",
+          "serviceName": "Aquarium Cleaning",
+          "serviceDescription": "Maintaining and cleaning freshwater and saltwater aquariums.",
           "serviceLocation": "New York, NY"
         },
         {
-          "serviceName": "Digital Advertising",
-          "serviceDescription": "Creating and managing digital ad campaigns.",
+          "serviceProviderName": "Aquatic Companions Aquarium Services",
+          "serviceName": "Fish Health Check",
+          "serviceDescription": "Monitoring fish health, water parameters, and suggesting necessary adjustments.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceName": "E-commerce Solutions",
-          "serviceDescription": "Building and managing online stores.",
+          "serviceProviderName": "Aquatic Companions Aquarium Services",
+          "serviceName": "Aquarium Setup",
+          "serviceDescription": "Setting up new aquariums including equipment installation and landscaping.",
           "serviceLocation": "New York, NY"
         }
       ]
     },
-    {
-      "serviceProviderName": "Michael Green Services",
-      "serviceProviderPassword": "$2a$10$O3uZTTyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Green Tech Innovations",
+        {
+      "serviceProviderName": "Canine Companions Pet Training",
+      "serviceProviderPassword": "$2a$10$O3uZTTyU5nhIl4uB4BMdSe...",
+      "orgName": "Canine Companions",
       "serviceProviderAddress": "202 Oak St, Houston, TX 77001",
-      "serviceProviderEmail": "michael5@example.com",
+      "serviceProviderEmail": "caninecompanions@example.com",
       "serviceProviderPhone": "5678901234",
       "servicesProvided": [
         {
-          "serviceName": "Network Security",
-          "serviceDescription": "Protecting computer networks from threats and vulnerabilities.",
+          "serviceProviderName": "Canine Companions Pet Training",
+          "serviceName": "Obedience Training",
+          "serviceDescription": "Basic and advanced commands training for dogs.",
           "serviceLocation": "Houston, TX"
         },
         {
-          "serviceName": "Infrastructure Management",
-          "serviceDescription": "Managing and overseeing the equipment, policies, processes, and data.",
+          "serviceProviderName": "Canine Companions Pet Training",
+          "serviceName": "Agility Training",
+          "serviceDescription": "Training for dogs to navigate through obstacle courses.",
+          "serviceLocation": "Houston, TX"
+        },
+        {
+          "serviceProviderName": "Canine Companions Pet Training",
+          "serviceName": "Behavioral Counseling",
+          "serviceDescription": "Addressing and correcting problematic behaviors in dogs.",
           "serviceLocation": "Remote"
-        },
-        {
-          "serviceName": "Database Services",
-          "serviceDescription": "Offering solutions for database management, storage, and protection.",
-          "serviceLocation": "Houston, TX"
         }
       ]
     },
     {
-      "serviceProviderName": "Sophia Black Services",
-      "serviceProviderPassword": "$2a$10$C2xYz3Vp4mT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Black Media Studios",
+      "serviceProviderName": "Whisker Wonders Cat Care",
+      "serviceProviderPassword": "$2a$10$C2xYz3Vp4mT/WNox4tBmTO...",
+      "orgName": "Whisker Wonders",
       "serviceProviderAddress": "303 Birch St, Seattle, WA 98101",
-      "serviceProviderEmail": "sophia6@example.com",
+      "serviceProviderEmail": "whiskerwonders@example.com",
       "serviceProviderPhone": "6789012345",
       "servicesProvided": [
         {
-          "serviceName": "Content Creation",
-          "serviceDescription": "Producing engaging content for various platforms.",
+          "serviceProviderName": "Whisker Wonders Cat Care",
+          "serviceName": "Kitten Care",
+          "serviceDescription": "Specialized care routines for young kittens.",
           "serviceLocation": "Seattle, WA"
         },
         {
-          "serviceName": "Social Media Marketing",
-          "serviceDescription": "Promoting brands and products on social media channels.",
+          "serviceProviderName": "Whisker Wonders Cat Care",
+          "serviceName": "Litter Training",
+          "serviceDescription": "Training kittens and cats to use litter boxes.",
           "serviceLocation": "Remote"
         },
         {
-          "serviceName": "Lead Generation",
-          "serviceDescription": "Strategies to attract and convert prospects into customers.",
+          "serviceProviderName": "Whisker Wonders Cat Care",
+          "serviceName": "Senior Cat Care",
+          "serviceDescription": "Providing care tailored for the needs of older cats.",
           "serviceLocation": "Seattle, WA"
         }
       ]
     },
-    {
-      "serviceProviderName": "William Blue Services",
-      "serviceProviderPassword": "$2a$10$Z5wDFXyU5nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Blue Wave Tech",
+        {
+      "serviceProviderName": "Bunny Bliss Sanctuary",
+      "serviceProviderPassword": "$2a$10$Z5wDFXyU5nhIl4uB4BMdSe...",
+      "orgName": "Bunny Bliss",
       "serviceProviderAddress": "404 Cedar St, Miami, FL 33101",
-      "serviceProviderEmail": "william7@example.com",
+      "serviceProviderEmail": "bunnybliss@example.com",
       "serviceProviderPhone": "7890123456",
       "servicesProvided": [
         {
-          "serviceName": "Application Testing",
-          "serviceDescription": "Ensuring software applications run smoothly and bug-free.",
+          "serviceProviderName": "Bunny Bliss Sanctuary",
+          "serviceName": "Rabbit Boarding",
+          "serviceDescription": "Comfortable and spacious accommodation for bunnies while owners are away.",
           "serviceLocation": "Miami, FL"
         },
         {
-          "serviceName": "Cybersecurity",
-          "serviceDescription": "Protecting systems and data from cyber threats.",
+          "serviceProviderName": "Bunny Bliss Sanctuary",
+          "serviceName": "Rabbit Grooming",
+          "serviceDescription": "Hair grooming, nail trimming, and cleaning for rabbits.",
+          "serviceLocation": "Miami, FL"
+        },
+        {
+          "serviceProviderName": "Bunny Bliss Sanctuary",
+          "serviceName": "Rabbit Diet Consultation",
+          "serviceDescription": "Tailored diet plans and advice for rabbit nutrition.",
           "serviceLocation": "Remote"
-        },
-        {
-          "serviceName": "Web Maintenance",
-          "serviceDescription": "Keeping websites updated, secure, and performing optimally.",
-          "serviceLocation": "Miami, FL"
         }
       ]
     },
     {
-      "serviceProviderName": "Olivia Red Services",
-      "serviceProviderPassword": "$2a$10$D1yZP4Dp2lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Red Innovations",
+      "serviceProviderName": "Exotic Companions Care",
+      "serviceProviderPassword": "$2a$10$D1yZP4Dp2lT/WNox4tBmTO...",
+      "orgName": "Exotic Companions",
       "serviceProviderAddress": "505 Walnut St, Boston, MA 02101",
-      "serviceProviderEmail": "olivia8@example.com",
+      "serviceProviderEmail": "exoticcompanions@example.com",
       "serviceProviderPhone": "8901234567",
       "servicesProvided": [
         {
-          "serviceName": "Print Design",
-          "serviceDescription": "Design services for brochures, business cards, and other printed materials.",
+          "serviceProviderName": "Exotic Companions Care",
+          "serviceName": "Reptile Habitat Setup",
+          "serviceDescription": "Creating suitable habitats for various reptiles.",
           "serviceLocation": "Boston, MA"
         },
         {
-          "serviceName": "Video Production",
-          "serviceDescription": "Creating promotional, educational, and entertainment videos.",
+          "serviceProviderName": "Exotic Companions Care",
+          "serviceName": "Bird Socialization",
+          "serviceDescription": "Training and socializing activities for pet birds.",
+          "serviceLocation": "Boston, MA"
+        },
+        {
+          "serviceProviderName": "Exotic Companions Care",
+          "serviceName": "Amphibian Care",
+          "serviceDescription": "Guidance on the care, feeding, and health of amphibians.",
           "serviceLocation": "Remote"
-        },
-        {
-          "serviceName": "Event Promotion",
-          "serviceDescription": "Promoting and organizing business events and seminars.",
-          "serviceLocation": "Boston, MA"
         }
       ]
     },
     {
-      "serviceProviderName": "James Gray Services",
-      "serviceProviderPassword": "$2a$10$B6zEF5bu3nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Gray Digital Hub",
+      "serviceProviderName": "Horse Haven Stables",
+      "serviceProviderPassword": "$2a$10$B6zEF5bu3nhIl4uB4BMdSe...",
+      "orgName": "Horse Haven",
       "serviceProviderAddress": "606 Cherry St, Dallas, TX 75201",
-      "serviceProviderEmail": "james9@example.com",
+      "serviceProviderEmail": "horsehaven@example.com",
       "serviceProviderPhone": "9012345678",
       "servicesProvided": [
         {
-          "serviceName": "Consultation",
-          "serviceDescription": "Providing expert advice in the field of digital technologies.",
+          "serviceProviderName": "Horse Haven Stables",
+          "serviceName": "Horse Boarding",
+          "serviceDescription": "Safe and spacious stalls for horses with daily turnout.",
           "serviceLocation": "Dallas, TX"
         },
         {
-          "serviceName": "B2B Marketing",
-          "serviceDescription": "Targeted strategies to reach other businesses as clients.",
-          "serviceLocation": "Remote"
+          "serviceProviderName": "Horse Haven Stables",
+          "serviceName": "Riding Lessons",
+          "serviceDescription": "Lessons for beginners to advanced riders in various disciplines.",
+          "serviceLocation": "Dallas, TX"
         },
         {
-          "serviceName": "CRM Solutions",
-          "serviceDescription": "Managing a company's interactions with current and potential customers.",
+          "serviceProviderName": "Horse Haven Stables",
+          "serviceName": "Equine Therapy",
+          "serviceDescription": "Therapeutic riding sessions for individuals with special needs.",
           "serviceLocation": "Dallas, TX"
         }
       ]
     },
     {
-      "serviceProviderName": "Isabella Purple Services",
-      "serviceProviderPassword": "$2a$10$F8xWP3Wp0lT/WNox4tBmTO.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Purple Rain Tech",
+      "serviceProviderName": "Tropical Treats Aquarium Services",
+      "serviceProviderPassword": "$2a$10$F8xWP3Wp0lT/WNox4tBmTO...",
+      "orgName": "Tropical Treats",
       "serviceProviderAddress": "707 Peach St, Atlanta, GA 30301",
-      "serviceProviderEmail": "isabella10@example.com",
+      "serviceProviderEmail": "tropicaltreats@example.com",
       "serviceProviderPhone": "0123456789",
       "servicesProvided": [
         {
-          "serviceName": "Customer Support",
-          "serviceDescription": "Offering help and advice about a company's products and services.",
-          "serviceLocation": "Remote"
-        },
-        {
-          "serviceName": "Business Analysis",
-          "serviceDescription": "Identifying business needs and finding technical solutions.",
+          "serviceProviderName": "Tropical Treats Aquarium Services",
+          "serviceName": "Aquarium Installation",
+          "serviceDescription": "Setup and installation of freshwater and saltwater tanks.",
           "serviceLocation": "Atlanta, GA"
         },
         {
-          "serviceName": "Project Management",
-          "serviceDescription": "Planning, executing, and closing projects.",
+          "serviceProviderName": "Tropical Treats Aquarium Services",
+          "serviceName": "Coral Care",
+          "serviceDescription": "Guidance on coral placement, lighting, and feeding.",
+          "serviceLocation": "Remote"
+        },
+        {
+          "serviceProviderName": "Tropical Treats Aquarium Services",
+          "serviceName": "Tank Maintenance",
+          "serviceDescription": "Regular cleaning, water testing, and health checks for aquarium inhabitants.",
           "serviceLocation": "Atlanta, GA"
         }
       ]
     },
     {
-      "serviceProviderName": "Jacob Yellow Services",
-      "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe.aAeZOG9N1q5M4YlGv9/Z7K1E0DHjAK",
-      "orgName": "Yellow Sun Innovations",
+      "serviceProviderName": "Feathered Friends Aviary",
+      "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe...",
+      "orgName": "Feathered Friends",
       "serviceProviderAddress": "909 Pear St, Atlanta, GA 30301",
-      "serviceProviderEmail": "jacob11@example.com",
+      "serviceProviderEmail": "featheredfriends@example.com",
       "serviceProviderPhone": "9876543210",
       "servicesProvided": [
         {
-          "serviceName": "Strategy Planning",
-          "serviceDescription": "Outlining steps to achieve strategic goals.",
+          "serviceProviderName": "Feathered Friends Aviary",
+          "serviceName": "Parrot Boarding",
+          "serviceDescription": "Safe and interactive environment for parrots while owners are away.",
           "serviceLocation": "Atlanta, GA"
         },
         {
-          "serviceName": "Budgeting",
-          "serviceDescription": "Allocating financial resources based on forecasted expenses.",
+          "serviceProviderName": "Feathered Friends Aviary",
+          "serviceName": "Bird Grooming",
+          "serviceDescription": "Professional grooming services including feather trimming and beak care.",
+          "serviceLocation": "Atlanta, GA"
+        },
+        {
+          "serviceProviderName": "Feathered Friends Aviary",
+          "serviceName": "Bird Behavior Consultation",
+          "serviceDescription": "Guidance on managing challenging bird behaviors and ensuring mental stimulation.",
           "serviceLocation": "Remote"
+        }
+      ]
+    },
+    {
+      "serviceProviderName": "Critter Comfort Small Animal Care",
+      "serviceProviderPassword": "$2a$10$J4zGH6hu1nhIl4uB4BMdSe...",
+      "orgName": "Critter Comfort",
+      "serviceProviderAddress": "1212 Walnut Lane, Denver, CO 80201",
+      "serviceProviderEmail": "crittercomfort@example.com",
+      "serviceProviderPhone": "1122334455",
+      "servicesProvided": [
+        {
+          "serviceProviderName": "Critter Comfort Small Animal Care",
+          "serviceName": "Rodent Boarding",
+          "serviceDescription": "Caring boarding facilities for hamsters, gerbils, and mice.",
+          "serviceLocation": "Denver, CO"
         },
         {
-          "serviceName": "Performance Tracking",
-          "serviceDescription": "Monitoring and evaluating the current performance of a company.",
-          "serviceLocation": "Atlanta, GA"
+          "serviceProviderName": "Critter Comfort Small Animal Care",
+          "serviceName": "Guinea Pig Grooming",
+          "serviceDescription": "Bath, nail trimming, and ear cleaning services for guinea pigs.",
+          "serviceLocation": "Denver, CO"
+        },
+        {
+          "serviceProviderName": "Critter Comfort Small Animal Care",
+          "serviceName": "Small Animal Nutrition",
+          "serviceDescription": "Guidance on providing a balanced diet for small pets.",
+          "serviceLocation": "Remote"
+        }
+      ]
+    },
+        {
+      "serviceProviderName": "Wild Wonders Exotic Care",
+      "serviceProviderPassword": "$2a$10$X8jF6ytv2nhIl4uB4BMdSe...",
+      "orgName": "Wild Wonders",
+      "serviceProviderAddress": "1313 Cypress Ave, San Diego, CA 92101",
+      "serviceProviderEmail": "wildwonders@example.com",
+      "serviceProviderPhone": "2211334455",
+      "servicesProvided": [
+        {
+          "serviceProviderName": "Wild Wonders Exotic Care",
+          "serviceName": "Reptile Boarding",
+          "serviceDescription": "Safe habitats for snakes, lizards, and tortoises while owners are away.",
+          "serviceLocation": "San Diego, CA"
+        },
+        {
+          "serviceProviderName": "Wild Wonders Exotic Care",
+          "serviceName": "Exotic Pet Health Checks",
+          "serviceDescription": "Regular health evaluations for exotic pets including ferrets, tarantulas, and more.",
+          "serviceLocation": "San Diego, CA"
+        },
+        {
+          "serviceProviderName": "Wild Wonders Exotic Care",
+          "serviceName": "Tarantula Terrarium Setup",
+          "serviceDescription": "Design and setup of suitable habitats for tarantulas.",
+          "serviceLocation": "Remote"
+        }
+      ]
+    },
+    {
+      "serviceProviderName": "Canine Champions Training Center",
+      "serviceProviderPassword": "$2a$10$R2dF7pqu3nhIl4uB4BMdSe...",
+      "orgName": "Canine Champions",
+      "serviceProviderAddress": "1414 Maple Drive, Phoenix, AZ 85001",
+      "serviceProviderEmail": "caninechampions@example.com",
+      "serviceProviderPhone": "3322114455",
+      "servicesProvided": [
+        {
+          "serviceProviderName": "Canine Champions Training Center",
+          "serviceName": "Agility Training Courses",
+          "serviceDescription": "Specialized courses for agility training, helping dogs navigate through various obstacles.",
+          "serviceLocation": "Phoenix, AZ"
+        },
+        {
+          "serviceProviderName": "Canine Champions Training Center",
+          "serviceName": "Search and Rescue Training",
+          "serviceDescription": "Training dogs for search and rescue missions, scent detection, and more.",
+          "serviceLocation": "Phoenix, AZ"
+        },
+        {
+          "serviceProviderName": "Canine Champions Training Center",
+          "serviceName": "Therapy Dog Certification",
+          "serviceDescription": "Training and certification for dogs to become licensed therapy animals.",
+          "serviceLocation": "Remote"
+        }
+      ]
+    },
+        {
+      "serviceProviderName": "Feline Friends Hotel",
+      "serviceProviderPassword": "$2a$10$S3dV8ktz4nhIl4uB4BMdSe...",
+      "orgName": "Feline Friends",
+      "serviceProviderAddress": "1515 Birch Lane, Austin, TX 78701",
+      "serviceProviderEmail": "felinefriends@example.com",
+      "serviceProviderPhone": "4433221100",
+      "servicesProvided": [
+        {
+          "serviceProviderName": "Feline Friends Hotel",
+          "serviceName": "Cat Boarding",
+          "serviceDescription": "Personalized care and playtime in a safe, cat-friendly environment.",
+          "serviceLocation": "Austin, TX"
+        },
+        {
+          "serviceProviderName": "Feline Friends Hotel",
+          "serviceName": "Cat Grooming",
+          "serviceDescription": "Professional grooming including baths, nail trims, and ear cleaning.",
+          "serviceLocation": "Austin, TX"
+        },
+        {
+          "serviceProviderName": "Feline Friends Hotel",
+          "serviceName": "Kitty Daycare",
+          "serviceDescription": "Daycare services for cats, including play sessions and relaxation.",
+          "serviceLocation": "Austin, TX"
+        }
+      ]
+    },
+    {
+      "serviceProviderName": "Paws & Claws Veterinary Clinic",
+      "serviceProviderPassword": "$2a$10$V5bH9lmz5nhIl4uB4BMdSe...",
+      "orgName": "Paws & Claws",
+      "serviceProviderAddress": "1616 Pine Street, Orlando, FL 32801",
+      "serviceProviderEmail": "pawsclawsclinic@example.com",
+      "serviceProviderPhone": "5544332211",
+      "servicesProvided": [
+        {
+          "serviceProviderName": "Paws & Claws Veterinary Clinic",
+          "serviceName": "Veterinary Checkups",
+          "serviceDescription": "Routine health checkups for pets including vaccinations.",
+          "serviceLocation": "Orlando, FL"
+        },
+        {
+          "serviceProviderName": "Paws & Claws Veterinary Clinic",
+          "serviceName": "Emergency Care",
+          "serviceDescription": "24/7 emergency medical services for pets.",
+          "serviceLocation": "Orlando, FL"
+        },
+        {
+          "serviceProviderName": "Paws & Claws Veterinary Clinic",
+          "serviceName": "Dental Care",
+          "serviceDescription": "Dental checkups, cleanings, and treatments for pets.",
+          "serviceLocation": "Orlando, FL"
         }
       ]
     }
