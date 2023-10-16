@@ -30,22 +30,29 @@ const ServiceListings = () => {
     };
 
     const initMap = async () => {
-        const map = L.map('map').setView([34.05, -118.24], 10);
+    const map = L.map('map').setView([34.05, -118.24], 10);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-        for (const service of services) {
-            const address = service.serviceLocation;
+    for (const service of services) {
+        const address = service.serviceLocation;
 
-            const { latitude, longitude } = await getGeolocation(address);
+        const { latitude, longitude } = await getGeolocation(address);
 
-            if (latitude && longitude) {
-                L.marker([latitude, longitude]).addTo(map)
-                    .bindPopup(`<b>${service.serviceName}</b><br>${service.serviceDescription}`)
-                    .openPopup();
-            }
+        if (latitude && longitude) {
+            // Creating a custom icon for the marker
+            const icon = L.icon({
+                iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/marker-icon.png', // URL to the pin icon image
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [0, -41]
+            });
+
+            // Creating a marker with the custom icon and adding it to the map
+            L.marker([latitude, longitude], { icon }).addTo(map)
+                .bindPopup(`<b>${service.serviceName}</b><br>${service.serviceDescription}`);            }
         }
     };
 
