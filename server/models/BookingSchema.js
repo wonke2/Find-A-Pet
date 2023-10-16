@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 require("dotenv").config();
 
-url = process.env.MONGODB_U_URI;
+url = process.env.MONGODB_B_URI;
 
 mongoose
 	.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
