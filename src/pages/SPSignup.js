@@ -87,3 +87,5 @@ const SPSignup = () => {
         </>
     )
 }
+
+export default SPSignup
