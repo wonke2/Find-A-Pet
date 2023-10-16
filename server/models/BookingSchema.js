@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 require("dotenv").config();
 
-url = process.env.MONGODB_B_URI;
+url = process.env.MONGODB_U_URI;
 
 mongoose
 	.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -14,6 +14,7 @@ mongoose
 	});
 
 const bookingSchema = new Schema({
+	orderId: { type: Schema.Types.ObjectId, ref: "Order" },
 	userId: { type: Schema.Types.ObjectId, ref: "User" },
 	serviceId: { type: Schema.Types.ObjectId, ref: "Service" },
 	serviceProviderId: { type: Schema.Types.ObjectId, ref: "ServiceProvider" },
