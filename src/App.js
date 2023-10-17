@@ -16,7 +16,7 @@ function App() {
 	const Home = () => {
 		return (
 			<div className="App">
-				<h2>Welcome to Find-a-Pet!</h2>;
+				<h2>Welcome to Find-a-Pet!</h2>
 			</div>
 		);
 	};
