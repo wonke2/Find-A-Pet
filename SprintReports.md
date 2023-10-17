@@ -102,3 +102,33 @@ Service listings are added and displayed:
 - Search and Filter functionality for services (Mohammad).
 - Booking database created and is ready to be used for storing booking information (Avash). 
 - Additional (if possible): Booking functionality (Avash).
+
+
+#### Achievements:
+Maps functionality for pets (Waliullah):
+- Successfully integrated with the `LocationIQ Geolocation API` to convert the addresses of pets into geographical coordinates for accurate mapping.
+- Used Leaflet to create an interactive map with custom markers and popups for visualizing the geographical locations of listed pets, enhancing user experience with a toggle feature between map and list views.
+- Enabled dynamic rendering of pet data on the map, with markers being generated based on the real-time data fetched from the database.
+- Linked the map markers to petdetails page. 
+- Used the pet image as the icon and clicking the icon would show the name and a better view of the image. 
+
+Maps functionality for services (Waliullah):
+- Implemented a robust mechanism to fetch precise geolocation coordinates from external API: LocationIQ, ensuring the accurate representation of service locations on the map, further supported by a responsive design for optimal user engagement across various device sizes.
+- Integrated the Leaflet library to create an interactive and dynamic mapping experience, allowing users to visualize real-time service locations enriched with custom markers and detailed popups for each service.
+- Developed a toggle feature that enables users to effortlessly switch between the map and listing views, ensuring a tailored and intuitive browsing experience supported by enhanced error handling for uninterrupted navigation.
+
+Sidebar and Enhanced Filter and Search Functionality (Waliullah):
+- Implemented interactive UI elements, such as buttons and checkboxes, making the application of filters and searches intuitive and user-friendly, and enhancing overall user engagement.
+- Added a sidebar for filter.
+- Implemented interactive UI elements, such as buttons and checkboxes, making the application of filters and searches intuitive and user-friendly, and enhancing overall user engagement.
+
+#### Challenges Faced / Discuss:
+- Tried 3 different Mapping APIs. Started with Google Maps and then had to shift to LocationIQ because Google Map only allows a $200 monthly usage for free. Since the location weren't being fetched based on longitude and latitude, I had to geocode the locations to get the longitude and latitude which would have been very costly with google maps. And since we will be fetching hundreds of times while working on the development, we might soon exceed the monthly credit limit and get charged. Therefore, changed to a free API service.
+- 
+
+
+### Week 11: PetListing Save Functionality with Database, 
+#### Plan:
+- PetListing Save Database (Waliullah)
+- PetListing Save Functionality (Waliullah)
+- PetListing Design & Styles (Waliullah)
