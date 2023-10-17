@@ -158,83 +158,82 @@ const PetListings = () => {
   // Rendering component
   return (
     <>
-    <div>
-        <button onClick={toggleFilters}>Filter</button>
-        {showFilters && (
-          <div>
-            <button onClick={toggleTypeFilter}>Type</button>
-            {showTypeFilter && (
-              <div>
-                <label>
-                  <input type="checkbox" value="Dog" onChange={(e) => handleFilterChange(e, 'types')} /> Dog
-                </label>
-                <label>
-                  <input type="checkbox" value="Cat" onChange={(e) => handleFilterChange(e, 'types')} /> Cat
-                </label>
-                <label>
-                  <input type="checkbox" value="Rabbit" onChange={(e) => handleFilterChange(e, 'types')} /> Rabbit
-                </label>
-                <label>
-                  <input type="checkbox" value="Small & Furry" onChange={(e) => handleFilterChange(e, 'types')} /> Small & Furry
-                </label>
-                <label>
-                  <input type="checkbox" value="Horse" onChange={(e) => handleFilterChange(e, 'types')} /> Horse
-                </label>
-                <label>
-                  <input type="checkbox" value="Bird" onChange={(e) => handleFilterChange(e, 'types')} /> Bird
-                </label>
-                <label>
-                  <input type="checkbox" value="Scales, Fins & Other" onChange={(e) => handleFilterChange(e, 'types')} /> Scales, Fins & Other
-                </label>
-                <label>
-                  <input type="checkbox" value="Barnyard" onChange={(e) => handleFilterChange(e, 'types')} /> Barnyard
-                </label>
-              </div>
-            )}
-            <button onClick={toggleStatusFilter}>Status</button>
-            {showStatusFilter && (
-              <div>
-                <label>
-                  <input type="checkbox" value="Adoptable" onChange={(e) => handleFilterChange(e, 'status')} /> Adoptable
-                </label>
-                <label>
-                  <input type="checkbox" value="Adopted" onChange={(e) => handleFilterChange(e, 'status')} /> Adopted
-                </label>
-                <label>
-                  <input type="checkbox" value="Found" onChange={(e) => handleFilterChange(e, 'status')} /> Found
-                </label>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-        <div className="filter-option" onClick={toggleStatusFilter}>
-          Status
-          <span>{showStatusFilter ? '▲' : '▼'}</span> {/* Updated */}
+      <div className={showFilters ? "sidebar-overlay active" : "sidebar-overlay"} onClick={toggleFilters}></div><div className={showFilters ? "sidebar open" : "sidebar"}>
+        <div className="sidebar-header">
+          <span>Refine Listings</span>
+          <button onClick={toggleFilters} className="close-btn">X Close</button>
         </div>
-        {showStatusFilter && ( // This should render the filter options when showStatusFilter is true
-          <div className="filter-options-container active">
-            <div className="option">
-              <input type="checkbox" value="Adoptable" id="adoptable" onChange={(e) => handleFilterChange(e, 'status')} />
-              <label htmlFor="adoptable">Adoptable</label>
-            </div>
-            <div className="option">
-              <input type="checkbox" value="Adopted" id="adopted" onChange={(e) => handleFilterChange(e, 'status')} />
-              <label htmlFor="adopted">Adopted</label>
-            </div>
-            <div className="option">
-              <input type="checkbox" value="Found" id="found" onChange={(e) => handleFilterChange(e, 'status')} />
-              <label htmlFor="found">Found</label>
-            </div>
+
+        <span className="filter-label">Filter by</span>
+
+        <div className="filter-content">
+          <div className="filter-option" onClick={toggleTypeFilter}>
+            Type
+            <span>{showTypeFilter ? '▲' : '▼'}</span> {/* Updated */}
           </div>
-        )}
-        <button onClick={applyFilters} className="apply-filters-btn">
-          Apply Filters
-        </button>
+          {showTypeFilter && ( // This should render the filter options when showTypeFilter is true
+            <div className="filter-options-container active">
+              <div className="option">
+                <input type="checkbox" value="Dog" id="dog" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="dog">Dog</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Cat" id="cat" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="cat">Cat</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Rabbit" id="rabbit" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="rabbit">Rabbit</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Small & Furry" id="small & furry" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="small & furry">Small & Furry</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Horse" id="horse" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="horse">Horse</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Bird" id="bird" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="bird">Bird</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Scales, Fins & Other" id="scales, fins & other" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="scales, fins & other">Scales, Fins & Other</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Barnyard" id="barnyard" onChange={(e) => handleFilterChange(e, 'types')} />
+                <label htmlFor="barnyard">Barnyard</label>
+              </div>
+            </div>
+          )}
+          <div className="filter-option" onClick={toggleStatusFilter}>
+            Status
+            <span>{showStatusFilter ? '▲' : '▼'}</span> {/* Updated */}
+          </div>
+          {showStatusFilter && ( // This should render the filter options when showStatusFilter is true
+            <div className="filter-options-container active">
+              <div className="option">
+                <input type="checkbox" value="Adoptable" id="adoptable" onChange={(e) => handleFilterChange(e, 'status')} />
+                <label htmlFor="adoptable">Adoptable</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Adopted" id="adopted" onChange={(e) => handleFilterChange(e, 'status')} />
+                <label htmlFor="adopted">Adopted</label>
+              </div>
+              <div className="option">
+                <input type="checkbox" value="Found" id="found" onChange={(e) => handleFilterChange(e, 'status')} />
+                <label htmlFor="found">Found</label>
+              </div>
+            </div>
+          )}
+          <button onClick={applyFilters} className="apply-filters-btn">
+            Apply Filters
+          </button>
+        </div>
       </div>
-    </div>
-    
-    <div className="main-content">
+
+      <div className="main-content">
         <div className="top-bar">
           <button className="filter-button" onClick={toggleFilters}>Filter</button>
           <div className="search">
@@ -274,7 +273,7 @@ const PetListings = () => {
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-                  } } />
+                  }} />
                 <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
               </div>
             );
