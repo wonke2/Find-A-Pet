@@ -6,6 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import '../styles/PetListings.css';
 
 const PetListings = () => {
+  // State variables to hold data and UI states
   const [pets, setPets] = useState([]);
   const [token, setToken] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,7 +16,9 @@ const PetListings = () => {
   const [showTypeFilter, setShowTypeFilter] = useState(false);
   const [showStatusFilter, setShowStatusFilter] = useState(false);
   const [mapView, setMapView] = useState(false);
+  const [appliedFilters, setAppliedFilters] = useState({ types: [], status: [] });
 
+  // Function to get API token
   const getApiToken = async () => {
     try {
       const response = await axios.get('/api/petfinder/token');
@@ -25,6 +28,7 @@ const PetListings = () => {
     }
   };
 
+  // Function to fetch pets data from the API
   const getPets = async () => {
     if (token === '') return;
 
@@ -45,6 +49,7 @@ const PetListings = () => {
     }
   };
 
+  // Function to get geolocation based on address
   const getGeolocation = async (address) => {
 
     try {
@@ -61,14 +66,17 @@ const PetListings = () => {
     return { latitude: null, longitude: null };
   };
 
+  // Effect to get API token on component mount
   useEffect(() => {
     getApiToken();
   }, []);
 
+  // Effect to get pets data when token, filters, or search term changes
   useEffect(() => {
     getPets();
   }, [token, filters, submittedSearchTerm]);
 
+  // Handles changes in filter checkboxes
   const handleFilterChange = (e, filterCategory) => {
     const value = e.target.value;
     setFilters((prevFilters) => ({
@@ -79,21 +87,24 @@ const PetListings = () => {
     }));
   };
 
+  // Handles form submission for search
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     setSubmittedSearchTerm(searchTerm);
   };
 
+  // Clears the search input and results
   const clearSearch = () => {
     setSearchTerm('');
     setSubmittedSearchTerm('');
   };
 
-  // Toggle functions for showing/hiding filters
+  // Functions to toggle the visibility of filter sections
   const toggleFilters = () => setShowFilters(!showFilters);
   const toggleTypeFilter = () => setShowTypeFilter(!showTypeFilter);
   const toggleStatusFilter = () => setShowStatusFilter(!showStatusFilter);
 
+  // Initializes the map view with markers for each pet
   const initMap = async () => {
     const map = L.map('map').setView([35, -115], 3.5);
 
@@ -116,7 +127,7 @@ const PetListings = () => {
           iconUrl: pet.photos && pet.photos[0]?.medium
             ? pet.photos[0].medium
             : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg',
-          iconSize: [32, 32], // size of the icon
+          iconSize: [32, 32],
         });
 
         // Creating a marker with the custom icon
@@ -128,14 +139,14 @@ const PetListings = () => {
           const link = document.getElementById(`petLink${pet.id}`);
           link.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = `/pet/${pet.id}`;  // Redirecting to the pet detail page
+            window.location.href = `/pet/${pet.id}`;
           });
         });
       }
     }
   };
 
-
+  // Effect to initialize map when map view is enabled and pets data is available
   useEffect(() => {
     if (mapView) {
       console.log('Attempting to initialize map.');
@@ -143,13 +154,13 @@ const PetListings = () => {
     }
   }, [mapView, pets]);
 
-  const [appliedFilters, setAppliedFilters] = useState({ types: [], status: [] });
-
+  // Applies the selected filters
   const applyFilters = () => {
-    setAppliedFilters(filters);  // Update the applied filters
-    toggleFilters();             // Close the filter sidebar
+    setAppliedFilters(filters);
+    toggleFilters();
   };
 
+  // Effect to get pets data when token, applied filters, or search term changes
   useEffect(() => {
     getPets();
   }, [token, appliedFilters, submittedSearchTerm]);
@@ -158,7 +169,9 @@ const PetListings = () => {
   // Rendering component
   return (
     <>
-      <div className={showFilters ? "sidebar-overlay active" : "sidebar-overlay"} onClick={toggleFilters}></div><div className={showFilters ? "sidebar open" : "sidebar"}>
+      {/* Overlay and sidebar for filters */}
+      <div className={showFilters ? "sidebar-overlay active" : "sidebar-overlay"} onClick={toggleFilters}></div>
+      <div className={showFilters ? "sidebar open" : "sidebar"}>
         <div className="sidebar-header">
           <span>Refine Listings</span>
           <button onClick={toggleFilters} className="close-btn">X Close</button>
@@ -169,9 +182,9 @@ const PetListings = () => {
         <div className="filter-content">
           <div className="filter-option" onClick={toggleTypeFilter}>
             Type
-            <span>{showTypeFilter ? '▲' : '▼'}</span> {/* Updated */}
+            <span>{showTypeFilter ? '▲' : '▼'}</span>
           </div>
-          {showTypeFilter && ( // This should render the filter options when showTypeFilter is true
+          {showTypeFilter && (
             <div className="filter-options-container active">
               <div className="option">
                 <input type="checkbox" value="Dog" id="dog" onChange={(e) => handleFilterChange(e, 'types')} />
@@ -209,9 +222,9 @@ const PetListings = () => {
           )}
           <div className="filter-option" onClick={toggleStatusFilter}>
             Status
-            <span>{showStatusFilter ? '▲' : '▼'}</span> {/* Updated */}
+            <span>{showStatusFilter ? '▲' : '▼'}</span>
           </div>
-          {showStatusFilter && ( // This should render the filter options when showStatusFilter is true
+          {showStatusFilter && (
             <div className="filter-options-container active">
               <div className="option">
                 <input type="checkbox" value="Adoptable" id="adoptable" onChange={(e) => handleFilterChange(e, 'status')} />
@@ -258,7 +271,6 @@ const PetListings = () => {
         {mapView ? (
           <div id="map" style={{ height: '500px', width: '100%' }}></div>
         ) : (
-          // The existing code for listing view
           pets.map((pet) => {
             const imageUrl = pet.photos && pet.photos[0]?.medium
               ? pet.photos[0].medium
