@@ -13,16 +13,15 @@ mongoose
 		console.log("Error connecting to MongoDB:", error.message);
 	});
 
-const bookingSchema = new Schema({
-	orderId: { type: Schema.Types.ObjectId, ref: "Order" },
+const orderSchema = new Schema({
 	userId: { type: Schema.Types.ObjectId, ref: "User" },
 	serviceId: { type: Schema.Types.ObjectId, ref: "Service" },
 	serviceProviderId: { type: Schema.Types.ObjectId, ref: "ServiceProvider" },
-	date: { type: Date, required: true },
-	bookingLocation: { type: String, required: true },
-	bookingStatus: { type: String, required: true },
+	orderStatus: { type: String, required: true },
+    orderETA: { type: String, required: true },
+    orderSubtotal: { type: Number, required: true },
 }); //hashing password
 
-const Booking = mongoose.model("Booking", bookingSchema);
+const Order = mongoose.model("Booking", bookingSchema);
 
-module.exports = Booking;
+module.exports =Order;
