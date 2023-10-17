@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import '../styles/App.css';
+import '../styles/PetListings.css';
 
 const PetListings = () => {
   const [pets, setPets] = useState([]);
@@ -86,6 +86,7 @@ const PetListings = () => {
 
   const clearSearch = () => {
     setSearchTerm('');
+    setSubmittedSearchTerm('');
   };
 
   // Toggle functions for showing/hiding filters
@@ -142,22 +143,22 @@ const PetListings = () => {
     }
   }, [mapView, pets]);
 
+  const [appliedFilters, setAppliedFilters] = useState({ types: [], status: [] });
+
+  const applyFilters = () => {
+    setAppliedFilters(filters);  // Update the applied filters
+    toggleFilters();             // Close the filter sidebar
+  };
+
+  useEffect(() => {
+    getPets();
+  }, [token, appliedFilters, submittedSearchTerm]);
+
 
   // Rendering component
   return (
+    <>
     <div>
-      <form onSubmit={handleSubmitSearch}>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search pets by name"
-        />
-        {searchTerm && <button type="button" onClick={clearSearch}>&times;</button>}
-        <button type="submit">Search</button>
-      </form>
-
-      <div>
         <button onClick={toggleFilters}>Filter</button>
         {showFilters && (
           <div>
@@ -207,38 +208,79 @@ const PetListings = () => {
           </div>
         )}
       </div>
-
-      {/* Button to toggle between map and list view */}
-      <button onClick={() => setMapView(!mapView)}>
-        {mapView ? 'Show Listings' : 'Show Map'}
-      </button>
-
-      {mapView ? (
-        <div id="map" style={{ height: '500px', width: '100%' }}></div>
-      ) : (
-        // The existing code for listing view
-        pets.map((pet) => {
-          const imageUrl = pet.photos && pet.photos[0]?.medium
-            ? pet.photos[0].medium
-            : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-
-          return (
-            <div key={pet.id}>
-              <img
-                src={imageUrl}
-                alt={pet.name}
-                style={{ width: '200px', height: 'auto' }}
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-                }}
-              />
-              <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
+        <div className="filter-option" onClick={toggleStatusFilter}>
+          Status
+          <span>{showStatusFilter ? '▲' : '▼'}</span> {/* Updated */}
+        </div>
+        {showStatusFilter && ( // This should render the filter options when showStatusFilter is true
+          <div className="filter-options-container active">
+            <div className="option">
+              <input type="checkbox" value="Adoptable" id="adoptable" onChange={(e) => handleFilterChange(e, 'status')} />
+              <label htmlFor="adoptable">Adoptable</label>
             </div>
-          );
-        })
-      )}
+            <div className="option">
+              <input type="checkbox" value="Adopted" id="adopted" onChange={(e) => handleFilterChange(e, 'status')} />
+              <label htmlFor="adopted">Adopted</label>
+            </div>
+            <div className="option">
+              <input type="checkbox" value="Found" id="found" onChange={(e) => handleFilterChange(e, 'status')} />
+              <label htmlFor="found">Found</label>
+            </div>
+          </div>
+        )}
+        <button onClick={applyFilters} className="apply-filters-btn">
+          Apply Filters
+        </button>
+      </div>
     </div>
+    
+    <div className="main-content">
+        <div className="top-bar">
+          <button className="filter-button" onClick={toggleFilters}>Filter</button>
+          <div className="search">
+            <form onSubmit={handleSubmitSearch}>
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search pets by name" />
+              {searchTerm && <button type="button" onClick={clearSearch}>&times;</button>}
+              <button type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+
+
+        {/* Button to toggle between map and list view */}
+        <button onClick={() => setMapView(!mapView)}>
+          {mapView ? 'Show Listings' : 'Show Map'}
+        </button>
+
+        {mapView ? (
+          <div id="map" style={{ height: '500px', width: '100%' }}></div>
+        ) : (
+          // The existing code for listing view
+          pets.map((pet) => {
+            const imageUrl = pet.photos && pet.photos[0]?.medium
+              ? pet.photos[0].medium
+              : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+
+            return (
+              <div key={pet.id}>
+                <img
+                  src={imageUrl}
+                  alt={pet.name}
+                  style={{ width: '200px', height: 'auto' }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+                  } } />
+                <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
+              </div>
+            );
+          })
+        )}
+      </div></>
   );
 }
 
