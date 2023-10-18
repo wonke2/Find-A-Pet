@@ -95,11 +95,10 @@ Service listings are added and displayed:
 
 ### Week 11: User and ServiceProvider Dashboards, Maps functionality for Pets and Services, Booking Database and Search and Filter Functionality for Services
 #### Plan:
-- User dashboard created and functioning (Avash).
-- ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
 - Maps functionality for pets (Waliullah).
 - Maps functionality for services (Waliullah).
 - Search and Filter functionality for services (Mohammad).
+- Service Listings are added and displayed (Mohammad).
 - Booking database created and is ready to be used for storing booking information (Avash). 
 - Additional (if possible): Booking functionality (Avash).
 
@@ -127,8 +126,17 @@ Sidebar and Enhanced Filter and Search Functionality (Waliullah):
 - 
 
 
-### Week 11: PetListing Save Functionality with Database, 
+### Week 12: PetListing Save Functionality with Database, Dashboards, Signup Pages, Booking Functionality and OverAll Design
 #### Plan:
-- PetListing Save Database (Waliullah)
+- PetListing Save Database (Mohammad)
 - PetListing Save Functionality (Waliullah)
-- PetListing Design & Styles (Waliullah)
+- PetListings and PetDetails Design & Styles (Waliullah)
+- User dashboard created and functioning (Avash).
+- Integrating ServiceProvider Signup with User Signup Page (Avash)
+- ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
+- Integrating booking functionality with ServiceProvider (Waliullah).
+- All design related to Service Provider (Mohamamd).
+- All designs related to Users (Avash).
+- Home Page Designing (All of us).
+
+
