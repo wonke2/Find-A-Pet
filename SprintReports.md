@@ -105,16 +105,11 @@ Service listings are added and displayed:
 
 #### Achievements:
 
-
-
--Booking basic controllers have been created  (avash)
--Booking basic functionality to create and get implemented had been added
--helped creating user dashboard but was empty as we had not implemented orders
--modified the nav bar
-
-
-
-
+Booking Database and Basic Functionality Backend (Avash):
+- Booking basic controllers have been created
+- Booking basic functionality to create and get implemented had been added
+- Helped creating user dashboard but was empty as we had not implemented orders
+- Modified the nav bar
 
 Maps functionality for pets (Waliullah):
 - Successfully integrated with the `LocationIQ Geolocation API` to convert the addresses of pets into geographical coordinates for accurate mapping.
