@@ -105,6 +105,18 @@ Service listings are added and displayed:
 
 
 #### Achievements:
+
+
+
+-Booking basic controllers have been created  (avash)
+-Booking basic functionality to create and get implemented had been added
+-helped creating user dashboard but was empty as we had not implemented orders
+-modified the nav bar
+
+
+
+
+
 Maps functionality for pets (Waliullah):
 - Successfully integrated with the `LocationIQ Geolocation API` to convert the addresses of pets into geographical coordinates for accurate mapping.
 - Used Leaflet to create an interactive map with custom markers and popups for visualizing the geographical locations of listed pets, enhancing user experience with a toggle feature between map and list views.
