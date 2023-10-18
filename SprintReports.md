@@ -122,10 +122,22 @@ Sidebar and Enhanced Filter and Search Functionality (Waliullah):
 - Added a sidebar for filter.
 - Implemented interactive UI elements, such as buttons and checkboxes, making the application of filters and searches intuitive and user-friendly, and enhancing overall user engagement.
 
+Service Provider Login and Signup (Mohammad):
+- Created a functional service provider login page.
+- Created a functional service provider signup page.
+- Set validation methods for signup page to ensure that the user enters the correct information.
+- Did not add it to navbar as we plan to integrate it with user login/signup in the coming week.
+
+Service Listings (Mohammad):
+- Generated sample data for service providers and services.
+- Created a service listing page to display the services.
+- Displayed the services on the service listing page.
+- Reworked the Database to accomodate services and updated endpoint API's to get the services.
+
+
 #### Challenges Faced / Discuss:
 - Tried 3 different Mapping APIs. Started with Google Maps and then had to shift to LocationIQ because Google Map only allows a $200 monthly usage for free. Since the location weren't being fetched based on longitude and latitude, I had to geocode the locations to get the longitude and latitude which would have been very costly with google maps. And since we will be fetching hundreds of times while working on the development, we might soon exceed the monthly credit limit and get charged. Therefore, changed to a free API service.
-- 
-
+- Struggled to create a separate table for services and link the serviceProvider table to it via a foreign key, as a bandaid fix the services are stored in a sublist inside the ServiceProvider table. We will fix this in the next sprint.
 
 ### Week 11: PetListing Save Functionality with Database, 
 #### Plan:
