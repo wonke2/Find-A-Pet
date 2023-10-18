@@ -5,6 +5,7 @@ import axios from 'axios';
 
 const ServiceListings = () => {
     const [services, setServices] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
     const [mapView, setMapView] = useState(false);
 
     useEffect(() => {
@@ -13,6 +14,11 @@ const ServiceListings = () => {
             .then(data => setServices(data))
             .catch(error => console.error('Error fetching services:', error));
     }, []);
+
+    const filteredServices = services.filter(service => 
+        service.serviceName.toLowerCase().includes(searchTerm.toLowerCase()) || 
+        service.serviceDescription.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 
     const getGeolocation = async (address) => {
         try {
@@ -56,10 +62,7 @@ const ServiceListings = () => {
                     .bindPopup(`<b>${service.serviceName}</b><br>${service.serviceDescription}`);
             }
         }
-    };
-    
-    
-
+    }
     useEffect(() => {
         if (mapView) {
             initMap();
@@ -67,22 +70,28 @@ const ServiceListings = () => {
     }, [mapView, services]);
 
     return (
-        <div className="service-listings">
-            <button onClick={() => setMapView(!mapView)}>
-                {mapView ? 'Show Listings' : 'Show Map'}
-            </button>
+    <div className="service-listings">
+        <input 
+            type="text" 
+            placeholder="Search for services..." 
+            value={searchTerm} 
+            onChange={e => setSearchTerm(e.target.value)} 
+        />
+        <button onClick={() => setMapView(!mapView)}>
+            {mapView ? 'Show Listings' : 'Show Map'}
+        </button>
 
-            {mapView ? (
-                <div id="map" style={{ height: '500px', width: '100%' }}></div>
-            ) : (
-                services.map((service) => (
-                    <div key={service._id} className="service">
-                        <h3>{service.serviceName}</h3>
-                        <p>{service.serviceDescription}</p>
-                        <small>Location: {service.serviceLocation}</small>
-                    </div>
-                ))
-            )}
+        {mapView ? (
+            <div id="map" style={{ height: '500px', width: '100%' }}></div>
+        ) : (
+            filteredServices.map((service) => (
+                <div key={service._id} className="service">
+                    <h3>{service.serviceName}</h3>
+                    <p>{service.serviceDescription}</p>
+                    <small>Location: {service.serviceLocation}</small>
+                </div>
+            ))
+        )}
         </div>
     );
 };

@@ -145,6 +145,7 @@ Service Listings (Mohammad):
 - Created a service listing page to display the services.
 - Displayed the services on the service listing page.
 - Reworked the Database to accomodate services and updated endpoint API's to get the services.
+- Added a filter to keyword search for services in name and description.
 
 
 #### Challenges Faced / Discuss:
