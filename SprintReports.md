@@ -95,27 +95,21 @@ Service listings are added and displayed:
 
 ### Week 11: User and ServiceProvider Dashboards, Maps functionality for Pets and Services, Booking Database and Search and Filter Functionality for Services
 #### Plan:
-- User dashboard created and functioning (Avash).
-- ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
 - Maps functionality for pets (Waliullah).
 - Maps functionality for services (Waliullah).
 - Search and Filter functionality for services (Mohammad).
+- Service Listings are added and displayed (Mohammad).
 - Booking database created and is ready to be used for storing booking information (Avash). 
 - Additional (if possible): Booking functionality (Avash).
 
 
 #### Achievements:
 
-
-
--Booking basic controllers have been created  (avash)
--Booking basic functionality to create and get implemented had been added
--helped creating user dashboard but was empty as we had not implemented orders
--modified the nav bar
-
-
-
-
+Booking Database and Basic Functionality Backend (Avash):
+- Booking basic controllers have been created
+- Booking basic functionality to create and get implemented had been added
+- Helped creating user dashboard but was empty as we had not implemented orders
+- Modified the nav bar
 
 Maps functionality for pets (Waliullah):
 - Successfully integrated with the `LocationIQ Geolocation API` to convert the addresses of pets into geographical coordinates for accurate mapping.
@@ -152,8 +146,17 @@ Service Listings (Mohammad):
 - Tried 3 different Mapping APIs. Started with Google Maps and then had to shift to LocationIQ because Google Map only allows a $200 monthly usage for free. Since the location weren't being fetched based on longitude and latitude, I had to geocode the locations to get the longitude and latitude which would have been very costly with google maps. And since we will be fetching hundreds of times while working on the development, we might soon exceed the monthly credit limit and get charged. Therefore, changed to a free API service.
 - Struggled to create a separate table for services and link the serviceProvider table to it via a foreign key, as a bandaid fix the services are stored in a sublist inside the ServiceProvider table. We will fix this in the next sprint.
 
-### Week 11: PetListing Save Functionality with Database, 
+### Week 12: PetListing Save Functionality with Database, Dashboards, Signup Pages, Booking Functionality and OverAll Design
 #### Plan:
-- PetListing Save Database (Waliullah)
+- PetListing Save Database (Mohammad)
 - PetListing Save Functionality (Waliullah)
-- PetListing Design & Styles (Waliullah)
+- PetListings and PetDetails Design & Styles (Waliullah)
+- User dashboard created and functioning (Avash).
+- Integrating ServiceProvider Signup with User Signup Page (Avash)
+- ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
+- Integrating booking functionality with ServiceProvider (Waliullah).
+- All design related to Service Provider (Mohamamd).
+- All designs related to Users (Avash).
+- Home Page Designing (All of us).
+
+
