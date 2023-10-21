@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
+import { useState,useEffect } from "react";
 import "./Navbar.css";
 const Navbar = () => {
-	const token = localStorage.getItem("token");
+	const [token, setToken] = useState(null);
 	const logout = () => {
-		localStorage.setItem("token", null);
+		localStorage.removeItem("token");
+		setToken(null);
 	};
+	useEffect(() => {
+		setToken(localStorage.getItem("token"));
+	}, [token]);
 	return (
 		<nav className="navbar">
 			<Link to={"/"} className="logo">
@@ -34,6 +39,13 @@ const Navbar = () => {
 						Services
 					</Link>
 				</li>
+				{token ? (
+					<li>
+						<p className="nav-element" onClick={logout}>
+							Logout
+						</p>
+					</li>
+				) : null}
 			</ul>
 		</nav>
 	);
