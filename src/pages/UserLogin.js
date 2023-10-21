@@ -15,7 +15,7 @@ const UserLogin = () => {
 		});
 		const data = await res.json();
 		if (data.status === "fail") {
-			alert();
+			alert(data.message);
 		} else {
 			localStorage.setItem("token", data.token);
 			navigate("/user");
