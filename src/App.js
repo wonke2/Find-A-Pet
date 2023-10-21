@@ -11,7 +11,7 @@ import "./styles/App.css";
 import UserProfile from "./pages/UserProfile";
 import Navbar from "./components/Navbar";
 import ServiceListings from "./pages/ServiceListings";
-
+import UserDashbord from "./pages/UserDashbord";
 function App() {
 	const Home = () => {
 		return (
@@ -35,6 +35,7 @@ function App() {
 					<Route path="/spsignup" element={<SPSignup />} />
 					<Route path="/user" element={<UserProfile />} />
 					<Route path="/services" element={<ServiceListings />} />
+					<Route path="/userdashbord" element={<UserDashbord />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</Router>
