@@ -1,7 +1,5 @@
 const Booking = require("../models/BookingSchema");
-const User = require("../models/UserSchema");
-const Service = require("../models/ServiceSchema");
-const ServiceProvider = require("../models/ServiceProviderSchema");
+
 
 exports.createBooking = async (req, res) => {
 	try {
@@ -29,7 +27,7 @@ exports.createBooking = async (req, res) => {
 
 exports.getBookingByUserId = async (req, res) => {
 	try {
-		const { userId } = req.params;
+		const userId=req.user._id;
 		const booking = await Booking.find({ userId });
 		if (booking.length === 0) {
 			return res
