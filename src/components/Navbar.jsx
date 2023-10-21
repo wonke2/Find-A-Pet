@@ -1,18 +1,18 @@
-import { Link } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./Navbar.css";
 const Navbar = () => {
-	const [token, setToken] = useState(null);
+	const navigate = useNavigate();
+	const [token, setToken] = useState(localStorage.getItem("token"));
 	const logout = () => {
 		localStorage.removeItem("token");
+		navigate("/");
 		setToken(null);
 	};
-	useEffect(() => {
-		setToken(localStorage.getItem("token"));
-	}, [token]);
+
 	return (
 		<nav className="navbar">
-			<Link to={"/"} className="logo">
+			<Link to={"/userdashbord"} className="logo">
 				<h1>Find-a-Pet</h1>
 			</Link>
 
@@ -22,13 +22,11 @@ const Navbar = () => {
 						Pet Listings
 					</Link>
 				</li>
-
 				<li>
 					<Link to="/userlogin" className="nav-element">
 						User Login
 					</Link>
 				</li>
-
 				<li>
 					<Link to="/usersignup" className="nav-element">
 						User Signup
@@ -39,6 +37,11 @@ const Navbar = () => {
 						Services
 					</Link>
 				</li>
+				{token ? (
+					<li>
+						<Link to="/user" className="nav-element">Profile</Link>
+					</li>
+				) : null}
 				{token ? (
 					<li>
 						<p className="nav-element" onClick={logout}>
