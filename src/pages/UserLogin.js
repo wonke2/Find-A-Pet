@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/UserLogin.css";
 const UserLogin = () => {
 	const [username, setUsername] = useState("");
@@ -42,6 +42,9 @@ const UserLogin = () => {
 				<button className="login_button" onClick={login}>
 					Login
 				</button>
+				<Link to="/splogin" className="nav-element">
+					Service Provider Login
+				</Link>
 			</div>
 		</div>
 	);
