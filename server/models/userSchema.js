@@ -21,6 +21,10 @@ const userSchema = new Schema({
 	phoneNo: { type: Number, required: true, unique: true },
 	address: { type: String, required: true },
 	password: { type: String, required: true, select: false },
+	watchlist: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'ServiceProvider.servicesProvided'
+	}]
 }); //hashing password
 userSchema.pre("save", async function (next) {
 	try {
