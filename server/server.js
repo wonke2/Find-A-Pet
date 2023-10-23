@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const SPRoutes = require("./routes/serviceProviderRoutes");
 const serviceProvider = require("./models/serviceProviderSchema");
+const Booking = require("./models/BookingSchema");
 
 require("dotenv").config();
 
@@ -74,12 +75,21 @@ app.get("/api/services/:id", async (req, res) => {
     }
 });
 
+app.get("/api/bookings/:spID", async (req, res) => {
+	try {
+        const bookings = await Booking.find({ serviceProviderId: req.params.spId });
+        res.json(bookings);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+ })
 
 app.get("/api/users/:id", (req, res) => {});
 
 app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-});
+})
+
 mongoose
 	.connect(process.env.MONGODB_U_URI)
 	.then(() => {
