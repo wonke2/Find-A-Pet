@@ -12,6 +12,8 @@ import UserProfile from "./pages/UserProfile";
 import Navbar from "./components/Navbar";
 import ServiceListings from "./pages/ServiceListings";
 import UserDashbord from "./pages/UserDashbord";
+import WishList from "./pages/WishList";
+
 function App() {
 	const Home = () => {
 		return (
@@ -37,6 +39,7 @@ function App() {
 					<Route path="/services" element={<ServiceListings />} />
 					<Route path="/userdashbord" element={<UserDashbord />} />
 					<Route path="*" element={<Home />} />
+					<Route path="/wishlist" element={<WishList />} />
 				</Routes>
 			</Router>
 		</div>
