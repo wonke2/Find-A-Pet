@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
-	const [token, setToken] = useState(localStorage.getItem("token"));
+	const token = useSelector((state) => state.token);
 	const [loading, setLoading] = useState(true);
 	const [user, setUser] = useState(null);
 	const navigate = useNavigate();
@@ -11,7 +12,6 @@ const UserProfile = () => {
 		if (!token) {
 			navigate("/userlogin");
 		} else {
-			setToken(localStorage.getItem("token"));
 			fetch("http://localhost:3000/auth/user", {
 				headers: {
 					Authorization: `Bearer ${token}`,
