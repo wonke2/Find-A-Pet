@@ -159,4 +159,16 @@ Service Listings (Mohammad):
 - All designs related to Users (Avash).
 - Home Page Designing (All of us).
 
+#### Achievements:
 
+Service Provider Dashboard (Mohammad):
+- Created a Service Provider Dashboard
+- Shows all Bookings for the Service Provider's services
+- Added API call for all bookings by service provider id
+
+Services Booking [From services page] (Mohammad):
+- Added Book Now button for each service
+- Created function to implement quick booking in the future
+
+#### Challenges Faced / Discuss:
+- 
