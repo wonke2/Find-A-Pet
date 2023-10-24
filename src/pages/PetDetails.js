@@ -4,40 +4,75 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content
 import he from 'he';  // For decoding HTML entities
+import { useSelector } from "react-redux";
 
 // PetDetails functional component
 const PetDetails = () => {
     // Using useState to create state variables for pet details and API token
     const [petDetails, setPetDetails] = useState({});
-    const [token, setToken] = useState('');
+    const [apiToken, setApiToken] = useState('');
+
+    // Retrieving the user authentication token using useSelector
+    const authTokenFromRedux = useSelector((state) => state.token);
 
     // Extracting pet ID from the URL using useParams hook
     const { id } = useParams();
 
-    // Function to retrieve API token
+    // Function to retrieve API token for Petfinder
     const getApiToken = async () => {
         try {
             const response = await axios.get('/api/petfinder/token');
-            setToken(response.data.accessToken);
+            setApiToken(response.data.accessToken);
         } catch (error) {
-            console.error("There was an error retrieving the token!", error);
+            console.error("There was an error retrieving the API token for Petfinder!", error);
         }
     }
+
+    const addToWishlist = async () => {
+        if (!authTokenFromRedux) {
+            alert("Please login to add to wishlist!");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://localhost:3000/auth/add-to-wishlist", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authTokenFromRedux}`
+                },
+                body: JSON.stringify({
+                    petID: petDetails.id, 
+                    petName: petDetails.name, 
+                    petImage: petDetails.photos?.[0]?.medium 
+                })
+            });
+
+            const data = await response.json();
+            if (data.status === "fail") {
+                alert(data.message);
+            } else {
+                alert("Added to wishlist!");
+            }
+        } catch (error) {
+            console.error("There was an error adding the pet to the wishlist!", error);
+        }
+    };
 
     // Using useEffect to call getApiToken function on component mount
     useEffect(() => {
         getApiToken();
     }, []);
 
-    // Using useEffect to get pet details when token is available and pet ID changes
+    // Using useEffect to get pet details when apiToken is available and pet ID changes
     useEffect(() => {
         const getPetDetails = async () => {
-            if (token === '') return;
+            if (apiToken === '') return;
 
             try {
                 const response = await axios.get(`https://api.petfinder.com/v2/animals/${id}`, {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${apiToken}`
                     }
                 });
                 setPetDetails(response.data.animal);
@@ -46,10 +81,10 @@ const PetDetails = () => {
             }
         }
 
-        if (token !== '') {
+        if (apiToken !== '') {
             getPetDetails();
         }
-    }, [token, id]);
+    }, [apiToken, id]);
 
     // Component rendering
     return (
@@ -86,6 +121,7 @@ const PetDetails = () => {
                 </a>
                     : 'URL not provided'}
             </p>
+            <button onClick={addToWishlist}>Add to Wishlist</button>
 
         </div>
     );
