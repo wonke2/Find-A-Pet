@@ -161,6 +161,13 @@ Service Listings (Mohammad):
 
 #### Achievements:
 
+(Avash)
+-User dashboard created and functioning
+-Integrating ServiceProvider Signup with User Signup Page
+-Used global state to store user data using react-redux toolkit
+-used redux-persist to save user data even after closing the browsere
+-All designs realste to users completed
+
 Service Provider Dashboard (Mohammad):
 - Created a Service Provider Dashboard
 - Shows all Bookings for the Service Provider's services
