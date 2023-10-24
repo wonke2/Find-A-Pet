@@ -5,7 +5,7 @@ const saltRounds = 10;
 const path = require('path')
 require('dotenv').config({path: path.join(__dirname, '../../.env')})
 
-url = process.env.MONGODB_U_URI
+const url = process.env.MONGODB_U_URI
 
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => {
