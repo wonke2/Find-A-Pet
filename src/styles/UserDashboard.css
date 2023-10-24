@@ -1,0 +1,21 @@
+.min-h-screen {
+	min-height: 100vh;
+	padding: 1rem;
+}
+h3 {
+	margin: 0;
+}
+.card {
+	display: flex;
+	justify-content: space-between;
+	background-color: antiquewhite;
+    padding: 0.5rem;
+	width: 30%;
+	border-radius: 25px;
+}
+.card-itm {
+	display: flex;
+	flex-direction: column;
+    gap: 0.4rem;
+    align-items: start;
+}
