@@ -1,13 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import {useSelector,useDispatch} from "react-redux";
+import { setLogout } from "../state/authSlice";
 import "./Navbar.css";
 const Navbar = () => {
 	const navigate = useNavigate();
-	const [token, setToken] = useState(localStorage.getItem("token"));
+	const dispatch = useDispatch();
+	const token = useSelector((state) => state.token);
 	const logout = () => {
-		localStorage.removeItem("token");
+		dispatch(setLogout());
 		navigate("/");
-		setToken(null);
 	};
 
 	return (
