@@ -1,7 +1,7 @@
 import React from "react";
-import "../styles/UserDashbord.css";
+// import "../styles/UserDashbord.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const UserDashbord = () => {
@@ -70,6 +70,9 @@ const UserDashbord = () => {
 					);
 				})
 			)}
+			<div>
+			<Link to="/wishlist">View Wishlist</Link>
+			</div>
 		</div>
 	);
 };
