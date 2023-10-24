@@ -2,17 +2,17 @@ import React from "react";
 import "../styles/UserDashbord.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UserDashbord = () => {
 	const navigate = useNavigate();
 	const [bookings, setBookings] = useState([]);
-	const [token, setToken] = useState(localStorage.getItem("token"));
+	const token = useSelector((state) => state.token);
 	const [loading, setLoading] = useState(true);
 	useEffect(() => {
 		if (!token) {
 			navigate("/userlogin");
 		} else {
-			setToken(localStorage.getItem("token"));
 			fetch("http://localhost:3000/auth/booking", {
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -59,12 +59,12 @@ const UserDashbord = () => {
 								<h3>:</h3>
 							</div>
 							<div className="card-itm">
-								<h3>Order Id</h3>
-								<h3>Service Id</h3>
-								<h3>Service Provider Id</h3>
-								<h3>Date</h3>
-								<h3>Booking Location</h3>
-								<h3>Booking Status</h3>
+								<h3>{booking.orderId}</h3>
+								<h3>{booking.serviceId}</h3>
+								<h3>{booking.serviceProviderId}</h3>
+								<h3>{booking.date}</h3>
+								<h3>{booking.bookingLocation}</h3>
+								<h3>{booking.bookingStatus}</h3>
 							</div>
 						</div>
 					);
