@@ -17,4 +17,9 @@ router.post(
 	jwtUtils.verifyToken,
 	bookingController.createBooking
 );
+
+router.post("/add-to-wishlist", jwtUtils.verifyToken, userController.addToWishlist);
+router.post("/remove-from-wishlist", jwtUtils.verifyToken, userController.removeFromWishlist);
+router.get("/get-wishlist", jwtUtils.verifyToken, userController.getWishlist);
+
 module.exports = router;
