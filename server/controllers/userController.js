@@ -2,32 +2,39 @@ const User = require("../models/userSchema");
 const jwtUtils = require("../utils/jwtUtils");
 exports.signUp = async (req, res) => {
 	const { username, password, email, phoneNo, address } = req.body;
-	try {
-		const user = await User.create({
-			username,
-			password,
-			email,
-			phoneNo,
-			address,
-		});
-		if (user) {
-			res.status(200).json({
-				status: "success",
-				data: user,
-			});
-		} else {
-			res.status(400).json({
-				status: "fail",
-				message: "user not created",
-			});
-		}
-	} catch (err) {
-		res.status(500).json({
-			status: "fail",
+	if (!username || !password || !email || !phoneNo || !address) {
+        return res.status(400).json({
+            status: "fail",
+            message: "User not created",
+        });
+    }
 
-			message: "user already exists",
-		});
-	}
+    try {
+        const user = await User.create({
+            username,
+            password,
+            email,
+            phoneNo,
+            address,
+        });
+        res.status(200).json({
+            status: "success",
+            data: user,
+        });
+    } catch (err) {
+        // Check for unique constraint violation
+        if (err.code === 11000) {
+            return res.status(500).json({
+                status: "fail",
+                message: "User already exists",
+            });
+        }
+        // Handle other errors
+        res.status(400).json({
+            status: "fail",
+            message: "User not created",
+        });
+    }
 };
 
 exports.logIn = async (req, res) => {
