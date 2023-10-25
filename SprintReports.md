@@ -181,5 +181,10 @@ Service Listing Testing (Mohammad):
 - Made sure that the search returned all necessary data by scanning /api/services and crossreferenced it with basic search results (Manually)
 - Made sure that no results returned when there were no applicable results (Manually)
 
+Service Provider Sign Up Page (Mohammad):
+- Fixed Variable name error which was causing issues when attempting to send data to the backend
+- Created Testing File for the page to test the functionality of the page
+
 #### Challenges Faced / Discuss:
-- 
+- The Service Provider Sign Up Page didnt pass all the tests which means more adjustments are needed to the page in order for it to be optimal
+- The Service Provider Dashboard is not fully functional as it is missing the ability to accept or reject bookings, And add Services Provided to the business
