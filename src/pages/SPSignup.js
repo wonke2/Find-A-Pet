@@ -36,7 +36,7 @@ const SPSignup = () => {
     }
     return (
         <>
-            <div classNamee="SP_main_form_signup">
+            <div className="SP_main_form_signup">
                 <h1>Service Provider Signup</h1>
                 <div className="SP_form_inp">
                     <input

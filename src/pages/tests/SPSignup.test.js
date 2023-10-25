@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
-import SPSignup from './SPSignup'
+import SPSignup from '../SPSignup'
 import { MemoryRouter, Route } from 'react-router-dom'
 
 jest.mock('react-router-dom', () => ({
