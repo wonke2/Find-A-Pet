@@ -7,21 +7,24 @@ const SPSignup = () => {
     const [email, setEmail] = useState("")
     const [phoneNo, setPhoneNo] = useState("")
     const [location, setLocation] = useState("")
+    const [orgName, setOrgName] = useState("");
+
     const navigate = useNavigate();
 
     const login = async () => {
-        const res = await fetch("/SPauth/signup", {
+        const res = await fetch("/SPauth/SPsignup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                username,
-                password,
-                email,
-                phoneNo,
-                location,
-            }),
+                serviceProviderName: username,
+                serviceProviderPassword: password,
+                serviceProviderEmail: email,
+                serviceProviderPhone: phoneNo,
+                serviceProviderAddress: location,
+                orgName
+            })
         })
         const data = await res.json()
         if (data.status === "fail") {
@@ -42,6 +45,14 @@ const SPSignup = () => {
                         required
                         onChange={(e) => {
                             setUsername(e.target.value)
+                        }}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Organization Name"
+                        required
+                        onChange={(e) => {
+                            setOrgName(e.target.value);
                         }}
                     />
                     <input
