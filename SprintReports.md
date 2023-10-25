@@ -178,8 +178,8 @@ Services Booking [From services page] (Mohammad):
 - Created function to implement quick booking in the future
 
 Service Listing Testing (Mohammad):
-- Made sure that the search returned all necessary data by scanning /api/services and crossreferenced it with basic search results
-- Made sure that no results returned when there were no applicable results
+- Made sure that the search returned all necessary data by scanning /api/services and crossreferenced it with basic search results (Manually)
+- Made sure that no results returned when there were no applicable results (Manually)
 
 #### Challenges Faced / Discuss:
 - 
