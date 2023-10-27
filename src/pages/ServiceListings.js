@@ -89,7 +89,7 @@ const ServiceListings = () => {
                     <h3>{service.serviceName}</h3>
                     <p>{service.serviceDescription}</p>
                     <small>Location: {service.serviceLocation}</small>
-                    <button onClick={BookNow}>Book Now</button>
+                    <button /*onClick={BookNow} */>Book Now</button>
                 </div>
             ))
         )}

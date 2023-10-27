@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import PetListings from './PetListings';
+import PetListings from '../PetListings';
 import axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
 

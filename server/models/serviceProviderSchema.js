@@ -38,11 +38,11 @@ const serviceProviderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    orgName: String,
-    serviceProviderAddress: String,
-    serviceProviderEmail: String,
-    serviceProviderPhone: String,
-    servicesProvided: [serviceSchema] 
+    orgName: { type: String, required: true},
+    serviceProviderAddress: { type: String, required: true },
+    serviceProviderEmail: { type: String, required: true },
+    serviceProviderPhone: { type: String, required: true },
+    servicesProvided: [serviceSchema]
 })
 
 serviceProviderSchema.pre('save', async function (next) { 

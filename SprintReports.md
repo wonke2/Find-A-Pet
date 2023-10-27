@@ -148,25 +148,47 @@ Service Listings (Mohammad):
 
 ### Week 12: PetListing Save Functionality with Database, Dashboards, Signup Pages, Booking Functionality and OverAll Design
 #### Plan:
-- PetListing Save Database (Mohammad)
+- PetListing Save Database (Waliullah)
 - PetListing Save Functionality (Waliullah)
 - PetListings and PetDetails Design & Styles (Waliullah)
 - User dashboard created and functioning (Avash).
 - Integrating ServiceProvider Signup with User Signup Page (Avash)
 - ServiceProvider Dashboard to manage bookings, customer info, and other related tasks (Mohammad).
-- Integrating booking functionality with ServiceProvider (Waliullah).
+- Integrating booking functionality with ServiceProvider (Avash and Mohammad).
 - All design related to Service Provider (Mohamamd).
 - All designs related to Users (Avash).
 - Home Page Designing (All of us).
 
 #### Achievements:
 
+PetListing WishList Database (Waliullah)
+- Added the a wishlist sublist within the user database to save the pet listings. 
+- Added `addToWishList`, `getWishList` and `removeFromWishList` apis  to the userController backend file.
+- Created the appropriate routes and integrated them within the backend routes middleware.
+ 
+PetListing WishList Functionality (Waliullah)
+- Added a WishList component for the front end. 
+- Implemented fetchItems and removeItems functionalities for the WishList Componenets.
+- Made sure the WishList will only appear when user is logged in so the needed to verify the user token for authentication.
+- Linked WishList to the userDashboard. And linked each listing in the WishList to the petDetails page so that the user can get redirected to the actual listing to view the listing details.
+
+UserSignUp Error Handling (Waliullah)
+- Modified a bit of user signup unctionality to make sure all the fields are mandatory to create a user. 
+
+ Tests (Waliullah)
+ FrontEnd:
+ - Created tests for PetListings
+ - Created tests for PetDetails
+ - Created tests for WishList 
+BackEnd:
+- Created testts for UserController
+  
 (Avash)
--User dashboard created and functioning
--Integrating ServiceProvider Signup with User Signup Page
--Used global state to store user data using react-redux toolkit
--used redux-persist to save user data even after closing the browsere
--All designs realste to users completed
+- User dashboard created and functioning
+- Used global state to store user data using react-redux toolkit
+- Used redux-persist to save user data even after closing the browsere
+- All designs realste to users completed
+- Booking backend structure is done, just need to integrate it with the front end.
 
 Service Provider Dashboard (Mohammad):
 - Created a Service Provider Dashboard
@@ -177,5 +199,23 @@ Services Booking [From services page] (Mohammad):
 - Added Book Now button for each service
 - Created function to implement quick booking in the future
 
+Service Listing Testing (Mohammad):
+- Made sure that the search returned all necessary data by scanning /api/services and crossreferenced it with basic search results (Manually)
+- Made sure that no results returned when there were no applicable results (Manually)
+
+Service Provider Sign Up Page (Mohammad):
+- Fixed Variable name error which was causing issues when attempting to send data to the backend
+- Created Testing File for the page to test the functionality of the page
+
 #### Challenges Faced / Discuss:
-- 
+- The Service Provider Sign Up Page didnt pass all the tests which means more adjustments are needed to the page in order for it to be optimal
+- The Service Provider Dashboard is not fully functional as it is missing the ability to accept or reject bookings, And add Services Provided to the business
+- Faced difficulties while verifying the token for authentication for WishList functionality as avash added redux state-variables. So had to change my way of retrieving tokens using functions from react-redux.
+
+### Week 13: Booking Functionality, Additional Tests, Designs and Documentations
+- Booking Functionality and Integration (Avash)
+- All designs related to serviceProvider (Mohammad)
+- All designs related to User (Avash)
+- Designs for the Home Page (Avash)
+- All testings related to ServiceProvider (Mohamamd)
+- All the other testings (Avash and Waliullah)

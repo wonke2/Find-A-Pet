@@ -23,11 +23,19 @@ exports.signUp = async (req, res) => {
             })
         }
     } catch (err) {
+    if (err.code === 11000) { // Duplicate key error code from MongoDB
+        res.status(400).json({
+            status: "fail",
+            message: "Duplicate field value entered."
+        });
+    } else {
         res.status(500).json({
             status: "fail",
-            message: err.message
+            message: "please contact admin."
         })
+        console.log(err.message)
     }
+}
 }
 
 exports.logIn = async (req, res) => {
