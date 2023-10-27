@@ -61,7 +61,7 @@ describe('<PetListings />', () => {
     await waitFor(() => {
       expect(axios.get).toHaveBeenCalledWith(
         'https://api.petfinder.com/v2/animals',
-        expect.any(Object)  // Expecting axios.get to have been called with the correct endpoint and parameters
+        expect.any(Object)  
       );
     });
   });

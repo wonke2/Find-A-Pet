@@ -23,11 +23,11 @@ describe('User Controller', () => {
       const res = await request(app)
         .post('/signup')
         .send({
-          username: 'test1_doe',
-          password: 'testingpass123',
-          email: 'test1doe@example.com',
-          phoneNo: '5344673555',
-          address: '888 Test12 St',
+          username: 'test2_doe',
+          password: 'testng22pass123',
+          email: 'test122doe@example.com',
+          phoneNo: '5344673895',
+          address: '868 Test132 St',
         });
 
       expect(res.statusCode).toEqual(200);
