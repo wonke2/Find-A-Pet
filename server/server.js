@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const SPRoutes = require("./routes/serviceProviderRoutes");
 const serviceProvider = require("./models/serviceProviderSchema");
+const serviceProvidersController = require("./controllers/serviceProviderController");
 const Booking = require("./models/BookingSchema");
 
 require("dotenv").config();
@@ -57,8 +58,7 @@ app.get("/api/services", async (req, res) => {
 });
 
 app.get("/api/services/:id", async (req, res) => {
-    const serviceId = req.params.id;
-
+	const serviceId = req.params.id;
     try {
         const provider = await serviceProvider.findOne({ "servicesProvided._id": new mongoose.Types.ObjectId(serviceId) });
         if (!provider) {
@@ -95,16 +95,7 @@ app.get("/api/serviceProviders", async (req, res) => {
 	}
 })
 
-app.get("/api/serviceProviders/:id", async (req, res) => {
-	try {
-		const provider = await serviceProvider.findById(req.params.id)
-		res.json(provider);
-	}
-	catch (error) {
-		console.error("There was an error fetching the service provider!", error);
-		res.status(500).json({ error: "Failed to fetch service provider" });
-	}
-})
+app.get("/api/serviceProviders/:id", serviceProvidersController.getServiceProvider)
 
 app.get("/api/users/:id", (req, res) => {});
 
