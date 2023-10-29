@@ -40,6 +40,7 @@ const SPLogin = () => {
                     <input
                         type="password"
                         placeholder="Password"
+                        required
                         onChange={(e) => {
                             setPassword(e.target.value)
                         }}
