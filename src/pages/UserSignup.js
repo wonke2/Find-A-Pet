@@ -74,6 +74,9 @@ const UserSignup = () => {
 				<button className="login_button" onClick={login}>
 					Signup
 				</button>
+				<Link to="/spsignup" className="nav-element">
+					Service Provider Signup
+				</Link>
 			</div>
 		</div>
 	);
