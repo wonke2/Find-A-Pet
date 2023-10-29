@@ -66,14 +66,28 @@ exports.logIn = async (req, res) => {
 }
 exports.getServiceProvider = async (req, res) => {
     try {
+        const { id } = req.params; // Extract the ID from the request parameters
+        console.log('ID:', id); // Add this line to log the ID
+
+        const serviceP = await serviceProvider.findById(id); // Query the database using the ID
+        console.log('Service Provider:', serviceP); // Add this line to log the result
+
+        if (!serviceP) {
+            return res.status(404).json({
+                status: "fail",
+                message: "Service provider not found"
+            });
+        }
+
         return res.status(200).json({
             status: "success",
-            data: req.serviceP
-        })
+            data: serviceP
+        });
     } catch (err) {
         return res.status(500).json({
             status: "fail",
             message: err.message
-        })
+        });
     }
 }
+
