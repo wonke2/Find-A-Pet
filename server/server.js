@@ -84,6 +84,28 @@ app.get("/api/bookings/:spID", async (req, res) => {
     }
  })
 
+app.get("/api/serviceProviders", async (req, res) => {
+	try {
+		const providers = await serviceProvider.find()
+		res.json(providers);
+	}
+	catch (error) {
+		console.error("There was an error fetching the service providers!", error);
+		res.status(500).json({ error: "Failed to fetch service providers" });
+	}
+})
+
+app.get("/api/serviceProviders/:id", async (req, res) => {
+	try {
+		const provider = await serviceProvider.findById(req.params.id)
+		res.json(provider);
+	}
+	catch (error) {
+		console.error("There was an error fetching the service provider!", error);
+		res.status(500).json({ error: "Failed to fetch service provider" });
+	}
+})
+
 app.get("/api/users/:id", (req, res) => {});
 
 app.get("*", (req, res) => {

@@ -84,13 +84,15 @@ const ServiceListings = () => {
         {mapView ? (
             <div id="map" style={{ height: '500px', width: '100%' }}></div>
         ) : (
-            filteredServices.map((service) => (
-                <div key={service._id} className="service">
-                    <h3>{service.serviceName}</h3>
-                    <p>{service.serviceDescription}</p>
-                    <small>Location: {service.serviceLocation}</small>
-                    <button /*onClick={BookNow} */>Book Now</button>
-                </div>
+                filteredServices.map((service) => (
+                <Link to={`/${service._id}`} key={service._id}>
+                    <div key={service._id} className="service">
+                        <h3>{service.serviceName}</h3>
+                        <p>{service.serviceDescription}</p>
+                        <small>Location: {service.serviceLocation}</small>
+                        <button /*onClick={BookNow} */>Book Now</button>
+                    </div>
+                </Link>
             ))
         )}
         </div>
