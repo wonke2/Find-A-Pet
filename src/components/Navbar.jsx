@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import {useSelector,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../state/authSlice";
 import "./Navbar.css";
 const Navbar = () => {
@@ -23,16 +23,28 @@ const Navbar = () => {
 						Pet Listings
 					</Link>
 				</li>
-				<li>
-					<Link to="/userlogin" className="nav-element">
-						User Login
-					</Link>
-				</li>
-				<li>
-					<Link to="/usersignup" className="nav-element">
-						User Signup
-					</Link>
-				</li>
+				{token ? null : (
+					<li>
+						<Link to="/userlogin" className="nav-element">
+							Login
+						</Link>
+					</li>
+				)}
+				{token ? null : (
+					<li>
+						<Link to="/usersignup" className="nav-element">
+							Register
+						</Link>
+					</li>
+				)}
+				{token ? (
+					<li>
+						<Link to="/userdashbord" className="nav-element">
+							dashboard
+						</Link>
+					</li>
+				) : null}
+
 				<li>
 					<Link to="/services" className="nav-element">
 						Services
@@ -40,7 +52,9 @@ const Navbar = () => {
 				</li>
 				{token ? (
 					<li>
-						<Link to="/user" className="nav-element">Profile</Link>
+						<Link to="/user" className="nav-element">
+							Profile
+						</Link>
 					</li>
 				) : null}
 				{token ? (
