@@ -7,18 +7,15 @@ const DetailedServiceListing = () => {
     const [serviceProviderDetails, setServiceProviderDetails] = useState(null);
 
     useEffect(() => {
-        // Fetch the specific service details
         fetch(`/api/services/${serviceID}`)
             .then(response => response.json())
             .then(data => {
                 setServiceDetails(data);
 
-                // Fetch all service providers (or a filtered set if possible)
                 return fetch(`/api/serviceProviders`);
             })
             .then(response => response.json())
             .then(data => {
-                // Find the correct service provider using the serviceProviderName
                 const matchedProvider = data.find(provider => provider.serviceProviderName === serviceDetails.serviceProviderName);
                 if (matchedProvider) {
                     setServiceProviderDetails(matchedProvider);
