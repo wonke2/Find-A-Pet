@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import ServiceListings from "./pages/ServiceListings";
 import UserDashbord from "./pages/UserDashbord";
 import WishList from "./pages/WishList";
+import DetailedServiceListing from "./pages/detailedServiceListing";
 
 function App() {
 	const Home = () => {
@@ -36,10 +37,11 @@ function App() {
 					<Route path="/splogin" element={<SPLogin />} />
 					<Route path="/spsignup" element={<SPSignup />} />
 					<Route path="/user" element={<UserProfile />} />
+					<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
 					<Route path="/services" element={<ServiceListings />} />
 					<Route path="/userdashbord" element={<UserDashbord />} />
-					<Route path="*" element={<Home />} />
 					<Route path="/wishlist" element={<WishList />} />
+					<Route path="*" element={<Home />} />
 				</Routes>
 			</Router>
 		</div>
