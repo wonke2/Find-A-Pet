@@ -15,6 +15,10 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
 const serviceSchema = new mongoose.Schema({
+    serviceProviderName: {
+        type: String,
+        required: true
+    },
     serviceName: {
         type: String,
         required: true
