@@ -5,26 +5,32 @@ const DetailedServiceListing = () => {
     const { serviceID } = useParams();
     const [serviceDetails, setServiceDetails] = useState(null);
     const [serviceProviderDetails, setServiceProviderDetails] = useState(null);
-
+    
     useEffect(() => {
         fetch(`/api/services/${serviceID}`)
             .then(response => response.json())
             .then(data => {
                 setServiceDetails(data);
+            })
+            .catch(error => console.error('Error fetching service details:', error));
+    }, [serviceID]);
 
-                return fetch(`/api/serviceProviders`);
-            })
-            .then(response => response.json())
-            .then(data => {
-                const matchedProvider = data.find(provider => provider.serviceProviderName === serviceDetails.serviceProviderName);
-                if (matchedProvider) {
-                    setServiceProviderDetails(matchedProvider);
-                } else {
-                    throw new Error('Matching Service Provider not found.');
-                }
-            })
-            .catch(error => console.error('Error fetching details:', error));
-    }, [serviceID, serviceDetails]);
+    useEffect(() => {
+        if (serviceDetails) {
+            fetch(`/api/serviceProviders`)
+                .then(response => response.json())
+                .then(data => {
+                    const matchedProvider = data.find(provider => provider.serviceProviderName === serviceDetails.serviceProviderName);
+                    if (matchedProvider) {
+                        setServiceProviderDetails(matchedProvider);
+                    } else {
+                        throw new Error('Matching Service Provider not found.');
+                    }
+                })
+                .catch(error => console.error('Error fetching service provider details:', error));
+        }
+    }, [serviceDetails]);
+
 
     if (!serviceDetails || !serviceProviderDetails) {
         return <p>Loading...</p>;
