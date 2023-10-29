@@ -1,5 +1,5 @@
 import React from "react";
-// import "../styles/UserDashbord.css";
+import "../styles/UserDashbord.css";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -70,8 +70,34 @@ const UserDashbord = () => {
 					);
 				})
 			)}
+			<div className="card">
+				<div className="card-itm">
+					<h3>Order Id</h3>
+					<h3>Service Id</h3>
+					<h3>Service Provider Id</h3>
+					<h3>Date</h3>
+					<h3>Booking Location</h3>
+					<h3>Booking Status</h3>
+				</div>
+				<div className="card-itm">
+					<h3>:</h3>
+					<h3>:</h3>
+					<h3>:</h3>
+					<h3>:</h3>
+					<h3>:</h3>
+					<h3>:</h3>
+				</div>
+				<div className="card-itm">
+					<h3>Test Card</h3>
+					<h3>Test</h3>
+					<h3>Test</h3>
+					<h3>Test</h3>
+					<h3>Test</h3>
+					<h3>Test</h3>
+				</div>
+			</div>
 			<div>
-			<Link to="/wishlist">View Wishlist</Link>
+				<Link to="/wishlist">View Wishlist</Link>
 			</div>
 		</div>
 	);
