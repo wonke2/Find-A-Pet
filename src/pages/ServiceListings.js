@@ -86,7 +86,7 @@ const ServiceListings = () => {
             <div id="map" style={{ height: '500px', width: '100%' }}></div>
         ) : (
                 filteredServices.map((service) => (
-                <Link to={`/${service._id}`} key={service._id}>
+                <Link to={`/services/${service._id}`} key={service._id}>
                     <div key={service._id} className="service">
                         <h3>{service.serviceName}</h3>
                         <p>{service.serviceDescription}</p>
