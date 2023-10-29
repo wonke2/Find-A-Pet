@@ -32,7 +32,8 @@ const serviceSchema = new mongoose.Schema({
 const serviceProviderSchema = new mongoose.Schema({
     serviceProviderName: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     serviceProviderPassword: {
         type: String,
@@ -40,8 +41,8 @@ const serviceProviderSchema = new mongoose.Schema({
     },
     orgName: { type: String, required: true},
     serviceProviderAddress: { type: String, required: true },
-    serviceProviderEmail: { type: String, required: true },
-    serviceProviderPhone: { type: String, required: true },
+    serviceProviderEmail: { type: String, required: true, unique: true },
+    serviceProviderPhone: { type: String, required: true, unique: true },
     servicesProvided: [serviceSchema]
 })
 
