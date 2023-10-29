@@ -6,12 +6,15 @@ const SPLogin = () => {
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
     const login = async () => {
-        const res = await fetch("/SPauth/login", {
+        const res = await fetch("/SPauth/SPlogin", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password }),
+            body: JSON.stringify({
+                serviceProviderName: username,
+                serviceProviderPassword: password,
+            }),
         })
         const data = await res.json()
         if (data.status === "fail") {
