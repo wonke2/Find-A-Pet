@@ -14,6 +14,7 @@ import ServiceListings from "./pages/ServiceListings";
 import UserDashbord from "./pages/UserDashbord";
 import WishList from "./pages/WishList";
 import DetailedServiceListing from "./pages/detailedServiceListing";
+import SPDashboard from "./pages/SPDashboard";
 
 function App() {
 	const Home = () => {
@@ -41,6 +42,7 @@ function App() {
 					<Route path="/services" element={<ServiceListings />} />
 					<Route path="/userdashbord" element={<UserDashbord />} />
 					<Route path="/wishlist" element={<WishList />} />
+					<Route path="/spdashboard" element={<SPDashboard />} />
 					<Route path="*" element={<Home />} />
 				</Routes>
 			</Router>
