@@ -32,7 +32,7 @@ describe('User Controller', () => {
 
       expect(res.statusCode).toEqual(200);
       expect(res.body.status).toEqual('success');
-      expect(res.body.data.username).toEqual('test1_doe');
+      expect(res.body.data.username).toEqual('test2_doe');
     });
 
     it('should return a 400 error if the user could not be created', async () => {
