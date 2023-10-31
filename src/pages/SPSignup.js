@@ -8,10 +8,23 @@ const SPSignup = () => {
     const [phoneNo, setPhoneNo] = useState("")
     const [location, setLocation] = useState("")
     const [orgName, setOrgName] = useState("");
+    const [isPasswordWeak, setIsPasswordWeak] = useState(false);
+    const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [passwordsMatch, setPasswordsMatch] = useState(true);
+    const [showIncompleteFieldsBanner, setShowIncompleteFieldsBanner] = useState(false);
+    const [isPhoneValid, setIsPhoneValid] = useState(true);
+    const [phoneErrorMessage, setPhoneErrorMessage] = useState("");
+    const [isEmailValid, setIsEmailValid] = useState(true);
+    const [emailErrorMessage, setEmailErrorMessage] = useState("");
 
     const navigate = useNavigate();
 
     const login = async () => {
+        if (username === "" || password === "" || email === "" || phoneNo === "" || orgName === "") {
+            setShowIncompleteFieldsBanner(true);
+            return;
+        }   
         const res = await fetch("/SPauth/SPsignup", {
             method: "POST",
             headers: {
@@ -39,61 +52,124 @@ const SPSignup = () => {
             <div className="SP_main_form_signup">
                 <h1>Service Provider Signup</h1>
                 <div className="SP_form_inp">
+                    <label htmlFor="businessName">*Business Name:</label>
                     <input
                         type="text"
-                        placeholder="Business Name"
+                        id="businessName"
                         required
                         onChange={(e) => {
                             setUsername(e.target.value)
                         }}
                     />
+                    <br/>
+                    <label htmlFor="organizationName">*Organization Name:</label>
                     <input
                         type="text"
-                        placeholder="Organization Name"
+                        id="organizationName"
                         required
                         onChange={(e) => {
                             setOrgName(e.target.value);
                         }}
                     />
+                    <br/>
+                    <label htmlFor="password">*Password:</label>
                     <input
                         type="password"
-                        placeholder="Password"
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        id="password"
                         required
                         onChange={(e) => {
-                            setPassword(e.target.value)
+                            const newPassword = e.target.value;
+                            setPassword(newPassword)
+                            setPasswordsMatch(newPassword === confirmPassword);
+                            const isWeak = !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(newPassword);
+                            setIsPasswordWeak(isWeak);
+                            if (isWeak) {
+                                setPasswordErrorMessage("Password is too weak.");
+                            } else {
+                                setPasswordErrorMessage("");
+                            }
                         }}
                     />
+                    <br/>
+                    <label htmlFor="confirmPassword">*Confirm Password:</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        required
+                        onChange={(e) => {
+                            setConfirmPassword(e.target.value);
+                            setPasswordsMatch(e.target.value === password);
+                        }}
+                    />
+                    <br/>
+                    <label htmlFor="email">*Email:</label>
                     <input
                         type="text"
-                        placeholder="Email"
+                        id="email"
                         required
                         onChange={(e) => {
                             setEmail(e.target.value)
+                                    const isEmailPatternValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(e.target.value);
+                            setIsEmailValid(isEmailPatternValid);
+                            if (!isEmailPatternValid) {
+                                setEmailErrorMessage("Invalid email address.");
+                            } else {
+                                setEmailErrorMessage("");
+                            }
                         }}
                     />
+                    <br/>
+                    <label htmlFor="phoneNo">*Phone Number:</label>
                     <input
                         type="tel"
                         required
-                        placeholder="Phone Number"
+                        id="phoneNo"
                         pattern ="/^\d{10}$/"
                         onChange={(e) => {
                             setPhoneNo(e.target.value)
+                            const isPhonePatternValid = /^\d{10}$/.test(e.target.value);
+                            setIsPhoneValid(isPhonePatternValid);
+                            if (!isPhonePatternValid) {
+                                setPhoneErrorMessage("Phone number must be 10 digits.");
+                            } else {
+                                setPhoneErrorMessage("");
+                            }
                         }}
                     />
+                    <br/>
+                    <label htmlFor="location">Location:</label>
                     <textarea
                         name=""
-                        id=""
+                        id="location"
                         rows="3"
-                        required
-                        placeholder="Location"
                         onChange={(e) => {
                             setLocation(e.target.value)
                         }}
                     />
-                    <button onClick={login}>Signup</button>
+                    <br/>
+                    <button onClick={login} disabled={!passwordsMatch || isPasswordWeak || password === "" || !isPhoneValid || !isEmailValid}>Signup</button>
                 </div>
+                {showIncompleteFieldsBanner && (
+                    <div className="incomplete-fields-banner">
+                        Please fill out all required (*) fields.
+                    </div>
+                )}
+                {isPasswordWeak && (
+                        <div className="password-banner">
+                            {passwordErrorMessage}
+                        </div>
+                )}
+                {!isPhoneValid && (
+                    <div className="phone-error-banner">
+                        {phoneErrorMessage}
+                    </div>
+                )}
+                {!isEmailValid && (
+                    <div className="email-error-banner">
+                        {emailErrorMessage}
+                    </div>
+                )}
+
             </div>
         </>
     )
