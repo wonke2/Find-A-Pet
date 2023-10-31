@@ -21,7 +21,7 @@ const SPSignup = () => {
     const navigate = useNavigate();
 
     const login = async () => {
-        if (username === "" || password === "" || email === "" || phoneNo === "" || location === "" || orgName === "") {
+        if (username === "" || password === "" || email === "" || phoneNo === "" || orgName === "") {
             setShowIncompleteFieldsBanner(true);
             return;
         }   
@@ -52,7 +52,7 @@ const SPSignup = () => {
             <div className="SP_main_form_signup">
                 <h1>Service Provider Signup</h1>
                 <div className="SP_form_inp">
-                    <label htmlFor="businessName">Business Name:</label>
+                    <label htmlFor="businessName">*Business Name:</label>
                     <input
                         type="text"
                         id="businessName"
@@ -62,7 +62,7 @@ const SPSignup = () => {
                         }}
                     />
                     <br/>
-                    <label htmlFor="organizationName">Organization Name:</label>
+                    <label htmlFor="organizationName">*Organization Name:</label>
                     <input
                         type="text"
                         id="organizationName"
@@ -72,7 +72,7 @@ const SPSignup = () => {
                         }}
                     />
                     <br/>
-                    <label htmlFor="password">Password:</label>
+                    <label htmlFor="password">*Password:</label>
                     <input
                         type="password"
                         id="password"
@@ -91,7 +91,7 @@ const SPSignup = () => {
                         }}
                     />
                     <br/>
-                    <label htmlFor="confirmPassword">Confirm Password:</label>
+                    <label htmlFor="confirmPassword">*Confirm Password:</label>
                     <input
                         type="password"
                         id="confirmPassword"
@@ -102,7 +102,7 @@ const SPSignup = () => {
                         }}
                     />
                     <br/>
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email">*Email:</label>
                     <input
                         type="text"
                         id="email"
@@ -119,7 +119,7 @@ const SPSignup = () => {
                         }}
                     />
                     <br/>
-                    <label htmlFor="phoneNo">Phone Number:</label>
+                    <label htmlFor="phoneNo">*Phone Number:</label>
                     <input
                         type="tel"
                         required
@@ -142,7 +142,6 @@ const SPSignup = () => {
                         name=""
                         id="location"
                         rows="3"
-                        required
                         onChange={(e) => {
                             setLocation(e.target.value)
                         }}
@@ -152,7 +151,7 @@ const SPSignup = () => {
                 </div>
                 {showIncompleteFieldsBanner && (
                     <div className="incomplete-fields-banner">
-                        Please fill out all fields.
+                        Please fill out all required (*) fields.
                     </div>
                 )}
                 {isPasswordWeak && (

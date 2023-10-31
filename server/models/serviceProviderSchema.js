@@ -44,7 +44,7 @@ const serviceProviderSchema = new mongoose.Schema({
         required: true
     },
     orgName: { type: String, required: true},
-    serviceProviderAddress: { type: String, required: true },
+    serviceProviderAddress: { type: String},
     serviceProviderEmail: { type: String, required: true, unique: true },
     serviceProviderPhone: { type: String, required: true, unique: true },
     servicesProvided: [serviceSchema]
