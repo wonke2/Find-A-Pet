@@ -16,7 +16,6 @@ const SPDashboard = () => {
         } else {
             const fetchBookings = async () => {
                 try {
-                    // The backend will decode the token and fetch bookings accordingly
                     const response = await fetch(`/bookings`, {
                         method: 'GET',
                         headers: {
@@ -41,7 +40,14 @@ const SPDashboard = () => {
             <div>
                 {bookings.map(booking => (
                     <div key={booking._id}>
-                        {/* Display booking details here */}
+                        <ul>
+                            <li>Booking ID: {booking._id}</li>
+                            <li>Service ID: {booking.serviceID}</li>
+                            <li>User ID: {booking.userID}</li>
+                            <li>Booking Date: {booking.Date}</li>
+                            <li>Booking Location: {booking.location}</li>
+                            <li>Booking Status: {booking.status}</li>
+                        </ul>
                     </div>
                 ))}
             </div>
