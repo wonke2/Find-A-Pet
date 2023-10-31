@@ -89,9 +89,7 @@ const ServiceListings = () => {
                 <Link to={`/services/${service._id}`} key={service._id}>
                     <div key={service._id} className="service">
                         <h3>{service.serviceName}</h3>
-                        <p>{service.serviceDescription}</p>
                         <small>Location: {service.serviceLocation}</small>
-                        <button /*onClick={BookNow} */>Book Now</button>
                     </div>
                 </Link>
             ))
