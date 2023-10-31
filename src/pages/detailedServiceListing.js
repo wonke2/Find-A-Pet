@@ -49,6 +49,7 @@ const DetailedServiceListing = () => {
                 <p>Organization: {serviceProviderDetails.orgName}</p>
                 <p>Address: {serviceProviderDetails.serviceProviderAddress}</p>
             </div>
+            <button /*onClick={BookNow} */>Book Now</button>
         </div>
     );
 };
