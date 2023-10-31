@@ -36,6 +36,7 @@ const SPDashboard = () => {
     }, [SPtoken, navigate])
     return (
         <div>
+            <h1>Service Provider Dashboard</h1>
             {loading ? <p>Loading...</p> : (
             <div>
                 {bookings.map(booking => (
