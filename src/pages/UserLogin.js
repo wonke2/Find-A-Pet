@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { setLogin } from "../state/authSlice";
 import { useDispatch } from "react-redux";
 import "../styles/UserLogin.css";
+
 const UserLogin = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -25,30 +26,36 @@ const UserLogin = () => {
 		}
 	};
 	return (
-		<div className="main_form">
-			<h1>User Login</h1>
-			<div className="form_inp">
+		<div className="center">
+			<form >
+				<h3>Login Here</h3>
+
+				<label>Username</label>
 				<input
 					type="text"
-					placeholder="Username"
-					onChange={(e) => {
-						setUsername(e.target.value);
+					placeholder="username"
+					id="username"
+					onChange={(event) => {
+						setUsername(event.target.value);
 					}}
 				/>
+
+				<label>Password</label>
 				<input
 					type="password"
 					placeholder="Password"
-					onChange={(e) => {
-						setPassword(e.target.value);
+					id="password"
+					onChange={(event) => {
+						setPassword(event.target.value);
 					}}
 				/>
-				<button className="login_button" onClick={login}>
-					Login
-				</button>
-				<Link to="/splogin" className="nav-element">
-					Service Provider Login
-				</Link>
-			</div>
+
+				<div className="button" onClick={login}>Log In</div>
+				<div className="social">
+					<Link to="/usersignup">Signup</Link>
+					<Link to="/splogin">Service Provider</Link>
+				</div>
+			</form>
 		</div>
 	);
 };
