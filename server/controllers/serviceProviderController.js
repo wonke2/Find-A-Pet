@@ -26,7 +26,7 @@ exports.signUp = async (req, res) => {
     if (err.code === 11000) { // Duplicate key error code from MongoDB
         res.status(400).json({
             status: "fail",
-            message: "Duplicate field value entered."
+            message: "The Business Name, email or phone number is already in use"
         });
     } else {
         res.status(500).json({
