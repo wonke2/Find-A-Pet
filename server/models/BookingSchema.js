@@ -14,14 +14,26 @@ mongoose
 	});
 
 const bookingSchema = new Schema({
-	orderId: { type: Schema.Types.ObjectId, ref: "Order" },
-	userId: { type: Schema.Types.ObjectId, ref: "User" },
-	serviceId: { type: Schema.Types.ObjectId, ref: "Service" },
-	serviceProviderId: { type: Schema.Types.ObjectId, ref: "ServiceProvider" },
-	date: { type: Date, required: true },
-	bookingLocation: { type: String, required: true },
-	bookingStatus: { type: String, required: true },
-}); //hashing password
+	userID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    serviceProviderID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'ServiceProvider', 
+        required: true
+    },
+    serviceID: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Service',
+        required: true
+    },
+    bookingDate: {
+        type: Date,
+        default: Date.now
+    },
+});
 
 const Booking = mongoose.model("Booking", bookingSchema);
 
