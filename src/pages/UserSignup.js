@@ -157,7 +157,7 @@ const UserSignup = () => {
 				<div className="button" onClick={signup}>Signup</div>
 				<div className="social">
 					<Link to="/userlogin"> Login </Link>
-					<Link className="/spsignup"> Service Provider</Link>
+					<Link to="/spsignup"> Service Provider</Link>
 				</div>
 			</form>
 		</div>
