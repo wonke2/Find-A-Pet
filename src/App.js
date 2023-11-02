@@ -16,6 +16,10 @@ import WishList from "./pages/WishList";
 import DetailedServiceListing from "./pages/detailedServiceListing";
 import SPDashboard from "./pages/SPDashboard";
 import UserBooking from './pages/UserBooking';
+import AddService from "./pages/AddService";
+import { Provider } from 'react-redux'
+import { store, persistor } from './state/store'
+import { PersistGate } from 'redux-persist/integration/react'
 
 function App() {
 	const Home = () => {
@@ -27,28 +31,33 @@ function App() {
 	};
 
 	return (
-		<div className="App">
-			<Router>
-				<Navbar />
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/petlistings" element={<PetListings />} />
-					<Route path="/pet/:id" element={<PetDetails />} />
-					<Route path="/userlogin" element={<UserLogin />} />
-					<Route path="/usersignup" element={<UserSignup />} />
-					<Route path="/splogin" element={<SPLogin />} />
-					<Route path="/spsignup" element={<SPSignup />} />
-					<Route path="/user" element={<UserProfile />} />
-					<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
-					<Route path="/services" element={<ServiceListings />} />
-					<Route path="/userdashbord" element={<UserDashbord />} />
-					<Route path="/wishlist" element={<WishList />} />
-					<Route path="/userbooking" element={<UserBooking />} />
-					<Route path="/spdashboard" element={<SPDashboard />} />
-					<Route path="*" element={<Home />} />
-				</Routes>
-			</Router>
-		</div>
+		<Provider store={store}>
+        	<PersistGate loading={null} persistor={persistor}>
+				<div className="App">
+					<Router>
+						<Navbar />
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="/petlistings" element={<PetListings />} />
+							<Route path="/pet/:id" element={<PetDetails />} />
+							<Route path="/userlogin" element={<UserLogin />} />
+							<Route path="/usersignup" element={<UserSignup />} />
+							<Route path="/splogin" element={<SPLogin />} />
+							<Route path="/spsignup" element={<SPSignup />} />
+							<Route path="/user" element={<UserProfile />} />
+							<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
+							<Route path="/services" element={<ServiceListings />} />
+							<Route path="/userdashbord" element={<UserDashbord />} />
+							<Route path="/wishlist" element={<WishList />} />
+							<Route path="/userbooking" element={<UserBooking />} />
+							<Route path="/spdashboard/addservice" element={<AddService />} />
+							<Route path="/spdashboard" element={<SPDashboard />} />
+							<Route path="*" element={<Home />} />
+						</Routes>
+					</Router>
+				</div>
+			</PersistGate>
+		</Provider>
 	);
 }
 

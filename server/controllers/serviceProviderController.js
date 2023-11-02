@@ -56,8 +56,43 @@ exports.logIn = async (req, res) => {
         message: "Invalid password",
       });
     }
-    const SPToken = jwtUtils.createSPToken(serviceP._id); // Use createSPToken to generate the SP-specific token
-    return res.status(200).json({ SPToken }); // Return the SP-specific token
+    
+    const SPToken = jwtUtils.createSPToken(serviceP._id);
+    return res.status(200).json({ status: "success", SPToken });
+  } catch (err) {
+    return res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
+
+exports.addService = async (req, res) => {
+  const { id, name, description, location } = req.body;
+  
+  try {
+    const serviceProvider = await serviceProvider.findById(id);
+    if (!serviceProvider) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Service provider not found",
+      });
+    }
+    const newService = {
+      name,
+      description,
+      location,
+    };
+
+    serviceProvider.servicesProvided.push(newService);
+
+    await serviceProvider.save();
+
+    return res.status(200).json({
+      status: "success",
+      message: "Service added successfully",
+      data: newService,
+    });
   } catch (err) {
     return res.status(500).json({
       status: "fail",
@@ -68,9 +103,9 @@ exports.logIn = async (req, res) => {
 
 exports.getServiceProvider = async (req, res) => {
   try {
-    const { id } = req.params; // Extract the ID from the request parameters
+    const { id } = req.params
 
-    const serviceP = await serviceProvider.findById(id); // Query the database using the ID
+    const serviceP = await serviceProvider.findById(id)
 
     if (!serviceP) {
       return res.status(404).json({

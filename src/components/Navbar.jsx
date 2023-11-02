@@ -6,6 +6,8 @@ const Navbar = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const token = useSelector((state) => state.token);
+	const SPToken = useSelector((state) => state.SPToken)
+	
 	const logout = () => {
 		dispatch(setLogout());
 		navigate("/");
@@ -23,47 +25,50 @@ const Navbar = () => {
 						Pet Listings
 					</Link>
 				</li>
-				{token ? null : (
+				{/* Show "Login" and "Register" links only when no tokens are present */}
+				{!token && !SPToken && (
+					<>
+						<li>
+							<Link to="/userlogin" className="nav-element">
+								Login
+							</Link>
+						</li>
+						<li>
+							<Link to="/usersignup" className="nav-element">
+								Register
+							</Link>
+						</li>
+					</>
+				)}
+				{/* Show "Dashboard" link when an SPToken is present */}
+				{SPToken && (
 					<li>
-						<Link to="/userlogin" className="nav-element">
-							Login
+						<Link to="/spdashboard" className="nav-element">
+							Dashboard
 						</Link>
 					</li>
 				)}
-				{token ? null : (
-					<li>
-						<Link to="/usersignup" className="nav-element">
-							Register
-						</Link>
-					</li>
-				)}
-				{token ? (
-					<li>
-						<Link to="/userdashbord" className="nav-element">
-							dashboard
-						</Link>
-					</li>
-				) : null}
 
 				<li>
 					<Link to="/services" className="nav-element">
 						Services
 					</Link>
 				</li>
-				{token ? (
-					<li>
-						<Link to="/user" className="nav-element">
-							Profile
-						</Link>
-					</li>
-				) : null}
-				{token ? (
-					<li>
-						<p className="nav-element" onClick={logout}>
-							Logout
-						</p>
-					</li>
-				) : null}
+				{/* Show "Profile" and "Logout" links when a token is present */}
+				{token && (
+					<>
+						<li>
+							<Link to="/user" className="nav-element">
+								Profile
+							</Link>
+						</li>
+						<li>
+							<p className="nav-element" onClick={logout}>
+								Logout
+							</p>
+						</li>
+					</>
+				)}
 			</ul>
 		</nav>
 	);
