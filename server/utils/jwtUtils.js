@@ -8,6 +8,11 @@ exports.createToken = (userId) => {
 	return token;
 };
 
+exports.createSPToken = (serviceProviderId) => {
+  const token = jwt.sign({ id: serviceProviderId }, secret, { expiresIn: "7h" });
+  return token;
+}
+
 exports.verifyToken = async (req, res, next) => {
 	try {
 		let token = req.headers.authorization;
