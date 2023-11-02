@@ -12,7 +12,7 @@ const AddService = () => {
 
   const handleAddService = async () => {
     try {
-      const response = await fetch("/addservice", {
+      const response = await fetch("/SPauth/addservice", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
