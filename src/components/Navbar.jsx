@@ -15,9 +15,11 @@ const Navbar = () => {
 
 	return (
 		<nav className="navbar">
-			<Link to={"/userdashbord"} className="logo">
+			<Link to="/" className="logo">
 				<h1>Find-a-Pet</h1>
 			</Link>
+				
+			
 
 			<ul className="nav-items">
 				<li>
@@ -63,9 +65,14 @@ const Navbar = () => {
 							</Link>
 						</li>
 						<li>
-							<p className="nav-element" onClick={logout}>
+							<Link to={"/userdashbord"} className="nav-element">
+								Dashboard
+							</Link>
+						</li>
+						<li>
+							<Link className="nav-element" onClick={logout}>
 								Logout
-							</p>
+							</Link>
 						</li>
 					</>
 				)}
