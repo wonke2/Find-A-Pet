@@ -20,7 +20,7 @@ const SPLogin = () => {
         if (data.status === "fail") {
             alert()
         } else {
-            localStorage.setItem("token", data.token)
+            localStorage.setItem("SPToken", data.SPToken)
             navigate("/serviceProvider")
         }
     }
