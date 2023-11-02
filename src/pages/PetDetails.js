@@ -105,11 +105,7 @@ const PetDetails = () => {
                     {/* Displaying address information if available */}
                     {petDetails.contact.address && (
                         <div>
-                            <p>Address:</p>
-                            <p>{petDetails.contact.address.address1 || ''}</p>
-                            <p>{petDetails.contact.address.address2 || ''}</p>
-                            <p>{petDetails.contact.address.city}, {petDetails.contact.address.state} {petDetails.contact.address.postcode}</p>
-                            <p>{petDetails.contact.address.country}</p>
+                            <p>Address: {petDetails.contact.address.address1 || ''} {petDetails.contact.address.address2 || ''}, {petDetails.contact.address.city}, {petDetails.contact.address.state} {petDetails.contact.address.postcode}, {petDetails.contact.address.country}</p>
                         </div>
                     )}
                 </div>
