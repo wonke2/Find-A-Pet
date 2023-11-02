@@ -24,10 +24,8 @@ const SPLogin = () => {
             alert("Login Failed 1")
         } else {
             if (data.status === 'success' && data.SPToken) {
-                console.log("Setting SPToken in local storage:", data.SPToken);
                 dispatch(setSPToken({ SPToken: data.SPToken }))
                 localStorage.setItem('SPToken', data.SPToken)
-                console.log("SPToken should be set:", localStorage.getItem('SPToken'))
                 navigate('/')
             }
             else {
