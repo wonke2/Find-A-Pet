@@ -1,10 +1,12 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../styles/SPLogin.css"
+import { setSPToken } from '../state/authSlice'
 const SPLogin = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const login = async () => {
         const res = await fetch("/SPauth/SPlogin", {
             method: "POST",
@@ -20,8 +22,10 @@ const SPLogin = () => {
         if (data.status === "fail") {
             alert()
         } else {
-            localStorage.setItem("SPToken", data.SPToken)
-            navigate("/serviceProvider")
+            if (data.status === 'success') {
+                dispatch(setSPToken({ SPToken: data.SPToken }));
+                navigate('/spdashboard');
+            }
         }
     }
     return (
