@@ -24,11 +24,10 @@ const bookingSchema = new Schema({
         ref: 'ServiceProvider', 
         required: true
     },
-    serviceID: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Service',
-        required: true
-    },
+    serviceIndex: {
+		type: Number,
+		required: true
+	},
     bookingDate: {
         type: Date,
         default: Date.now
