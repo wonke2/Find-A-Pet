@@ -13,7 +13,10 @@ router.post("/remove-from-wishlist", jwtUtils.verifyToken, userController.remove
 router.get("/get-wishlist", jwtUtils.verifyToken, userController.getWishlist);
 
 router.post("/bookings", jwtUtils.verifyToken, bookingController.createBooking); // To create a booking
-router.get("/user-bookings", jwtUtils.verifyToken, bookingController.getUserBookings); // To get bookings for a user
+router.get("/user-bookings", jwtUtils.verifyToken, bookingController.getUserBookings);
+router.get("/user-bookings/:userID", jwtUtils.verifyToken, bookingController.getUserBookings); // To get bookings for a user
+
+ // To get bookings for a user
 
 
 module.exports = router;
