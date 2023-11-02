@@ -2,16 +2,19 @@ import React from "react"
 import "../styles/SPDash.css"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from 'react-redux'
+import { setLogout } from '../state/authSlice'
 
 const SPDashboard = () => {
     const navigate = useNavigate()
     const [bookings, setBookings] = useState([])
     const [services, servicesProvided] = useState([]) 
-    const [SPtoken, setSPToken] = useState(localStorage.getItem("token"))
+    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"))
     const [loading, setLoading] = useState(true)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        if (!SPtoken) {
+        if (!SPToken) {
             navigate("/splogin")
         } else {
             const fetchBookings = async () => {
@@ -19,7 +22,7 @@ const SPDashboard = () => {
                     const response = await fetch(`/bookings`, {
                         method: 'GET',
                         headers: {
-                            'Authorization': `Bearer ${SPtoken}`
+                            'Authorization': `Bearer ${SPToken}`
                         }
                     })
                     const data = await response.json()
@@ -33,7 +36,11 @@ const SPDashboard = () => {
 
             fetchBookings()
         }
-    }, [SPtoken, navigate])
+    }, [SPToken, navigate])
+     const handleLogout = () => {
+        dispatch(setLogout());
+        navigate('/splogin');
+    }
     return (
         <div>
             <h1>Service Provider Dashboard</h1>
@@ -53,6 +60,7 @@ const SPDashboard = () => {
                 ))}
             </div>
             )}
+            <button onClick={handleLogout}>Logout</button>
         </div>
     );
 }
