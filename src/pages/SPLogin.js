@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "../styles/SPLogin.css"
 import { setSPToken } from '../state/authSlice'
+import { useDispatch } from "react-redux"
 const SPLogin = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
