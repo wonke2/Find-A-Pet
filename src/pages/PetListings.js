@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/PetListings.css';
+import { FaFilter } from 'react-icons/fa';
 
 const PetListings = () => {
   // State variables to hold data and UI states
@@ -248,7 +249,9 @@ const PetListings = () => {
 
       <div className="main-content">
         <div className="top-bar">
-          <button className="filter-button" onClick={toggleFilters}>Filter</button>
+          <button className="filter-button" onClick={toggleFilters}>
+          <FaFilter /> Filter
+          </button>
           <div className="search">
             <form onSubmit={handleSubmitSearch}>
               <input
@@ -264,34 +267,35 @@ const PetListings = () => {
 
 
         {/* Button to toggle between map and list view */}
-        <button onClick={() => setMapView(!mapView)}>
+        <button className="map-btn" onClick={() => setMapView(!mapView)}>
           {mapView ? 'Show Listings' : 'Show Map'}
         </button>
 
-        {mapView ? (
-          <div id="map" style={{ height: '500px', width: '100%' }}></div>
-        ) : (
-          pets.map((pet) => {
-            const imageUrl = pet.photos && pet.photos[0]?.medium
-              ? pet.photos[0].medium
-              : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+        <div id="map" style={{ height: '500px', width: '100%', display: mapView ? 'block' : 'none' }}></div>
 
-            return (
-              <div key={pet.id}>
-                <img
-                  src={imageUrl}
-                  alt={pet.name}
-                  style={{ width: '200px', height: 'auto' }}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-                  }} />
-                <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
-              </div>
-            );
-          })
-        )}
-      </div></>
+            <div className="pet-card" style={{ display: mapView ? 'none' : 'grid' }}>
+            
+            {pets.map((pet) => {
+              const imageUrl = pet.photos && pet.photos[0]?.medium
+                ? pet.photos[0].medium
+                : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+
+              return (
+                <div key={pet.id} className="pet-listing-item">
+                  <img
+                    src={imageUrl}
+                    alt={pet.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+                    }} />
+                  <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
+                </div>
+              );
+            })}
+          </div>
+      </div>
+    </>
   );
 }
 
