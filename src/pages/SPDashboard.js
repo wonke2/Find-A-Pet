@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom"; // Import Link
 import "../styles/SPDash.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../state/authSlice';
 
@@ -13,6 +13,7 @@ const SPDashboard = () => {
     const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
+    const [serviceProvider, setServiceProvider] = useState(null);
 
     useEffect(() => {
         if (!SPToken) {
@@ -35,6 +36,32 @@ const SPDashboard = () => {
                 }
             }
 
+            const fetchServiceProviderDetails = async () => {
+                try {
+                    const response = await fetch(`/SPauth/SPuser/`, {
+                        method: "GET",
+                        headers: {
+                        Authorization: `Bearer ${SPToken}`,
+                        },
+                    });
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = await response.json();
+                        if (data.status === "success") {
+                            setServiceProvider(data.data);
+                        } else {
+                            console.error("Failed to retrieve service provider details:", data.message);
+                        }
+                    }
+                    else {
+                        console.error("Unexpected response content type");
+                    }
+                } catch (error) {
+                console.error("Error retrieving service provider details:", error);
+                }
+            };
+
+            fetchServiceProviderDetails();
             fetchBookings();
         }
     }, [SPToken, navigate]);
@@ -47,7 +74,22 @@ const SPDashboard = () => {
     return (
         <div>
             <h1>Service Provider Dashboard</h1>
-            <Link to="/spdashboard/addservice">Add a Service</Link> {/* Add the link */}
+            <Link to="/spdashboard/addservice">Add a Service</Link>
+                <div>
+                    <h1>Service Provider Details</h1>
+                    {serviceProvider ? (
+                        <div>
+                        <p>Service Provider Name: {serviceProvider.serviceProviderName}</p>
+                        <p>Organization Name: {serviceProvider.orgName}</p>
+                        <p>Service Provider Address: {serviceProvider.serviceProviderAddress}</p>
+                        <p>Service Provider Email: {serviceProvider.serviceProviderEmail}</p>
+                        <p>Service Provider Phone: {serviceProvider.serviceProviderPhone}</p>
+                        {/* Display other details as needed */}
+                        </div>
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+                </div>
             {loading ? <p>Loading...</p> : (
             <div>
                 {bookings.map(booking => (
