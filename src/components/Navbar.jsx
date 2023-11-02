@@ -15,7 +15,10 @@ const Navbar = () => {
 
 	return (
 		<nav className="navbar">
+			<Link to="/" className="logo">
 				<h1>Find-a-Pet</h1>
+			</Link>
+				
 			
 
 			<ul className="nav-items">
@@ -67,9 +70,9 @@ const Navbar = () => {
 							</Link>
 						</li>
 						<li>
-							<p className="nav-element" onClick={logout}>
+							<Link className="nav-element" onClick={logout}>
 								Logout
-							</p>
+							</Link>
 						</li>
 					</>
 				)}
