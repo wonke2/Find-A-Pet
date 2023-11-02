@@ -15,9 +15,8 @@ const Navbar = () => {
 
 	return (
 		<nav className="navbar">
-			<Link to={"/userdashbord"} className="logo">
 				<h1>Find-a-Pet</h1>
-			</Link>
+			
 
 			<ul className="nav-items">
 				<li>
@@ -60,6 +59,11 @@ const Navbar = () => {
 						<li>
 							<Link to="/user" className="nav-element">
 								Profile
+							</Link>
+						</li>
+						<li>
+							<Link to={"/userdashbord"} className="nav-element">
+								Dashboard
 							</Link>
 						</li>
 						<li>
