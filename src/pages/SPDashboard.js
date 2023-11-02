@@ -1,21 +1,22 @@
-import React from "react"
-import "../styles/SPDash.css"
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import { useDispatch } from 'react-redux'
-import { setLogout } from '../state/authSlice'
+import React from "react";
+import { Link } from "react-router-dom"; // Import Link
+import "../styles/SPDash.css";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setLogout } from '../state/authSlice';
 
 const SPDashboard = () => {
-    const navigate = useNavigate()
-    const [bookings, setBookings] = useState([])
-    const [services, servicesProvided] = useState([]) 
-    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"))
-    const [loading, setLoading] = useState(true)
-    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const [bookings, setBookings] = useState([]);
+    const [services, servicesProvided] = useState([]); 
+    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (!SPToken) {
-            navigate("/splogin")
+            navigate("/splogin");
         } else {
             const fetchBookings = async () => {
                 try {
@@ -24,26 +25,29 @@ const SPDashboard = () => {
                         headers: {
                             'Authorization': `Bearer ${SPToken}`
                         }
-                    })
-                    const data = await response.json()
-                    setBookings(data)
-                    setLoading(false)
+                    });
+                    const data = await response.json();
+                    setBookings(data);
+                    setLoading(false);
                 } catch (error) {
-                    console.error("Error fetching bookings:", error)
-                    setLoading(false)
+                    console.error("Error fetching bookings:", error);
+                    setLoading(false);
                 }
             }
 
-            fetchBookings()
+            fetchBookings();
         }
-    }, [SPToken, navigate])
-     const handleLogout = () => {
+    }, [SPToken, navigate]);
+
+    const handleLogout = () => {
         dispatch(setLogout());
         navigate('/splogin');
     }
+
     return (
         <div>
             <h1>Service Provider Dashboard</h1>
+            <Link to="/spdashboard/addservice">Add a Service</Link> {/* Add the link */}
             {loading ? <p>Loading...</p> : (
             <div>
                 {bookings.map(booking => (
