@@ -67,6 +67,40 @@ exports.logIn = async (req, res) => {
   }
 };
 
+exports.addService = async (req, res) => {
+  const { id, name, description, location } = req.body;
+  
+  try {
+    const serviceProvider = await serviceProvider.findById(id);
+    if (!serviceProvider) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Service provider not found",
+      });
+    }
+    const newService = {
+      name,
+      description,
+      location,
+    };
+
+    serviceProvider.servicesProvided.push(newService);
+
+    await serviceProvider.save();
+
+    return res.status(200).json({
+      status: "success",
+      message: "Service added successfully",
+      data: newService,
+    });
+  } catch (err) {
+    return res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
+
 exports.getServiceProvider = async (req, res) => {
   try {
     const { id } = req.params
