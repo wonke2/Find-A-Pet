@@ -21,11 +21,17 @@ const SPLogin = () => {
         })
         const data = await res.json()
         if (data.status === "fail") {
-            alert()
+            alert("Login Failed 1")
         } else {
-            if (data.status === 'success') {
-                dispatch(setSPToken({ SPToken: data.SPToken }));
-                navigate('/spdashboard');
+            if (data.status === 'success' && data.SPToken) {
+                console.log("Setting SPToken in local storage:", data.SPToken);
+                dispatch(setSPToken({ SPToken: data.SPToken }))
+                localStorage.setItem('SPToken', data.SPToken)
+                console.log("SPToken should be set:", localStorage.getItem('SPToken'))
+                navigate('/')
+            }
+            else {
+                alert("Login Failed 2", data.SPToken, " ", data.status, " ", data.message)
             }
         }
     }
