@@ -53,7 +53,6 @@ const DetailedServiceListing = () => {
         }
     }, [authTokenFromRedux]);
     
-    
 
     const bookService = async () => {
         if (!authTokenFromRedux) {
@@ -67,6 +66,14 @@ const DetailedServiceListing = () => {
         }
     
         try {
+            const serviceIndex = serviceProviderDetails.servicesProvided.findIndex(
+                service => service.serviceName === serviceDetails.serviceName
+            );
+    
+            if (serviceIndex === -1) {
+                throw new Error('Service not found in provider list.');
+            }
+    
             const response = await fetch("http://localhost:3000/auth/bookings", { 
                 method: "POST",
                 headers: {
@@ -76,7 +83,7 @@ const DetailedServiceListing = () => {
                 body: JSON.stringify({
                     userID: user._id,
                     serviceProviderID: serviceProviderDetails.id,
-                    serviceID: serviceDetails._id 
+                    serviceIndex
                 })
             });
     
