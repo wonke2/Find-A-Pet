@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const DetailedServiceListing = () => {
     const { serviceID } = useParams();
     const [serviceDetails, setServiceDetails] = useState(null);
     const [serviceProviderDetails, setServiceProviderDetails] = useState(null);
-    
+    const [user, setUser] = useState(null);
+    const authTokenFromRedux = useSelector((state) => state.token);
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetch(`/api/services/${serviceID}`)
             .then(response => response.json())
@@ -31,6 +35,63 @@ const DetailedServiceListing = () => {
         }
     }, [serviceDetails]);
 
+    
+
+    useEffect(() => {
+        if (authTokenFromRedux) {
+            fetch("http://localhost:3000/auth/user", {
+                headers: {
+                    Authorization: `Bearer ${authTokenFromRedux}`,
+                },
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.status !== "fail") {
+                    setUser(data.data);
+                }
+            });
+        }
+    }, [authTokenFromRedux]);
+    
+    
+
+    const bookService = async () => {
+        if (!authTokenFromRedux) {
+            alert("Please login to book this service!");
+            return;
+        }
+    
+        if (!user) {
+            alert("User information not loaded. Please try again.");
+            return;
+        }
+    
+        try {
+            const response = await fetch("http://localhost:3000/auth/bookings", { 
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${authTokenFromRedux}`
+                },
+                body: JSON.stringify({
+                    userID: user._id,
+                    serviceProviderID: serviceProviderDetails.id,
+                    serviceID: serviceDetails._id 
+                })
+            });
+    
+            const data = await response.json();
+            if (data.status === "fail") {
+                alert(data.message);
+            } else {
+                alert("Service booked successfully!");
+            }
+        } catch (error) {
+            console.error("There was an error booking the service!", error);
+        }
+    };
+    
+
 
     if (!serviceDetails || !serviceProviderDetails) {
         return <p>Loading...</p>;
@@ -49,7 +110,7 @@ const DetailedServiceListing = () => {
                 <p>Organization: {serviceProviderDetails.orgName}</p>
                 <p>Address: {serviceProviderDetails.serviceProviderAddress}</p>
             </div>
-            <button /*onClick={BookNow} */>Book Now</button>
+            <button onClick={bookService}>Book Now</button>
         </div>
     );
 };
