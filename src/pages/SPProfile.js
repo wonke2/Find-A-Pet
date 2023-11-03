@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { setLogout } from '../state/authSlice';
 import { useDispatch } from 'react-redux';
@@ -50,6 +51,7 @@ const SPProfile = () => {
     return (
         <div>
             <h1>Service Provider Profile</h1>
+            <Link to="/spdashboard">Dashboard</Link>
             <div>
                 {serviceProvider ? (
                     <>
