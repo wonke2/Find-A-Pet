@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ServiceProviderServices = () => {
   const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
@@ -16,7 +17,7 @@ const ServiceProviderServices = () => {
 
         if (response.ok) {
           const data = await response.json();
-          setServices(data);
+          setServices(data.data);
         } else {
           console.error("Failed to fetch services");
         }
@@ -34,7 +35,7 @@ const ServiceProviderServices = () => {
       <ul>
         {services.map((service) => (
           <li key={service._id}>
-            <strong>Service Name:</strong> {service.serviceName}<br />
+            <h2>{service.serviceName}<br /></h2>
             <strong>Service Description:</strong> {service.serviceDescription}<br />
             <strong>Service Location:</strong> {service.serviceLocation}<br />
           </li>
