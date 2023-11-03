@@ -1,0 +1,49 @@
+/* UserBookings Container */
+.user-bookings-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: antiquewhite;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.user-bookings-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Booking Cards */
+.booking-card {
+    background-color: #f7f7f7;
+    border: 1px solid #e1e1e1;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.booking-card p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Date Styling */
+.booking-date {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-bookings-container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .booking-card p {
+        font-size: 14px;
+    }
+}
