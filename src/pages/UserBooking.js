@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 
 const UserBookings = () => {
     const [bookings, setBookings] = useState([]);
     const [userID, setUserID] = useState(null);
     const token = useSelector((state) => state.token);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (token) {
+        if (!token) {
+            // If there's no token, redirect to the login page.
+            navigate('/userlogin');
+        } else {
             // Firstly, fetch the user details
             fetch("http://localhost:3000/auth/user", {
                 headers: {
@@ -29,7 +35,7 @@ const UserBookings = () => {
             .then((data) => setBookings(data))
             .catch((error) => console.error("Error fetching user bookings:", error));
         }
-    }, [token]);
+    }, [token, navigate]);
 
     return (
         <div>
