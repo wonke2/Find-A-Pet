@@ -78,7 +78,7 @@ const Navbar = () => {
 							</Link>
 						</li>
 						<li>
-							<Link to={"/userdashbord"} className="nav-element">
+							<Link to={"/userdashboard"} className="nav-element">
 								Dashboard
 							</Link>
 						</li>
