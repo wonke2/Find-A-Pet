@@ -53,6 +53,29 @@ const SPBooking = () => {
         }
     }, []);
 
+    const removeBooking = (bookingId) => {
+        const SPToken = localStorage.getItem('SPToken');
+        fetch(`/SPAuth/bookings/${bookingId}`, {
+            method: 'DELETE',
+            headers: {
+                "Authorization": `Bearer ${SPToken}`,
+                "Content-Type": "application/json",
+            },
+        })
+        .then(res => res.json())
+        .then(response => {
+            if (response.status === 'success') {
+                // Remove the deleted booking from the state to update the UI
+                setBookings(bookings.filter(booking => booking._id !== bookingId));
+                console.log('Booking removed successfully');
+            } else {
+                console.error('Failed to remove booking:', response.message);
+            }
+        })
+        .catch(error => console.error('Error deleting booking:', error));
+    };
+    
+
     // Render the bookings
     return (
         <div>
@@ -70,11 +93,13 @@ const SPBooking = () => {
                             <li>User Email: {booking.userID && booking.userID.email}</li>
                             <li>Booking Date: {booking.bookingDate && new Date(booking.bookingDate).toLocaleDateString()}</li>
                         </ul>
+                        <button onClick={() => removeBooking(booking._id)}>Remove Booking</button>
                     </div>
                 ))
             ) : (
                 <p>No bookings found.</p>
             )}
+            
         </div>
     );
 };
