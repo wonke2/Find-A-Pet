@@ -7,8 +7,7 @@ const AddService = () => {
   const [serviceName, setServiceName] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
   const [serviceLocation, setServiceLocation] = useState("");
-  const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
-  const dispatch = useDispatch();
+  const SPToken = useState(localStorage.getItem("SPToken"));
 
   const handleAddService = async () => {
     try {

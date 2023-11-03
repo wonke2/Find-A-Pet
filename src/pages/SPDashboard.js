@@ -1,16 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import "../styles/SPDash.css";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../state/authSlice';
 
 const SPDashboard = () => {
     const navigate = useNavigate();
     const [bookings, setBookings] = useState([]);
-    const [services, servicesProvided] = useState([]); 
-    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const SPToken = useState(localStorage.getItem("SPToken"));
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const [serviceProvider, setServiceProvider] = useState(null);
