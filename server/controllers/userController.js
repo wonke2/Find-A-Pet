@@ -77,7 +77,7 @@ exports.addToWishlist = async (req, res) => {
 
 		// Check if the pet is already in the wishlist
 		const user = await User.findById(req.user._id);
-		if (user.wishlist.some((pet) => pet.petID === petID)) {
+		if (user.wishlist.some((pet) => pet.petID == petID)) {
 			return res
 				.status(400)
 				.json({ status: "fail", message: "Pet already in wishlist" });
