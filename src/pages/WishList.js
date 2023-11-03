@@ -14,7 +14,7 @@ const Wishlist = () => {
                     "Authorization": `Bearer ${token}`
                 }
             });
-    
+
             const data = await response.json();
             if (data.status === "success") {
                 setWishlist(data.wishlist);
@@ -22,7 +22,7 @@ const Wishlist = () => {
                 alert(data.message);
             }
         };
-    
+
         fetchWishlist();
     }, [token]); // Added token as a dependency since it's being used inside useEffect
 
@@ -50,9 +50,9 @@ const Wishlist = () => {
             <ul>
                 {wishlist.map(pet => (
                     <li key={pet.petID}>
-                        <Link to={`/pet/${pet.petID}`}>{pet.petName}</Link>
                         <img src={pet.petImage || 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg'} alt={pet.petName}
-                style={{ width: '200px', height: 'auto' }}/>
+                            style={{ width: '200px', height: 'auto' }} />
+                        <Link to={`/pet/${pet.petID}`}>{pet.petName}</Link>
                         <button onClick={() => removeFromWishlist(pet.petID)}>Remove</button>
                     </li>
                 ))}
