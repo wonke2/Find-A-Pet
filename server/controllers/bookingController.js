@@ -46,10 +46,26 @@ exports.getServiceProviderBookings = async (req, res) => {
     try {
         const { serviceProviderID } = req.params;
 
-        const bookings = await Booking.find({ serviceProviderID }).populate('serviceID', 'serviceName').populate('userID', 'userName');
+        const bookings = await Booking.find({ serviceProviderID })
+            .populate('userID', 'username email')
+            .populate('serviceProviderID', 'servicesProvided'); // Populate only serviceProviderID.
 
-        res.status(200).json(bookings);
+        // Now, use serviceIndex to get the service from the populated serviceProviderID.
+        const modifiedBookings = bookings.map(booking => {
+            const service = booking.serviceProviderID.servicesProvided[booking.serviceIndex];
+            return {
+                ...booking.toObject(), // Use toObject() to convert the mongoose document into a plain object.
+                service, // Add the service information.
+                userName: booking.userID.userName, // Add user's name.
+                userEmail: booking.userID.userEmail // Add user's email.
+            };
+        });
+
+        res.status(200).json(modifiedBookings);
     } catch (error) {
+        console.error("Error in getServiceProviderBookings:", error);
         res.status(500).json({ error: error.message });
     }
 };
+
+
