@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
+import "../styles/SPBooking.css";
 
 const SPBooking = () => {
     const [bookings, setBookings] = useState([]);
