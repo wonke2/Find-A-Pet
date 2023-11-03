@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/UserBooking.css';
 
 
@@ -41,6 +41,7 @@ const UserBookings = () => {
 
     return (
         <div className="user-bookings-container">
+            <Link to="/userdashboard" className="userdashboard-link">Back to Dashboard</Link>
             <h2>Your Bookings:</h2>
             {bookings.map((booking, index) => (
                 <div key={index} className="booking-card">
