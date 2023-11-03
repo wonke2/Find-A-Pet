@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link
+import { Link } from "react-router-dom";
 import "../styles/SPDash.css";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setLogout } from '../state/authSlice';
 
