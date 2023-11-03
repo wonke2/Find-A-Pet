@@ -73,7 +73,7 @@ const SPDashboard = () => {
     return (
         <div>
             <h1>Service Provider Dashboard</h1>
-            <Link to="/spdashboard/addservice">Add a Service</Link>
+            <Link to="/spdashboard/sp-services">View Services</Link>
                 <div>
                     <h1>Service Provider Details</h1>
                     {serviceProvider ? (
