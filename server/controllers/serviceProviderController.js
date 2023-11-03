@@ -69,9 +69,7 @@ exports.logIn = async (req, res) => {
 
 exports.getServiceProvider = async (req, res) => {
   try {
-    const id  = req.user._id
-
-    const serviceP = await serviceProvider.findById(id)
+    const serviceP = req.user
 
     if (!serviceP) {
       return res.status(404).json({
@@ -93,7 +91,7 @@ exports.getServiceProvider = async (req, res) => {
 };
 
 exports.addService = async (req, res) => {
-  const serviceProviderId = req.user._id;
+  const serviceP = req.user;
   const {
     serviceName,
     serviceDescription,
@@ -101,8 +99,6 @@ exports.addService = async (req, res) => {
   } = req.body;
 
   try {
-    const serviceP = await serviceProvider.findById(serviceProviderId);
-
     if (!serviceP) {
       return res.status(404).json({
         status: 'fail',
@@ -135,7 +131,7 @@ exports.addService = async (req, res) => {
 
 exports.getServices = async (req, res) => {
   try {
-    const serviceP = req.user._id;
+    const serviceP = req.user;
 
     if (!serviceP) {
       return res.status(404).json({
