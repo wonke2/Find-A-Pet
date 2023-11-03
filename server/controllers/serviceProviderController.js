@@ -67,43 +67,9 @@ exports.logIn = async (req, res) => {
   }
 };
 
-exports.addService = async (req, res) => {
-  const { id, name, description, location } = req.body;
-  
-  try {
-    const serviceProvider = await serviceProvider.findById(id);
-    if (!serviceProvider) {
-      return res.status(404).json({
-        status: "fail",
-        message: "Service provider not found",
-      });
-    }
-    const newService = {
-      name,
-      description,
-      location,
-    };
-
-    serviceProvider.servicesProvided.push(newService);
-
-    await serviceProvider.save();
-
-    return res.status(200).json({
-      status: "success",
-      message: "Service added successfully",
-      data: newService,
-    });
-  } catch (err) {
-    return res.status(500).json({
-      status: "fail",
-      message: err.message,
-    });
-  }
-};
-
 exports.getServiceProvider = async (req, res) => {
   try {
-    const { id } = req.params
+    const id  = req.user._id
 
     const serviceP = await serviceProvider.findById(id)
 
@@ -122,6 +88,52 @@ exports.getServiceProvider = async (req, res) => {
     return res.status(500).json({
       status: "fail",
       message: err.message,
+    });
+  }
+};
+
+exports.addService = async (req, res) => {
+  const serviceProviderId = req.user._id;
+  const {
+    serviceName,
+    serviceDescription,
+    serviceLocation
+  } = req.body;
+
+  try {
+    // Find the logged-in SP by ID
+    const serviceP = await serviceProvider.findById(serviceProviderId);
+
+    if (!serviceP) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Service provider not found',
+      });
+    }
+
+    // Create a new service object
+    const newService = {
+      serviceProviderName: serviceP.serviceProviderName,
+      serviceName,
+      serviceDescription,
+      serviceLocation,
+    };
+
+    // Push the new service to the servicesProvided array
+    serviceP.servicesProvided.push(newService);
+
+    // Save the updated service provider document
+    await serviceP.save();
+
+    res.status(201).json({
+      status: 'success',
+      data: newService,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      status: 'fail',
+      message: 'Failed to add a new service',
     });
   }
 };
