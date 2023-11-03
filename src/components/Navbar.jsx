@@ -44,11 +44,18 @@ const Navbar = () => {
 				)}
 				{/* Show "Dashboard" link when an SPToken is present */}
 				{SPToken && (
-					<li>
-						<Link to="/spdashboard" className="nav-element">
-							Profile
-						</Link>
-					</li>
+					<>
+						<li>
+							<Link to="/serviceprovider">
+								Profile
+							</Link>
+						</li>
+						<li>
+							<Link to="/spdashboard" className="nav-element">
+								Dashboard
+							</Link>
+						</li>
+					</>
 				)}
 
 				<li>
@@ -69,6 +76,10 @@ const Navbar = () => {
 								Dashboard
 							</Link>
 						</li>
+					</>
+				)}
+				{token || SPToken && (
+					<>
 						<li>
 							<Link className="nav-element" onClick={logout}>
 								Logout
