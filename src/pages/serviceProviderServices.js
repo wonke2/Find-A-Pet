@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
 
 const ServiceProviderServices = () => {
   const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
@@ -29,6 +30,42 @@ const ServiceProviderServices = () => {
     fetchServices();
   }, [SPToken]);
 
+    const handleDeleteService = (serviceId) => {
+    confirmAlert({
+      title: "Confirm Deletion",
+      message: "Are you sure you want to delete this service?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            fetch(`/SPAuth/services/${serviceId}`, {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${SPToken}`,
+              },
+            })
+              .then((response) => {
+                if (response.ok) {
+                  console.log("Service deleted successfully");
+                  window.location.reload();
+                } else {
+                  console.error("Failed to delete service");
+                }
+              })
+              .catch((error) => {
+                console.error("Error deleting service:", error);
+              });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {
+          },
+        },
+      ],
+    });
+  };
+
   return (
     <div>
       <h1>Your Services</h1>
@@ -38,6 +75,7 @@ const ServiceProviderServices = () => {
             <h2>{service.serviceName}<br /></h2>
             <strong>Service Description:</strong> {service.serviceDescription}<br />
             <strong>Service Location:</strong> {service.serviceLocation}<br />
+            <button onClick={() => handleDeleteService(service._id)}>Delete Service</button>
           </li>
         ))}
           </ul>
