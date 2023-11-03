@@ -1,42 +1,73 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { setLogout } from '../state/authSlice';
+import { useDispatch } from 'react-redux';
+
 
 const SPProfile = () => {
-    const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState(null)
+    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const [serviceProvider, setServiceProvider] = useState(null);
     const navigate = useNavigate()
+    const dispatch = useDispatch();
+
+    const handleLogout = () => {
+        dispatch(setLogout());
+        navigate('/splogin');
+    }
+
     useEffect(() => {
-        const token = localStorage.getItem("token")
-        if (!token) {
-            navigate("/SPlogin")
+        if (!SPToken) {
+            navigate("/splogin");
         } else {
-            fetch("/SPauth/sp", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data.status === "fail") {
-                        navigate("/splogin")
+            const fetchServiceProviderDetails = async () => {
+                try {
+                    const response = await fetch(`/SPauth/SPuser/`, {
+                        method: "GET",
+                        headers: {
+                            'Authorization': `Bearer ${SPToken}`,
+                        },
+                    });
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.includes("application/json")) {
+                        const data = await response.json();
+                        if (data.status === "success") {
+                            setServiceProvider(data.data);
+                        } else {
+                            console.error("Failed to retrieve service provider details:", data.message);
+                        }
                     } else {
-                        setUser(data.data)
-                        setLoading(false)
+                        console.error("Unexpected response content type");
                     }
-                })
+                } catch (error) {
+                    console.error("Error retrieving service provider details:", error);
+                }
+            };
+
+            fetchServiceProviderDetails();
         }
-    }, [navigate])
-    console.log(user)
-    return loading ? (
-        <h1>Loading...</h1>
-    ) : (
+    }, [SPToken, navigate]);
+
+    return (
         <div>
             <h1>Service Provider Profile</h1>
-            <h2>Service Provider Name: {user.serviceProviderName}</h2>
-            <h2>Organization Name: {user.orgName}</h2>
-            <h2>Address: {user.serviceProviderAddress}</h2>
-            <h2>Email: {user.serviceProviderEmail}</h2>
-            <h2>Phone No: {user.serviceProviderPhone}</h2>
+            <div>
+                {serviceProvider ? (
+                    <>
+                    <h2>Welcome Back! {serviceProvider.serviceProviderName}</h2>
+                        <div>
+                            <p>Organization: {serviceProvider.orgName}</p>
+                            <p>Address: {serviceProvider.serviceProviderAddress}</p>
+                            <p>Email: {serviceProvider.serviceProviderEmail}</p>
+                            <p>Phone Number: {serviceProvider.serviceProviderPhone}</p>
+                        </div>
+                    </>
+                ) : (
+                    <p>Loading service provider details...</p>
+                )}
+            </div>
+            <button onClick={handleLogout}>Logout</button>
         </div>
-    )
+    );
 }
+
+export default SPProfile;
