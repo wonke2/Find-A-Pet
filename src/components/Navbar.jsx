@@ -56,6 +56,11 @@ const Navbar = () => {
 								Dashboard
 							</Link>
 						</li>
+						<li>
+							<Link className="nav-element" onClick={logout}>
+								Logout
+							</Link>
+						</li>
 					</>
 				)}
 
@@ -77,10 +82,6 @@ const Navbar = () => {
 								Dashboard
 							</Link>
 						</li>
-					</>
-				)}
-				{token || SPToken && (
-					<>
 						<li>
 							<Link className="nav-element" onClick={logout}>
 								Logout
@@ -88,6 +89,7 @@ const Navbar = () => {
 						</li>
 					</>
 				)}
+				
 			</ul>
 		</nav>
 	);
