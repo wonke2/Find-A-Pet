@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setLogin } from "../state/authSlice";
 import { useDispatch } from "react-redux";
-import "../styles/UserLogin.css";
+import styles from "../styles/UserLogin.module.css";
 
 const UserLogin = () => {
 	const [username, setUsername] = useState("");
@@ -26,7 +26,7 @@ const UserLogin = () => {
 		}
 	};
 	return (
-		<div className="center">
+		<div className={styles.center}>
 			<form >
 				<h3>Login Here</h3>
 
@@ -50,8 +50,8 @@ const UserLogin = () => {
 					}}
 				/>
 
-				<div className="button" onClick={login}>Log In</div>
-				<div className="social">
+				<div className={styles.button} onClick={login}>Log In</div>
+				<div className={styles.social}>
 					<Link to="/usersignup">Signup</Link>
 					<Link to="/splogin">Service Provider</Link>
 				</div>
