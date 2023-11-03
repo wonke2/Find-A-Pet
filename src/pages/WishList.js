@@ -1,30 +1,55 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import useNavigate from react-router-dom
 import { useSelector } from "react-redux";
 import '../styles/WishList.css';
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
-    const token = useSelector((state) => state.token); // Retrieve the token outside useEffect and functions
+    const navigate = useNavigate(); // Create a navigate function
+    const token = useSelector((state) => state.token);
 
     useEffect(() => {
         const fetchWishlist = async () => {
-            const response = await fetch("http://localhost:3000/auth/get-wishlist", {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            });
+            if (!token) {
+                // If there's no token, redirect to the login page
+                navigate('/userlogin');
+                return;
+            }
 
-            const data = await response.json();
-            if (data.status === "success") {
-                setWishlist(data.wishlist);
-            } else {
-                alert(data.message);
+            try {
+                const response = await fetch("http://localhost:3000/auth/get-wishlist", {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        // If the response status is 401, it means the token is no longer valid
+                        navigate('/userlogin');
+                        return;
+                    }
+                    throw new Error('Network response was not ok.');
+                }
+
+                const data = await response.json();
+                if (data.status === "success") {
+                    setWishlist(data.wishlist);
+                } else {
+                    // If the token is not valid (e.g., expired), navigate to the login page
+                    if (data.message === 'Token is not valid') {
+                        navigate('/userlogin');
+                    } else {
+                        alert(data.message);
+                    }
+                }
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
             }
         };
 
         fetchWishlist();
-    }, [token]); // Added token as a dependency since it's being used inside useEffect
+    }, [token, navigate]); // Added token as a dependency since it's being used inside useEffect
 
     const removeFromWishlist = async (petID) => {
         const response = await fetch("http://localhost:3000/auth/remove-from-wishlist", {
