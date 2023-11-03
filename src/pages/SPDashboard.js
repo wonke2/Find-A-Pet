@@ -9,7 +9,6 @@ import { setLogout } from '../state/authSlice';
 const SPDashboard = () => {
     const navigate = useNavigate();
     const [bookings, setBookings] = useState([]);
-    const [services, servicesProvided] = useState([]); 
     const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
