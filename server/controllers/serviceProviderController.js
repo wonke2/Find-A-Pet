@@ -153,4 +153,32 @@ exports.getServices = async (req, res) => {
       message: 'Failed to fetch services',
     });
   }
-}
+};
+
+exports.deleteService = async (req, res) => {
+  try {
+    const { serviceId } = req.params;
+    const serviceP = req.user;
+
+    if (!serviceP) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Service provider not found',
+      });
+    }
+
+    serviceP.servicesProvided.pull(serviceId);
+    await serviceP.save();
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Service deleted successfully',
+    });
+  } catch (error) {
+    console.error('Error deleting service:', error.message);
+    res.status(500).json({
+      status: 'fail',
+      message: 'Failed to delete service',
+    });
+  }
+};

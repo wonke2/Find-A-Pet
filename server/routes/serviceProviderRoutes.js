@@ -11,5 +11,6 @@ router.get('/SPuser', jwtUtils.SPverifyToken, serviceProviderController.getServi
 router.get('/SP-bookings', jwtUtils.SPverifyToken, bookingController.getServiceProviderBookings); // To get bookings for a service provider
 router.post('/addservice', jwtUtils.SPverifyToken, serviceProviderController.addService);
 router.get('/services', jwtUtils.SPverifyToken, serviceProviderController.getServices);
+router.delete('/services/:serviceId', jwtUtils.SPverifyToken, serviceProviderController.deleteService);
 
 module.exports = router
