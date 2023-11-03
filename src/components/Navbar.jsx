@@ -46,7 +46,7 @@ const Navbar = () => {
 				{SPToken && (
 					<li>
 						<Link to="/spdashboard" className="nav-element">
-							Dashboard
+							Profile
 						</Link>
 					</li>
 				)}
