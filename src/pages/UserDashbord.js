@@ -3,6 +3,8 @@ import "../styles/UserDashbord.css";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHotel, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const UserDashboard = () => {
     const token = useSelector((state) => state.token);
@@ -16,13 +18,21 @@ const UserDashboard = () => {
     }, [token, navigate]); 
 
     return (
-		<><div>
-			<h1>Welcome to Your Dashboard</h1>
-		</div><div>
-				<Link to="/userbooking"> View Booking </Link>
-			</div><div>
-				<Link to="/wishlist">View Wishlist</Link>
-			</div></>
+        <div className="user-dashboard-container">
+            <div>
+                <h1 className="user-dashboard-title">Welcome to Your Dashboard</h1>
+            </div>
+            <div className="dashboard-tile-container">
+                <Link to="/userbooking" className="dashboard-tile">
+                <FontAwesomeIcon icon={faHotel} className="dashboard-tile-icon" />
+                    <span>View Booking</span>
+                </Link>
+                <Link to="/wishlist" className="dashboard-tile">
+                <FontAwesomeIcon icon={faHeart} className="dashboard-tile-icon" />
+                    <span>View Wishlist</span>
+                </Link>
+            </div>
+        </div>
     );
 };
 
