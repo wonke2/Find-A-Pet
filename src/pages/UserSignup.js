@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import validator from "validator";
+import styles from "../styles/UserLogin.module.css";
 
 const UserSignup = () => {
 	const [username, setUsername] = useState("");
@@ -101,7 +102,7 @@ const UserSignup = () => {
 	};
 	console.log(phoneNo);
 	return (
-		<div className="center">
+		<div className={styles.center}>
 			<form>
 				<h3>Register</h3>
 
@@ -114,7 +115,7 @@ const UserSignup = () => {
 					id="username"
 					onChange={checkUsername}
 				/>
-				<p className={`err ${username ? "hidden" : ""}`}>{usererr}</p>
+				<p className={`${styles.err} ${username ? `${styles.hidden}` : ""}`}>{usererr}</p>
 				<label>
 					Password <i>*</i>
 				</label>
@@ -124,7 +125,7 @@ const UserSignup = () => {
 					id="password"
 					onChange={checkPassword}
 				/>
-				<p className={`err ${password ? "hidden" : ""}`}>{err}</p>
+				<p className={`${styles.err} ${password ? `${styles.hidden}`: ""}`}>{err}</p>
 				<label>Address</label>
 				<textarea
 					name="address"
@@ -144,7 +145,7 @@ const UserSignup = () => {
 					id="email"
 					onChange={checkEmail}
 				/>
-				<p className={`err ${email ? "hidden" : ""}`}>{emailerr}</p>
+				<p className={`${styles.err} ${email ? `${styles.hidden}` : ""}`}>{emailerr}</p>
 				<label>
 					Phone Number <i>*</i>
 				</label>
@@ -153,9 +154,9 @@ const UserSignup = () => {
 					placeholder="Phone Number"
 					onChange={checkPhone}
 				/>
-				<p className={`err ${phoneNo ? "hidden" : ""}`}>{pherr}</p>
-				<div className="button" onClick={signup}>Signup</div>
-				<div className="social">
+				<p className={`${styles.err} ${phoneNo ? `${styles.hidden}` : ""}`}>{pherr}</p>
+				<div className={styles.button} onClick={signup}>Signup</div>
+				<div className={styles.social}>
 					<Link to="/userlogin"> Login </Link>
 					<Link to="/spsignup"> Service Provider</Link>
 				</div>
