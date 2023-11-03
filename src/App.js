@@ -15,6 +15,7 @@ import WishList from "./pages/WishList";
 import DetailedServiceListing from "./pages/detailedServiceListing";
 import SPDashboard from "./pages/SPDashboard";
 import UserBooking from './pages/UserBooking';
+import SPBooking from './pages/SPBooking';
 import AddService from "./pages/AddService";
 import ServiceProviderServices from "./pages/serviceProviderServices";
 import { Provider } from 'react-redux'
@@ -53,6 +54,7 @@ function App() {
 							<Route path="/spdashboard/sp-services/addservice" element={<AddService />} />
 							<Route path="/spdashboard/sp-services" element={<ServiceProviderServices />} />
 							<Route path="/spdashboard" element={<SPDashboard />} />
+							<Route path="/spdashboard/sp-bookings" element={<SPBooking />} />
 							<Route path="*" element={<Home />} />
 						</Routes>
 					</Router>
