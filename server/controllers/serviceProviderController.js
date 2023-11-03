@@ -101,7 +101,6 @@ exports.addService = async (req, res) => {
   } = req.body;
 
   try {
-    // Find the logged-in SP by ID
     const serviceP = await serviceProvider.findById(serviceProviderId);
 
     if (!serviceP) {
@@ -111,18 +110,14 @@ exports.addService = async (req, res) => {
       });
     }
 
-    // Create a new service object
     const newService = {
       serviceProviderName: serviceP.serviceProviderName,
       serviceName,
       serviceDescription,
       serviceLocation,
     };
-
-    // Push the new service to the servicesProvided array
     serviceP.servicesProvided.push(newService);
 
-    // Save the updated service provider document
     await serviceP.save();
 
     res.status(201).json({
@@ -137,3 +132,29 @@ exports.addService = async (req, res) => {
     });
   }
 };
+
+exports.getServices = async (req, res) => {
+  try {
+    const serviceP = req.user._id;
+
+    if (!serviceP) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Service provider not found',
+      });
+    }
+
+    const servicesProvided = serviceP.servicesProvided;
+
+    res.status(200).json({
+      status: 'success',
+      data: servicesProvided,
+    });
+  } catch (error) {
+    console.error('Error fetching services:', error.message);
+    res.status(500).json({
+      status: 'fail',
+      message: 'Failed to fetch services',
+    });
+  }
+}
