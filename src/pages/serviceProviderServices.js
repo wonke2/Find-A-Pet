@@ -68,6 +68,7 @@ const ServiceProviderServices = () => {
 
   return (
     <div>
+      <Link to="/spdashboard">Back to Dashboard</Link>
       <h1>Your Services</h1>
       <ul>
         {services.map((service) => (

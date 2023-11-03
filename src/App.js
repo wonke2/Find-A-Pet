@@ -18,6 +18,7 @@ import UserBooking from './pages/UserBooking';
 import SPBooking from './pages/SPBooking';
 import AddService from "./pages/AddService";
 import ServiceProviderServices from "./pages/serviceProviderServices";
+import SPProfile from "./pages/SPProfile";
 import { Provider } from 'react-redux'
 import { store, persistor } from './state/store'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -46,6 +47,7 @@ function App() {
 							<Route path="/splogin" element={<SPLogin />} />
 							<Route path="/spsignup" element={<SPSignup />} />
 							<Route path="/user" element={<UserProfile />} />
+							<Route path="/serviceprovider" element={<SPProfile />} />
 							<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
 							<Route path="/services" element={<ServiceListings />} />
 							<Route path="/userdashbord" element={<UserDashbord />} />

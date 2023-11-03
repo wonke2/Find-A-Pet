@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link } from 'react-router-dom';
 
 const SPBooking = () => {
     const [bookings, setBookings] = useState([]);
@@ -81,6 +82,7 @@ const SPBooking = () => {
     // Render the bookings
     return (
         <div>
+            <Link to="/spdashboard">Back to Dashboard</Link>
             <h1>Your Bookings</h1>
             {isLoading ? (
                 <p>Loading bookings...</p>
