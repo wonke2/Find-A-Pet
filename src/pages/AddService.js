@@ -27,7 +27,7 @@ const AddService = () => {
 
       if (response.ok) {
         console.log("Service added successfully");
-        navigate("/spdashboard");
+        navigate("/spdashboard/sp-services");
       } else {
         console.error("Failed to add service");
       }
