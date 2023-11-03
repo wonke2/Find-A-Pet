@@ -16,6 +16,7 @@ import DetailedServiceListing from "./pages/detailedServiceListing";
 import SPDashboard from "./pages/SPDashboard";
 import UserBooking from './pages/UserBooking';
 import AddService from "./pages/AddService";
+import ServiceProviderServices from "./pages/serviceProviderServices";
 import { Provider } from 'react-redux'
 import { store, persistor } from './state/store'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -49,7 +50,8 @@ function App() {
 							<Route path="/userdashbord" element={<UserDashbord />} />
 							<Route path="/wishlist" element={<WishList />} />
 							<Route path="/userbooking" element={<UserBooking />} />
-							<Route path="/spdashboard/addservice" element={<AddService />} />
+							<Route path="/spdashboard/sp-services/addservice" element={<AddService />} />
+							<Route path="/spdashboard/sp-services" element={<ServiceProviderServices />} />
 							<Route path="/spdashboard" element={<SPDashboard />} />
 							<Route path="*" element={<Home />} />
 						</Routes>
