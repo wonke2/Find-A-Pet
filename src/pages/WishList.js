@@ -71,6 +71,7 @@ const Wishlist = () => {
 
     return (
         <div className="wishlist-container">
+            <Link to="/userdashboard" className="userdashboard-link">Back to Dashboard</Link>
             <h2>Your Wishlist</h2>
             <ul>
                 {wishlist.map(pet => (
