@@ -1,21 +1,70 @@
-.min-h-screen {
-	min-height: 100vh;
-	padding: 1rem;
+/* UserDashboard.css */
+
+.user-dashboard-container {
+    text-align: center;
+    margin: 30px auto;
 }
-h3 {
-	margin: 0;
+
+.user-dashboard-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
 }
-.card {
-	display: flex;
-	justify-content: space-between;
-	background-color: antiquewhite;
-    padding: 0.5rem;
-	width: 30%;
-	border-radius: 25px;
+
+.dashboard-tile-container {
+    display: flex;
+    justify-content: space-evenly; /* Changed from 'space-around' to 'space-evenly' for equal spacing */
+    margin: 0 auto;
+    max-width: 800px;
+    gap: 30px; /* This will add space between the items */
 }
-.card-itm {
-	display: flex;
-	flex-direction: column;
-    gap: 0.4rem;
-    align-items: start;
+
+.dashboard-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: calc(50% - 15px); /* Adjust width to account for the gap */
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: #333;
+}
+
+.dashboard-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-tile-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+/* Icons using FontAwesome - Ensure you include FontAwesome in your project */
+.fa-booking::before {
+    content: "\f236"; /* FontAwesome icon code for 'hotel' (used as booking here) */
+}
+
+.fa-wishlist::before {
+    content: "\f004"; /* FontAwesome icon code for 'heart' (used as wishlist here) */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-tile-container {
+        flex-direction: column;
+        gap: 20px; /* Adjust gap for mobile view */
+    }
+
+    .dashboard-tile {
+        width: 80%;
+        margin-bottom: 20px;
+        margin-left: auto; /* Center the tiles in mobile view */
+        margin-right: auto;
+    }
 }
