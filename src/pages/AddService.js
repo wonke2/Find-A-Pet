@@ -38,29 +38,31 @@ const AddService = () => {
   };
 
   return (
-    <div>
-      <h1>Add a Service</h1>
-      <input
-        type="text"
-        placeholder="Service Name"
-        value={serviceName}
-        onChange={(e) => setServiceName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Service Description"
-        value={serviceDescription}
-        onChange={(e) => setServiceDescription(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Service Location"
-        value={serviceLocation}
-        onChange={(e) => setServiceLocation(e.target.value)}
-      />
-      <button onClick={handleAddService}>Add Service</button>
+    <>
+      <div>
+        <h1>Add a Service</h1>
+        <input
+          type="text"
+          placeholder="Service Name"
+          value={serviceName}
+          onChange={(e) => setServiceName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Service Description"
+          value={serviceDescription}
+          onChange={(e) => setServiceDescription(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Service Location"
+          value={serviceLocation}
+          onChange={(e) => setServiceLocation(e.target.value)}
+        />
+        <button onClick={handleAddService}>Add Service</button>
+      </div>
       <Link to="/spdashboard/sp-services">Back to Services</Link>
-    </div>
+    </>
   );
 };
 
