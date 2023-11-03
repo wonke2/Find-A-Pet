@@ -58,6 +58,7 @@ const AddService = () => {
         onChange={(e) => setServiceLocation(e.target.value)}
       />
       <button onClick={handleAddService}>Add Service</button>
+      <Link to="/spdashboard/sp-services">Back to Services</Link>
     </div>
   );
 };
