@@ -2,7 +2,7 @@
 .det-container {
     display: flex;
     flex-direction: column;
-    max-width: 950px;
+    max-width: 80%;
     margin: 40px auto;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -18,9 +18,9 @@
 /* Image Division Styling */
 .details-left {
     flex: 1;
-    display: flex; /* For centering image */
-    align-items: center; /* Vertically aligns the image to center */
-    justify-content: center; /* Horizontally aligns the image to center */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
     padding-right: 20px;
 }
 
@@ -89,3 +89,33 @@
     max-width: 100%; 
 }
 
+.petlistings-link {
+    display: block;
+    margin-bottom: 20px;
+    color: blue;
+    text-decoration: none;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.petlistings-link:hover {
+    color: rgb(3, 3, 132);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .details-wrapper {
+        flex-direction: column;
+    }
+    
+    /* Image Division Styling */
+    .details-left {
+        flex: 1;
+        
+    }
+    
+    .details-right {
+        flex: 2;
+        text-align: center; 
+    }
+}
