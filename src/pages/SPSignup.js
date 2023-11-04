@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "../styles/SPSignup.css"
+import { Link } from "react-router-dom"
+import styles from "../styles/UserLogin.module.css"
+
 const SPSignup = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -11,6 +13,7 @@ const SPSignup = () => {
     const [isPasswordWeak, setIsPasswordWeak] = useState(false);
     const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [isConfirmPassword, setIsConfirmPassword] = useState(false);
     const [passwordsMatch, setPasswordsMatch] = useState(true);
     const [showIncompleteFieldsBanner, setShowIncompleteFieldsBanner] = useState(false);
     const [isPhoneValid, setIsPhoneValid] = useState(true);
@@ -20,7 +23,7 @@ const SPSignup = () => {
 
     const navigate = useNavigate();
 
-    const login = async () => {
+    const signup = async () => {
         if (username === "" || password === "" || email === "" || phoneNo === "" || orgName === "") {
             setShowIncompleteFieldsBanner(true);
             return;
@@ -48,130 +51,134 @@ const SPSignup = () => {
         }
     }
     return (
-        <>
-            <div className="SP_main_form_signup">
-                <h1>Service Provider Signup</h1>
-                <div className="SP_form_inp">
-                    <label htmlFor="businessName">*Business Name:</label>
-                    <input
-                        type="text"
-                        id="businessName"
-                        required
-                        onChange={(e) => {
-                            setUsername(e.target.value)
-                        }}
-                    />
-                    <br/>
-                    <label htmlFor="organizationName">*Organization Name:</label>
-                    <input
-                        type="text"
-                        id="organizationName"
-                        required
-                        onChange={(e) => {
-                            setOrgName(e.target.value);
-                        }}
-                    />
-                    <br/>
-                    <label htmlFor="password">*Password:</label>
-                    <input
-                        type="password"
-                        id="password"
-                        required
-                        onChange={(e) => {
-                            const newPassword = e.target.value;
-                            setPassword(newPassword)
-                            setPasswordsMatch(newPassword === confirmPassword);
-                            const isWeak = !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(newPassword);
-                            setIsPasswordWeak(isWeak);
-                            if (isWeak) {
-                                setPasswordErrorMessage("Password is too weak.");
-                            } else {
-                                setPasswordErrorMessage("");
-                            }
-                        }}
-                    />
-                    <br/>
-                    <label htmlFor="confirmPassword">*Confirm Password:</label>
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        required
-                        onChange={(e) => {
-                            setConfirmPassword(e.target.value);
-                            setPasswordsMatch(e.target.value === password);
-                        }}
-                    />
-                    <br/>
-                    <label htmlFor="email">*Email:</label>
-                    <input
-                        type="text"
-                        id="email"
-                        required
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                                    const isEmailPatternValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(e.target.value);
-                            setIsEmailValid(isEmailPatternValid);
-                            if (!isEmailPatternValid) {
-                                setEmailErrorMessage("Invalid email address.");
-                            } else {
-                                setEmailErrorMessage("");
-                            }
-                        }}
-                    />
-                    <br/>
-                    <label htmlFor="phoneNo">*Phone Number:</label>
-                    <input
-                        type="tel"
-                        required
-                        id="phoneNo"
-                        pattern ="/^\d{10}$/"
-                        onChange={(e) => {
-                            setPhoneNo(e.target.value)
-                            const isPhonePatternValid = /^\d{10}$/.test(e.target.value);
-                            setIsPhoneValid(isPhonePatternValid);
-                            if (!isPhonePatternValid) {
-                                setPhoneErrorMessage("Phone number must be 10 digits.");
-                            } else {
-                                setPhoneErrorMessage("");
-                            }
-                        }}
-                    />
-                    <br/>
-                    <label htmlFor="location">Location:</label>
-                    <textarea
-                        name=""
-                        id="location"
-                        rows="3"
-                        onChange={(e) => {
-                            setLocation(e.target.value)
-                        }}
-                    />
-                    <br/>
-                    <button onClick={login} disabled={!passwordsMatch || isPasswordWeak || password === "" || !isPhoneValid || !isEmailValid}>Signup</button>
-                </div>
+        <div className={styles.center}>
+            <form>
+            <h3>Service Provider Register</h3>
+                <label htmlFor="businessName">Business Name <i>*</i></label>
+                <input
+                    type="text"
+                    id="businessName"
+                    required
+                    onChange={(e) => {
+                        setUsername(e.target.value)
+                    }}
+                />
+
+                <label htmlFor="organizationName">Organization Name <i>*</i></label>
+                <input
+                    type="text"
+                    id="organizationName"
+                    required
+                    onChange={(e) => {
+                        setOrgName(e.target.value);
+                    }}
+                />
+                
+                <label htmlFor="password">Password <i>*</i></label>
+                <input
+                    type="password"
+                    id="password"
+                    required
+                    onChange={(e) => {
+                        const newPassword = e.target.value;
+                        setPassword(newPassword)
+                        setPasswordsMatch(newPassword === confirmPassword);
+                        const isWeak = !/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(newPassword);
+                        setIsPasswordWeak(isWeak);
+                        if (isWeak) {
+                            setPasswordErrorMessage("Password is too weak.");
+                        } else {
+                            setPasswordErrorMessage("");
+                        }
+                    }}
+                />
+                <br/>
+                <label htmlFor="confirmPassword">Confirm Password <i>*</i></label>
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    required
+                    onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                        setPasswordsMatch(e.target.value === password);
+                        setIsConfirmPassword(e.target.value === password);
+                        if (e.target.value !== password) {
+                            setPasswordErrorMessage("Passwords do not match.");
+                        }
+                        else {
+                            setPasswordErrorMessage("");
+                        }
+                    }}
+                />
+                <label htmlFor="email">Email <i>*</i></label>
+                <input
+                    type="text"
+                    id="email"
+                    required
+                    onChange={(e) => {
+                        setEmail(e.target.value)
+                                const isEmailPatternValid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(e.target.value);
+                        setIsEmailValid(isEmailPatternValid);
+                        if (!isEmailPatternValid) {
+                            setEmailErrorMessage("Invalid email address.");
+                        } else {
+                            setEmailErrorMessage("");
+                        }
+                    }}
+                />
+                <label htmlFor="phoneNo">Phone Number <i>*</i></label>
+                <input
+                    type="tel"
+                    required
+                    id="phoneNo"
+                    pattern ="/^\d{10}$/"
+                    onChange={(e) => {
+                        setPhoneNo(e.target.value)
+                        const isPhonePatternValid = /^\d{10}$/.test(e.target.value);
+                        setIsPhoneValid(isPhonePatternValid);
+                        if (!isPhonePatternValid) {
+                            setPhoneErrorMessage("Invalid Phone Number.");
+                        } else {
+                            setPhoneErrorMessage("");
+                        }
+                    }}
+                />
+                <label htmlFor="location">Location</label>
+                <textarea
+                    name=""
+                    id="location"
+                    rows="3"
+                    onChange={(e) => {
+                        setLocation(e.target.value)
+                    }}
+                />
                 {showIncompleteFieldsBanner && (
-                    <div className="incomplete-fields-banner">
+                    <p className={styles.err}>
                         Please fill out all required (*) fields.
-                    </div>
+                    </p>
                 )}
-                {isPasswordWeak && (
-                        <div className="password-banner">
+                {isPasswordWeak || !isConfirmPassword && (
+                        <p className={styles.err}>
                             {passwordErrorMessage}
-                        </div>
+                        </p>
                 )}
                 {!isPhoneValid && (
-                    <div className="phone-error-banner">
+                    <p className={styles.err}>
                         {phoneErrorMessage}
-                    </div>
+                    </p>
                 )}
                 {!isEmailValid && (
-                    <div className="email-error-banner">
+                    <p className={styles.err}>
                         {emailErrorMessage}
-                    </div>
+                    </p>
                 )}
-
-            </div>
-        </>
+                <div onClick={signup} disabled={!passwordsMatch || isPasswordWeak || password === "" || !isPhoneValid || !isEmailValid} className={styles.button}>Signup</div>
+                <div className={styles.social}>
+                    <Link to="/SPlogin"> Login </Link>
+                    <Link to="/usersignup"> User Signup</Link>
+                </div>
+            </form>
+        </div>
     )
 }
 
