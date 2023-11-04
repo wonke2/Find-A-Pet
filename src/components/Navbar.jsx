@@ -17,9 +17,10 @@ const Navbar = () => {
 
 	return (
 		<nav>
-					<Link to="/home">
+			<Link to="/home">
 				<GiDogHouse className="logo" />
 			</Link>
+
 			<div>
 				<Link to="/petlistings" className="btn">
 					Pet Listings
@@ -43,27 +44,27 @@ const Navbar = () => {
 					</Link>
 				)}
 				{SPToken && (
-					<Link to="/spdashboard" className="nav-element">
+					<Link to="/spdashboard" className="btn">
 						Dashboard
 					</Link>
 				)}{" "}
 				{SPToken && (
-					<Link className="nav-element" onClick={logout}>
+					<Link className="btn" onClick={logout}>
 						Logout
 					</Link>
 				)}
 				{token && (
-					<Link to={"/userdashboard"} className="nav-element">
+					<Link to={"/userdashboard"} className="btn">
 						Dashboard
 					</Link>
 				)}
 				{token && (
-					<Link to="/user" className="nav-element">
+					<Link to="/user" className="btn">
 						Profile
 					</Link>
 				)}
 				{token && (
-					<Link className="nav-element" onClick={logout}>
+					<Link className="btn" onClick={logout}>
 						Logout
 					</Link>
 				)}
