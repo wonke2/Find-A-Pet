@@ -22,15 +22,10 @@ import SPProfile from "./pages/SPProfile";
 import { Provider } from 'react-redux'
 import { store, persistor } from './state/store'
 import { PersistGate } from 'redux-persist/integration/react'
+import Home from "./pages/Home";
 
 function App() {
-	const Home = () => {
-		return (
-			<div className="App">
-				<h2>Welcome to Find-a-Pet!</h2>
-			</div>
-		);
-	};
+
 
 	return (
 		<Provider store={store}>
@@ -57,6 +52,7 @@ function App() {
 							<Route path="/spdashboard/sp-services" element={<ServiceProviderServices />} />
 							<Route path="/spdashboard" element={<SPDashboard />} />
 							<Route path="/spdashboard/sp-bookings" element={<SPBooking />} />
+					
 							<Route path="*" element={<Home />} />
 						</Routes>
 					</Router>
