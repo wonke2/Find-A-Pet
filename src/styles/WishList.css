@@ -1,9 +1,8 @@
-/* Wishlist Container Styling */
 .wishlist-container {
     max-width: 1000px;
     margin: 40px auto;
     padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     background-color: antiquewhite;
 }
@@ -14,7 +13,6 @@
     margin-bottom: 20px;
 }
 
-/* Wishlist Items Styling */
 .wishlist-container ul {
     list-style: none;
     padding: 0;
@@ -35,7 +33,7 @@
 }
 
 .wishlist-container li:hover {
-    box-shadow: 0 0 15px rgba(0,0,0,0.35);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
 }
 
 .wishlist-container li img {
@@ -44,8 +42,6 @@
     margin-bottom: 15px;
     border-radius: 15px;
 }
-
-
 
 .wishlist-container li button {
     padding: 10px 20px;
@@ -86,4 +82,3 @@
     color: rgb(3, 3, 132);
     text-decoration: underline;
 }
-
