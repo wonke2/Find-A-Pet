@@ -27,7 +27,7 @@ const UserLogin = () => {
 	};
 	return (
 		<div className={styles.center}>
-			<form >
+			<form>
 				<h3>Login Here</h3>
 
 				<label>Username</label>
@@ -50,7 +50,7 @@ const UserLogin = () => {
 					}}
 				/>
 
-				<div className={styles.button} onClick={login}>Log In</div>
+				<button onClick={login}>Log In</button>
 				<div className={styles.social}>
 					<Link to="/usersignup">Signup</Link>
 					<Link to="/splogin">Service Provider</Link>
