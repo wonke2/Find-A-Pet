@@ -50,7 +50,7 @@ const UserLogin = () => {
 					}}
 				/>
 
-				<button onClick={login}>Log In</button>
+				<div className={styles.button} onClick={login}>Log In</div>
 				<div className={styles.social}>
 					<Link to="/usersignup">Signup</Link>
 					<Link to="/splogin">Service Provider</Link>
