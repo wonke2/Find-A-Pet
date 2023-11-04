@@ -85,10 +85,10 @@ const ServiceListings = () => {
         <button className='map-btn' onClick={() => setMapView(!mapView)}>
             {mapView ? 'Show Listings' : 'Show Map'}
         </button>
-        {mapView ? (
-            <div id="map" style={{ height: '500px', width: '100%' }}></div>
-        ) : (
-            <div className='service-card'>
+        <div id="map" style={{ height: '500px', width: '100%', display: mapView ? 'block' : 'none' }}></div>
+
+            <div className="service-card" style={{ display: mapView ? 'none' : 'grid' }}>
+
                 {filteredServices.map((service) => (
                     <div key={service._id} className="service-listing-item">
                         <Link to={`/services/${service._id}`} key={service._id}>
@@ -99,7 +99,6 @@ const ServiceListings = () => {
                     </div>
                 ))}
             </div>
-        )}
         </div>
     );
 };
