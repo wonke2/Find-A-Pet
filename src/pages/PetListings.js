@@ -5,6 +5,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/PetListings.css';
 import { FaFilter } from 'react-icons/fa';
+import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content
+import he from 'he';  // For decoding HTML entities
 
 const PetListings = () => {
   // State variables to hold data and UI states
@@ -284,12 +286,12 @@ const PetListings = () => {
                 <div key={pet.id} className="pet-listing-item">
                   <img
                     src={imageUrl}
-                    alt={pet.name}
+                    alt={he.decode(sanitizeHtml(pet.name, { allowedTags: [] }))}
                     onError={(e) => {
                       e.target.onerror = null;
                       e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
                     }} />
-                  <h3><Link to={`/pet/${pet.id}`}>{pet.name}</Link></h3>
+                  <h3><Link to={`/pet/${pet.id}`}>{he.decode(sanitizeHtml(pet.name, { allowedTags: [] }))}</Link></h3>
                 </div>
               );
             })}
