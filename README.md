@@ -86,5 +86,19 @@ All the other components, i.e., PetListings, PetDetails, WishList, UserBooking, 
 
 Throughout each sprint, the team demonstrated resilience and flexibility, adeptly pivoting when necessary to maintain the momentum of the project's development. Each feature was implemented with careful consideration for security, user experience, and alignment with overall project goals. In addition to weekly sprints, the team held brief daily meetings for at least 15 minutes to discuss individual progress and any encountered challenges. The Discord platform served as the primary medium for sharing information, including sensitive details like .env files, with the understanding that secure methods were employed for particularly sensitive data.
 
-Weekly extended meetings, lasting at least one hour, provided opportunities to review accomplishments and plan for upcoming tasks. Although communication was mostly smooth, there were instances when some team members fell behind. However, the team collectively ensured a timely recovery and completion of tasks. The team also diligently maintained a GitHub project board, detailing assignments and tracking ongoing work.
+Weekly extended meetings, lasting at least one hour, provided opportunities to review accomplishments and plan for upcoming tasks. Although communication was mostly smooth, there were instances when some team members fell behind. However, the team collectively ensured a timely recovery and completion of tasks. The team also diligently maintained a GitHub project board, detailing assignments and tracking ongoing work. Although this project did not have any designated team leader, Waliullah played a pivotal role in dividing tasks equally among everyone, providing daily reminders, and facilitating smooth communication between team members.
+
+## Guide to Project Source Code
+
+## Prospective Features
+
+- Payment Gateway Integration: To facilitate in-app transactions for services securely.
+- Notifications: To inform users about service statuses and other updates.
+- PetListings Posting: Allows users/pet owners to post pets for adoption.
+- Reviews and Ratings: Users should be able to review a service. Service Providers should be able to view and respond to user reviews.
+- Extended Booking Features: Allows users to request cancellations and for service providers to accept, cancel, or mark bookings as completed.
+- Community Building: Establishing forums and sharing platforms for pet stories and advice.
+- Enhanced Analytics for Service Providers: To offer insights into business operations and customer preferences.
+- Accessibility Features: To make the platform more inclusive, such as adding voice commands and text-to-speech capabilities.
+- 24/7 Customer Support: Implementing round-the-clock chat support for users.
 
