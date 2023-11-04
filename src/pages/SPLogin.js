@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "../styles/SPLogin.css"
+import styles from "../styles/UserLogin.module.css"
 import { setSPToken } from '../state/authSlice'
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
+
 const SPLogin = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -34,32 +36,39 @@ const SPLogin = () => {
         }
     }
     return (
-        <>
-            <div className="main_form">
-                <h1>Service Provider Login</h1>
-                <div className="form_inp">
-                    <input
-                        required
-                        type="text"
-                        placeholder="Business Name"
-                        onChange={(e) => {
-                            setUsername(e.target.value)
-                        }}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
-                        required
-                        onChange={(e) => {
-                            setPassword(e.target.value)
-                        }}
-                    />
-                    <button className="login_button" onClick={login}>
-                        Login
-                    </button>
+        <div className={styles.center}>
+            <form>
+                <h3>Service Provider Login</h3>
+
+                <label htmlFor="username">Business Name</label>
+                <input
+                    required
+                    type="text"
+                    placeholder="Business Name"
+                    id='username'
+                    onChange={(e) => {
+                        setUsername(e.target.value)
+                    }}
+                />
+
+                <label htmlFor="password">Password</label>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    id="password"
+                    required
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}
+                />
+
+                <div className={styles.button} onClick={login}>Log In</div>
+                <div className={styles.social}>
+                    <Link to="/SPsignup">Signup</Link>
+                    <Link to="/userlogin">User Login</Link>
                 </div>
-            </div>
-        </>
+            </form>
+        </div>
     )
 }
 
