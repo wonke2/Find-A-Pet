@@ -3,10 +3,12 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .center form {
+
 	margin-top: 5rem;
 	width: 400px;
-	background-color: rgba(255, 255, 255, 0.13);
+	background-color: white;
 	top: 50%;
 	left: 50%;
 	border-radius: 10px;
