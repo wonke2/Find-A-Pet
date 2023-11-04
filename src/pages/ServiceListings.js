@@ -79,22 +79,26 @@ const ServiceListings = () => {
                     value={searchTerm} 
                     onChange={e => setSearchTerm(e.target.value)} 
                 />
+                </div>
             </div>
-            <button onClick={() => setMapView(!mapView)}>
-                {mapView ? 'Show Listings' : 'Show Map'}
-            </button>
-        </div>
+
+        <button className='map-btn' onClick={() => setMapView(!mapView)}>
+            {mapView ? 'Show Listings' : 'Show Map'}
+        </button>
         {mapView ? (
             <div id="map" style={{ height: '500px', width: '100%' }}></div>
         ) : (
-                filteredServices.map((service) => (
-                <Link to={`/services/${service._id}`} key={service._id}>
-                    <div key={service._id} className="service">
-                        <h3>{service.serviceName}</h3>
-                        <small>Location: {service.serviceLocation}</small>
+            <div className='service-card'>
+                {filteredServices.map((service) => (
+                    <div key={service._id} className="service-listing-item">
+                        <Link to={`/services/${service._id}`} key={service._id}>
+                            <h3 className='name'>{service.serviceName}</h3>
+                            <p className='description'>{service.serviceDescription}</p>
+                            <small className='location'>Location: {service.serviceLocation}</small>
+                        </Link>
                     </div>
-                </Link>
-            ))
+                ))}
+            </div>
         )}
         </div>
     );
