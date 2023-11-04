@@ -5,23 +5,24 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../styles/PetListings.css';
 import { FaFilter } from 'react-icons/fa';
-import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content
-import he from 'he';  // For decoding HTML entities
+import sanitizeHtml from 'sanitize-html';  // Sanitizes HTML to prevent XSS attacks
+import he from 'he';  // Decodes HTML entities to normal string
 
+// PetListings functional component
 const PetListings = () => {
-  // State variables to hold data and UI states
-  const [pets, setPets] = useState([]);
-  const [token, setToken] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
-  const [submittedSearchTerm, setSubmittedSearchTerm] = useState('');
-  const [filters, setFilters] = useState({ types: [], status: [] });
-  const [showFilters, setShowFilters] = useState(false);
-  const [showTypeFilter, setShowTypeFilter] = useState(false);
-  const [showStatusFilter, setShowStatusFilter] = useState(false);
-  const [mapView, setMapView] = useState(false);
-  const [appliedFilters, setAppliedFilters] = useState({ types: [], status: [] });
+  // State hooks for various pieces of data and UI state
+  const [pets, setPets] = useState([]); // State to store the list of pets
+  const [token, setToken] = useState(''); // State to store API token
+  const [searchTerm, setSearchTerm] = useState(''); // State for handling search term input
+  const [submittedSearchTerm, setSubmittedSearchTerm] = useState(''); // State to store the search term submitted by the user
+  const [filters, setFilters] = useState({ types: [], status: [] }); // State for handling filters
+  const [showFilters, setShowFilters] = useState(false); // State to toggle the filter sidebar
+  const [showTypeFilter, setShowTypeFilter] = useState(false); // State to toggle type filter options
+  const [showStatusFilter, setShowStatusFilter] = useState(false); // State to toggle status filter options
+  const [mapView, setMapView] = useState(false); // State to toggle between map view and list view
+  const [appliedFilters, setAppliedFilters] = useState({ types: [], status: [] }); // State for storing applied filters
 
-  // Function to get API token
+  // Function to get API token for authentication with the pet API
   const getApiToken = async () => {
     try {
       const response = await axios.get('/api/petfinder/token');
@@ -31,7 +32,7 @@ const PetListings = () => {
     }
   };
 
-  // Function to fetch pets data from the API
+  // Function to fetch pets data from the API with optional filters and search term
   const getPets = async () => {
     if (token === '') return;
 
@@ -52,7 +53,7 @@ const PetListings = () => {
     }
   };
 
-  // Function to get geolocation based on address
+  // Function to retrieve geolocation data for an address
   const getGeolocation = async (address) => {
 
     try {
@@ -69,7 +70,7 @@ const PetListings = () => {
     return { latitude: null, longitude: null };
   };
 
-  // Effect to get API token on component mount
+  // UseEffect hook to retrieve the API token on initial component mount
   useEffect(() => {
     getApiToken();
   }, []);
@@ -252,7 +253,7 @@ const PetListings = () => {
       <div className="main-content">
         <div className="top-bar">
           <button className="filter-button" onClick={toggleFilters}>
-          <FaFilter /> Filter
+            <FaFilter /> Filter
           </button>
           <div className="search">
             <form onSubmit={handleSubmitSearch}>
@@ -275,27 +276,27 @@ const PetListings = () => {
 
         <div id="map" style={{ height: '500px', width: '100%', display: mapView ? 'block' : 'none' }}></div>
 
-            <div className="pet-card" style={{ display: mapView ? 'none' : 'grid' }}>
-            
-            {pets.map((pet) => {
-              const imageUrl = pet.photos && pet.photos[0]?.medium
-                ? pet.photos[0].medium
-                : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+        <div className="pet-card" style={{ display: mapView ? 'none' : 'grid' }}>
 
-              return (
-                <div key={pet.id} className="pet-listing-item">
-                  <img
-                    src={imageUrl}
-                    alt={he.decode(sanitizeHtml(pet.name, { allowedTags: [] }))}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
-                    }} />
-                  <h3><Link to={`/pet/${pet.id}`}>{he.decode(sanitizeHtml(pet.name, { allowedTags: [] }))}</Link></h3>
-                </div>
-              );
-            })}
-          </div>
+          {pets.map((pet) => {
+            const imageUrl = pet.photos && pet.photos[0]?.medium
+              ? pet.photos[0].medium
+              : 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+
+            return (
+              <div key={pet.id} className="pet-listing-item">
+                <img
+                  src={imageUrl}
+                  alt={he.decode(sanitizeHtml(pet.name, { allowedTags: [] }))}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg';
+                  }} />
+                <h3><Link to={`/pet/${pet.id}`}>{he.decode(sanitizeHtml(pet.name, { allowedTags: [] }))}</Link></h3>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
