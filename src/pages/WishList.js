@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom"; // Import useNavigate from react-router-dom
 import { useSelector } from "react-redux";
 import '../styles/WishList.css';
+import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content
+import he from 'he';  // For decoding HTML entities
 
 const Wishlist = () => {
     const [wishlist, setWishlist] = useState([]);
@@ -76,9 +78,10 @@ const Wishlist = () => {
             <ul>
                 {wishlist.map(pet => (
                     <li key={pet.petID}>
-                        <img src={pet.petImage || 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg'} alt={pet.petName}
+                        <img src={pet.petImage || 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg'} 
+                        alt={he.decode(sanitizeHtml(pet.petName, { allowedTags: [] }))}
                             style={{ width: '200px', height: 'auto' }} />
-                        <Link to={`/pet/${pet.petID}`} className="wishlistname-link">{pet.petName}</Link>
+                        <Link to={`/pet/${pet.petID}`} className="wishlistname-link">{he.decode(sanitizeHtml(pet.petName, { allowedTags: [] }))}</Link>
                         <button onClick={() => removeFromWishlist(pet.petID)}>Remove</button>
                     </li>
                 ))}
