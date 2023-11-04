@@ -61,14 +61,14 @@
     background-color: rgb(138, 7, 7);
 }
 
-.wishlist-container a {
+.wishlistname-link {
     color: #007BFF;
     text-decoration: none;
     margin-bottom: 10px;
     font-weight: bold;
 }
 
-.wishlist-container a:hover {
+.wishlistname-link:hover {
     text-decoration: underline;
     color: rgb(8, 8, 147);
 }
