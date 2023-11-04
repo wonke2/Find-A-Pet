@@ -9,19 +9,18 @@
 	height: 40px;
 	width: 40px;
 	margin-left: 10px;
-	color: black;
-
+	color: white;
 }
 nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 1rem 0;
-	background-color: wheat;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 .btn {
-	color: #020202;
-	background: wheat;
+	color: white;
+	background: rgba(0, 0, 0, 0.5);
 	padding: 20px 40px;
 	font-size: 12px;
 	text-decoration: none;
@@ -32,7 +31,7 @@ nav {
 .btn:hover {
 	border: none;
 	background: rgba(0, 0, 0, 0.4);
-	background: #dfdada;
+	background: #fff;
 	padding: 40px 40px;
 	color: #1b1b1b;
 }
