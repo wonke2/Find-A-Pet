@@ -17,7 +17,9 @@ const Navbar = () => {
 
 	return (
 		<nav>
-			<GiDogHouse className="logo" />
+					<Link to="/home">
+				<GiDogHouse className="logo" />
+			</Link>
 			<div>
 				<Link to="/petlistings" className="btn">
 					Pet Listings
