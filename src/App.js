@@ -50,7 +50,7 @@ function App() {
 							<Route path="/serviceprovider" element={<SPProfile />} />
 							<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
 							<Route path="/services" element={<ServiceListings />} />
-							<Route path="/userdashbord" element={<UserDashbord />} />
+							<Route path="/userdashboard" element={<UserDashbord />} />
 							<Route path="/wishlist" element={<WishList />} />
 							<Route path="/userbooking" element={<UserBooking />} />
 							<Route path="/spdashboard/sp-services/addservice" element={<AddService />} />

@@ -99,7 +99,7 @@ const PetDetails = () => {
                         style={{ width: '200px', height: 'auto' }} />
                 </div>
                 <div className="details-right">
-                    <h2>{petDetails.name}</h2>  {/* Displaying pet name */}
+                    <h2>{he.decode(sanitizeHtml(petDetails.name, { allowedTags: [] }))}</h2>  {/* Displaying pet name */}
                     {/* Sanitizing and decoding HTML content for pet description */}
                     <p>Description: {he.decode(sanitizeHtml(petDetails.description, { allowedTags: [] }))} {petDetails.url ? <a href={petDetails.url} target="_blank" rel="noopener noreferrer">
                         Click Here for More Info

@@ -1,8 +1,8 @@
-/* UserDashboard.css */
+/* SPDash.css */
 
-.user-dashboard-container {
+.sp-dashboard-container {
     text-align: center;
-    margin: 50px auto;
+    margin: 30px auto;
 }
 
 .user-dashboard-title {
@@ -39,7 +39,7 @@
 
 .dashboard-tile:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .dashboard-tile-icon {
@@ -47,16 +47,6 @@
     margin-bottom: 15px; 
 }
 
-
-.fa-booking::before {
-    content: "\f236"; 
-}
-
-.fa-wishlist::before {
-    content: "\f004"; 
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .dashboard-tile-container {
         flex-direction: column;

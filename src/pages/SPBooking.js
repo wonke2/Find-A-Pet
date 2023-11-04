@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
+import "../styles/SPBooking.css";
 
 const SPBooking = () => {
     const [bookings, setBookings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate(); // Instantiate useNavigate
 
     useEffect(() => {
         const SPToken = localStorage.getItem('SPToken');
 
-        if (SPToken) {
-            // Fetch the service provider's ID first
-            fetch("/SPAuth/SPuser/", {
-                headers: {
-                    "Authorization": `Bearer ${SPToken}`,
-                },
-            })
+        // Redirect to the login page if there's no token
+        if (!SPToken) {
+            navigate('/SPlogin'); // Navigate to login page
+            return; // Return early to avoid making unnecessary fetch calls
+        }
+
+        // Fetch the service provider's ID first
+        fetch("/SPAuth/SPuser/", {
+            headers: {
+                "Authorization": `Bearer ${SPToken}`,
+            },
+        })
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`Server responded with status: ${res.status} for SP user request`);
@@ -22,7 +30,7 @@ const SPBooking = () => {
                 return res.json();
             })
             .then((data) => {
-                console.log('SPuser data:', data); 
+                console.log('SPuser data:', data);
                 if (data && data.data && data.data.id) {
                     // After getting the serviceProviderID, fetch the bookings
                     return fetch(`/SPAuth/bookings/service-provider/${data.data.id}`, {
@@ -48,11 +56,7 @@ const SPBooking = () => {
                 setIsLoading(false);
                 console.error("Error fetching SP bookings:", error);
             });
-        } else {
-            setIsLoading(false);
-            console.error("SPToken not found. Please log in.");
-        }
-    }, []);
+    }, [navigate]); // Add navigate to the dependency array
 
     const removeBooking = (bookingId) => {
         const SPToken = localStorage.getItem('SPToken');
@@ -63,45 +67,42 @@ const SPBooking = () => {
                 "Content-Type": "application/json",
             },
         })
-        .then(res => res.json())
-        .then(response => {
-            if (response.status === 'success') {
-                // Remove the deleted booking from the state to update the UI
-                setBookings(bookings.filter(booking => booking._id !== bookingId));
-                console.log('Booking removed successfully');
-            } else {
-                console.error('Failed to remove booking:', response.message);
-            }
-        })
-        .catch(error => console.error('Error deleting booking:', error));
+            .then(res => res.json())
+            .then(response => {
+                if (response.status === 'success') {
+                    // Remove the deleted booking from the state to update the UI
+                    setBookings(bookings.filter(booking => booking._id !== bookingId));
+                    console.log('Booking removed successfully');
+                } else {
+                    console.error('Failed to remove booking:', response.message);
+                }
+            })
+            .catch(error => console.error('Error deleting booking:', error));
     };
-    
 
     // Render the bookings
     return (
-        <div>
-            <Link to="/spdashboard">Back to Dashboard</Link>
+        <div className="spbooking-container">
+            <Link to="/spdashboard" className="dashboard-link">Back to Dashboard</Link>
             <h1>Your Bookings</h1>
             {isLoading ? (
-                <p>Loading bookings...</p>
+                <p className="loading-message">Loading bookings...</p>
             ) : bookings.length > 0 ? (
                 bookings.map((booking) => (
-                    <div key={booking._id}>
+                    <div key={booking._id} className="booking-details">
                         <ul>
                             <li>Booking ID: {booking._id}</li>
-                            {/* Make sure the rest of the properties are being correctly accessed */}
                             <li>Service Name: {booking.service && booking.service.serviceName}</li>
                             <li>User Name: {booking.userID && booking.userID.username}</li>
                             <li>User Email: {booking.userID && booking.userID.email}</li>
                             <li>Booking Date: {booking.bookingDate && new Date(booking.bookingDate).toLocaleDateString()}</li>
                         </ul>
-                        <button onClick={() => removeBooking(booking._id)}>Remove Booking</button>
+                        <button onClick={() => removeBooking(booking._id)} className="remove-booking-btn">Remove Booking</button>
                     </div>
                 ))
             ) : (
-                <p>No bookings found.</p>
+                <p className="no-bookings-message">No bookings found.</p>
             )}
-            
         </div>
     );
 };
