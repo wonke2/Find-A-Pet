@@ -2,12 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setLogout } from "../state/authSlice";
 import "./Navbar.css";
+import {GiDogHouse} from 'react-icons/gi'
 const Navbar = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const token = useSelector((state) => state.token);
-	const SPToken = useSelector((state) => state.SPToken)
-	
+	const SPToken = useSelector((state) => state.SPToken);
+
 	const logout = () => {
 		dispatch(setLogout());
 		navigate("/");
@@ -15,80 +16,56 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="navbar">
-			<Link to="/" className="logo">
-				<h1>Find-a-Pet</h1>
-			</Link>
-				
-			
-
-			<ul className="nav-items">
-				<li>
-					<Link to="/petlistings" className="nav-element">
-						Pet Listings
-					</Link>
-				</li>
-				<li>
-					<Link to="/services" className="nav-element">
-						Services
-					</Link>
-				</li>
-
+		<nav>
+			<GiDogHouse className="logo" />
+			<div>
+				<Link to="/petlistings" className="btn">
+					Pet Listings
+				</Link>
+				<Link to="/services" className="btn">
+					Services
+				</Link>
 				{!token && !SPToken && (
-					<>
-						<li>
-							<Link to="/userlogin" className="nav-element">
-								Login
-							</Link>
-						</li>
-						<li>
-							<Link to="/usersignup" className="nav-element">
-								Register
-							</Link>
-						</li>
-					</>
+					<Link to="/userlogin" className="btn">
+						Login
+					</Link>
 				)}
-
+				{!token && !SPToken && (
+					<Link to="/usersignup" className="btn">
+						Register
+					</Link>
+				)}
 				{SPToken && (
-					<>
-						<li>
-							<Link to="/serviceprovider">
-								Profile
-							</Link>
-						</li>
-						<li>
-							<Link to="/spdashboard" className="nav-element">
-								Dashboard
-							</Link>
-						</li>
-						<li>
-							<Link className="nav-element" onClick={logout}>
-								Logout
-							</Link>
-						</li>
-					</>
+					<Link to="/serviceprovider" className="btn">
+						Profile
+					</Link>
 				)}
-
+				{SPToken && (
+					<Link to="/spdashboard" className="nav-element">
+						Dashboard
+					</Link>
+				)}{" "}
+				{SPToken && (
+					<Link className="nav-element" onClick={logout}>
+						Logout
+					</Link>
+				)}
 				{token && (
-					<>
-						<li>
-							<Link to="/user" className="nav-element">
-								Profile
-							</Link>
-						</li>
-						<li>
-							<Link to={"/userdashboard"} className="nav-element">
-								Dashboard
-							</Link>
-						</li>
-						<li>
-							<Link className="nav-element" onClick={logout}>
-								Logout
-							</Link>
-						</li>
-					</>
+					<Link to={"/userdashboard"} className="nav-element">
+						Dashboard
+					</Link>
 				)}
-			</ul>
+				{token && (
+					<Link to="/user" className="nav-element">
+						Profile
+					</Link>
+				)}
+				{token && (
+					<Link className="nav-element" onClick={logout}>
+						Logout
+					</Link>
+				)}
+			</div>
 		</nav>
 	);
 };
