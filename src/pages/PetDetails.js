@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/PetDetails.css';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content
 import he from 'he';  // For decoding HTML entities
 import { useSelector } from "react-redux";
@@ -92,6 +92,7 @@ const PetDetails = () => {
     // Component rendering
     return (
         <div className="det-container">
+            <Link to="/petlistings" className="petlistings-link">Back to Listings</Link>
             <div className="details-wrapper">
                 <div className="details-left">
                     {/* Displaying pet image or a default image if not available */}
