@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
+import '../styles/ServiceListings.css';
 
 const ServiceListings = () => {
     const [services, setServices] = useState([]);
@@ -50,7 +51,6 @@ const ServiceListings = () => {
             const { latitude, longitude } = await getGeolocation(address);
     
             if (latitude && longitude) {
-                // Creating a custom icon for the marker
                 const icon = L.icon({
                     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/marker-icon.png', // URL to the pin icon image
                     iconSize: [25, 41],
@@ -58,7 +58,6 @@ const ServiceListings = () => {
                     popupAnchor: [0, -41]
                 });
     
-                // Creating a marker with the custom icon and adding it to the map
                 L.marker([latitude, longitude], { icon }).addTo(map)
                     .bindPopup(`<b>${service.serviceName}</b><br>${service.serviceDescription}`);
             }
@@ -72,16 +71,19 @@ const ServiceListings = () => {
 
     return (
     <div className="service-listings">
-        <input 
-            type="text" 
-            placeholder="Search for services..." 
-            value={searchTerm} 
-            onChange={e => setSearchTerm(e.target.value)} 
-        />
-        <button onClick={() => setMapView(!mapView)}>
-            {mapView ? 'Show Listings' : 'Show Map'}
-        </button>
-
+        <div className="top-bar"> 
+            <div className='search'>
+                <input 
+                    type="text" 
+                    placeholder="Search for services..." 
+                    value={searchTerm} 
+                    onChange={e => setSearchTerm(e.target.value)} 
+                />
+            </div>
+            <button onClick={() => setMapView(!mapView)}>
+                {mapView ? 'Show Listings' : 'Show Map'}
+            </button>
+        </div>
         {mapView ? (
             <div id="map" style={{ height: '500px', width: '100%' }}></div>
         ) : (
