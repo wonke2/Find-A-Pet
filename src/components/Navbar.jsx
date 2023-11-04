@@ -28,7 +28,12 @@ const Navbar = () => {
 						Pet Listings
 					</Link>
 				</li>
-				{/* Show "Login" and "Register" links only when no tokens are present */}
+				<li>
+					<Link to="/services" className="nav-element">
+						Services
+					</Link>
+				</li>
+
 				{!token && !SPToken && (
 					<>
 						<li>
@@ -43,7 +48,7 @@ const Navbar = () => {
 						</li>
 					</>
 				)}
-				{/* Show "Dashboard" link when an SPToken is present */}
+
 				{SPToken && (
 					<>
 						<li>
@@ -64,12 +69,6 @@ const Navbar = () => {
 					</>
 				)}
 
-				<li>
-					<Link to="/services" className="nav-element">
-						Services
-					</Link>
-				</li>
-				{/* Show "Profile" and "Logout" links when a token is present */}
 				{token && (
 					<>
 						<li>
@@ -89,7 +88,6 @@ const Navbar = () => {
 						</li>
 					</>
 				)}
-				
 			</ul>
 		</nav>
 	);
