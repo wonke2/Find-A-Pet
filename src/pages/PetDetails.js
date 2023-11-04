@@ -1,13 +1,11 @@
 // Importing necessary libraries and packages
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/PetDetails.css';
-import { useParams, Link } from 'react-router-dom';
-import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content
-import he from 'he';  // For decoding HTML entities
-import { useSelector } from "react-redux";
-
-
+import '../styles/PetDetails.css';// Import specific styling for this component
+import { useParams, Link } from 'react-router-dom'; // To handle routing and parameters in the URL
+import sanitizeHtml from 'sanitize-html';  // For sanitizing the HTML content to prevent XSS attacks
+import he from 'he';  // For decoding HTML entities to display text correctly
+import { useSelector } from "react-redux"; // Hook for accessing state in the Redux store
 
 // PetDetails functional component
 const PetDetails = () => {
@@ -31,6 +29,7 @@ const PetDetails = () => {
         }
     }
 
+    // Function to handle adding a pet to the wishlist
     const addToWishlist = async () => {
         if (!authTokenFromRedux) {
             alert("Please login to add to wishlist!");
@@ -38,6 +37,7 @@ const PetDetails = () => {
         }
 
         try {
+            // Making a POST request to the backend to add a pet to the wishlist
             const response = await fetch("http://localhost:3000/auth/add-to-wishlist", {
                 method: "POST",
                 headers: {
@@ -52,6 +52,7 @@ const PetDetails = () => {
             });
 
             const data = await response.json();
+            // Alerting the user based on the response from the backend
             if (data.status === "fail") {
                 alert(data.message);
             } else {
