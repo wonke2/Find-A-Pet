@@ -155,7 +155,7 @@ const UserSignup = () => {
 					onChange={checkPhone}
 				/>
 				<p className={`${styles.err} ${phoneNo ? `${styles.hidden}` : ""}`}>{pherr}</p>
-				<div className={styles.button} onClick={signup}>Signup</div>
+				<button onClick={signup}>Signup</button>
 				<div className={styles.social}>
 					<Link to="/userlogin"> Login </Link>
 					<Link to="/spsignup"> Service Provider</Link>
