@@ -8,18 +8,18 @@ import { useSelector } from "react-redux";
 
 import { faCalendarCheck, faList } from '@fortawesome/free-solid-svg-icons';
 
-
 const SPDashboard = () => {
+    // Initialize the navigate function for routing.
     const navigate = useNavigate();
+    // Get the SPToken from Redux store.
     const SPToken = useSelector((state) => state.SPToken);
 
-
+    // Redirect to SP login page if no SPToken is available.
     useEffect(() => {
         if (!SPToken) {
             navigate("/splogin");
         }
     }, [SPToken, navigate]);
-
 
     return (
         <div className="sp-dashboard-container">
