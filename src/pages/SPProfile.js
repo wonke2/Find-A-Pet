@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/Profile.css";
 
 const SPProfile = () => {
+    // Get SPToken from Redux store.
     const SPToken = useSelector((state) => state.SPToken);
+    // State variable to hold service provider details.
     const [serviceProvider, setServiceProvider] = useState(null);
-    const navigate = useNavigate()
+    // Initialize the navigate function for routing.
+    const navigate = useNavigate();
 
+    // Use useEffect to fetch service provider details and handle redirects.
     useEffect(() => {
         if (!SPToken) {
             navigate("/splogin");
