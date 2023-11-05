@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setLogin } from "../state/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "../styles/UserLogin.module.css";
 
 const UserLogin = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const SPToken = useSelector((state) => state.SPToken);
+	const token = useSelector((state) => state.token)
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (SPToken) {
+			navigate("/serviceprovider");
+		}
+		if (token) {
+			navigate("/user");
+		}
+	}, [SPToken, token, navigate])
+	
 	const login = async () => {
 		const res = await fetch("http://localhost:3000/auth/login", {
 			method: "POST",

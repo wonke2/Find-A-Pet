@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const AddService = () => {
   const navigate = useNavigate();
   const [serviceName, setServiceName] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
   const [serviceLocation, setServiceLocation] = useState("");
-  const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+  const SPToken = useSelector((state) => state.SPToken);
   const dispatch = useDispatch();
 
   const handleAddService = async () => {

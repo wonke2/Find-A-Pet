@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import validator from "validator";
+import { useSelector } from "react-redux"
 import styles from "../styles/UserLogin.module.css";
 
 const UserSignup = () => {
@@ -13,7 +14,19 @@ const UserSignup = () => {
 	const [pherr, setPherr] = useState(null);
 	const [emailerr, setEmailerr] = useState("");
 	const [usererr, setUsererr] = useState("");
+	const SPToken = useSelector((state) => state.SPToken);
+	const token = useSelector((state) => state.token)
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (SPToken) {
+			navigate("/serviceprovider");
+		}
+		if (token) {
+			navigate("/user");
+		}
+	}, [SPToken, token, navigate])
+	
 	const checkPassword = (event) => {
 		var pass = event.target.value;
 		const reg = new RegExp(
