@@ -5,9 +5,12 @@ import { confirmAlert } from "react-confirm-alert";
 import "../styles/SPServices.css";
 
 const SPServices = () => {
+  // Get SPToken from Redux store.
   const SPToken = useSelector((state) => state.SPToken);
+  // State variable to hold services.
   const [services, setServices] = useState([]);
 
+  // Use useEffect to fetch services and handle confirmations for service deletion.
   useEffect(() => {
     async function fetchServices() {
       try {
@@ -32,6 +35,7 @@ const SPServices = () => {
     fetchServices();
   }, [SPToken]);
 
+  // Function to handle the deletion of a service with a confirmation dialog.
   const handleDeleteService = (serviceId) => {
     confirmAlert({
       title: "Confirm Deletion",
@@ -62,6 +66,7 @@ const SPServices = () => {
         {
           label: "No",
           onClick: () => {
+            // Do nothing on cancellation.
           },
         },
       ],
