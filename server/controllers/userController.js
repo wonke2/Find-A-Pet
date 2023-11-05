@@ -1,22 +1,22 @@
 const User = require("../models/userSchema");
 const jwtUtils = require("../utils/jwtUtils");
 exports.signUp = async (req, res) => {
-	const { username, password, email, phoneNo, address } = req.body;
-	if (!username || !password || !email || !phoneNo ) {
-		return res.status(400).json({
-			status: "fail",
-			message: "Please fill all the required fields",
-		});
-	}
-	address ? (address = address) : (address = "");
-	try {
-		const user = await User.create({
-			username,
-			password,
-			email,
-			phoneNo,
-			address,
-		});
+    const { username, password, email, phoneNo, address: rawAddress } = req.body;
+    if (!username || !password || !email || !phoneNo) {
+        return res.status(400).json({
+            status: "fail",
+            message: "Please fill all the required fields",
+        });
+    }
+    const address = rawAddress ? rawAddress : ""; 
+    try {
+        const user = await User.create({
+            username,
+            password,
+            email,
+            phoneNo,
+            address,
+        });
 		res.status(200).json({
 			status: "success",
 			data: user,
