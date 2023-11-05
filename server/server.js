@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const userRoutes = require("./routes/userRoutes");
 const SPRoutes = require("./routes/serviceProviderRoutes");
 const serviceProvider = require("./models/serviceProviderSchema");
-const serviceProvidersController = require("./controllers/serviceProviderController");
 const Booking = require("./models/BookingSchema");
 
 require("dotenv").config();
@@ -116,9 +115,6 @@ app.get("/api/serviceProviders", async (req, res) => {
 		});
 	}
 });
-
-// Get a specific service provider by ID
-app.get("/api/serviceProviders/:id", serviceProvidersController.getServiceProvider);
 
 // Placeholder for user routes (you can add implementation here)
 app.get("/api/users/:id", (req, res) => {});
