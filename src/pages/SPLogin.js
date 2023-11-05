@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 const SPLogin = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const [SPToken, setsPToken] = useState(localStorage.getItem("SPToken"));
     const [token, setToken] = useState(localStorage.getItem("token"))
     const navigate = useNavigate()
     const dispatch = useDispatch()
