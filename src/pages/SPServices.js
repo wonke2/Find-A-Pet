@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 
-const ServiceProviderServices = () => {
+const SPServices = () => {
   const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
   const [services, setServices] = useState([]);
 
@@ -85,4 +85,4 @@ const ServiceProviderServices = () => {
   );
 };
 
-export default ServiceProviderServices;
+export default SPServices;
