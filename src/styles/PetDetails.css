@@ -1,5 +1,5 @@
 /* Container Styling */
-.det-container {
+.petdet-container {
     display: flex;
     flex-direction: column;
     max-width: 80%;
@@ -10,13 +10,13 @@
     background-color: antiquewhite;
 }
 
-.details-wrapper {
+.petdetails-wrapper {
     display: flex;
     width: 100%;
 }
 
 /* Image Division Styling */
-.details-left {
+.petdetails-left {
     flex: 1;
     display: flex; 
     align-items: center; 
@@ -24,7 +24,7 @@
     padding-right: 20px;
 }
 
-.details-right {
+.petdetails-right {
     flex: 1;
     align-items: center; 
     justify-content: center;
@@ -32,7 +32,7 @@
 }
 
 /* Image Styling */
-.details-left img {
+.petdetails-left img {
     width: auto;
     max-width: 100%;
     height: auto;
@@ -40,31 +40,31 @@
 }
 
 /* Headings Styling */
-.det-container h2, .det-container h3 {
+.petdet-container h2, .petdet-container h3 {
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
 }
 
 /* Paragraphs Styling */
-.det-container p {
+.petdet-container p {
     margin: 10px 0;
     color: #555;
 }
 
 /* Link Styling */
-.det-container a {
+.petdet-container a {
     color: #007BFF;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.det-container a:hover {
+.petdet-container a:hover {
     color: #0056b3;
 }
 
 /* Button Styling */
-.det-container button {
+.petdet-container button {
     padding: 10px 15px;
     border: none;
     background-color: #007BFF;
@@ -74,7 +74,7 @@
     transition: background-color 0.3s ease;
 }
 
-.det-container button:hover {
+.petdet-container button:hover {
     background-color: #0056b3;
 }
 
@@ -104,17 +104,17 @@
 }
 
 @media (max-width: 768px) {
-    .details-wrapper {
+    .petdetails-wrapper {
         flex-direction: column;
     }
     
     /* Image Division Styling */
-    .details-left {
+    .petdetails-left {
         flex: 1;
         
     }
     
-    .details-right {
+    .petdetails-right {
         flex: 2;
         text-align: center; 
     }

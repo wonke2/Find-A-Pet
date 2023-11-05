@@ -92,15 +92,15 @@ const PetDetails = () => {
 
     // Component rendering
     return (
-        <div className="det-container">
+        <div className="petdet-container">
             <Link to="/petlistings" className="petlistings-link">Back to Listings</Link>
-            <div className="details-wrapper">
-                <div className="details-left">
+            <div className="petdetails-wrapper">
+                <div className="petdetails-left">
                     {/* Displaying pet image or a default image if not available */}
                     <img src={petDetails.photos?.[0]?.medium || 'https://static.vecteezy.com/system/resources/previews/017/047/854/original/cute-cat-illustration-cat-kawaii-chibi-drawing-style-cat-cartoon-vector.jpg'} alt={petDetails.name}
                         style={{ width: '200px', height: 'auto' }} />
                 </div>
-                <div className="details-right">
+                <div className="petdetails-right">
                     <h2>{he.decode(sanitizeHtml(petDetails.name, { allowedTags: [] }))}</h2>  {/* Displaying pet name */}
                     {/* Sanitizing and decoding HTML content for pet description */}
                     <p>Description: {he.decode(sanitizeHtml(petDetails.description, { allowedTags: [] }))} {petDetails.url ? <a href={petDetails.url} target="_blank" rel="noopener noreferrer">
