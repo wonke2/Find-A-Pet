@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-import { setLogout } from '../state/authSlice';
 import { useSelector, useDispatch } from "react-redux";
 import "../styles/Profile.css";
 
@@ -44,23 +43,27 @@ const SPProfile = () => {
 
     return (
         <div className='profile-container'>
-            <h1 className='profile-title'>Service Provider Profile</h1>
             <Link to="/spdashboard" className='dashboard-link'>Dashboard</Link>
-            <div>
-                {serviceProvider ? (
-                    <>
-                    <h2>Welcome Back! {serviceProvider.serviceProviderName}</h2>
-                        <div className='sp-details'>
-                            <p>Organization: {serviceProvider.orgName}</p>
-                            <p>Address: {serviceProvider.serviceProviderAddress}</p>
-                            <p>Email: {serviceProvider.serviceProviderEmail}</p>
-                            <p>Phone Number: {serviceProvider.serviceProviderPhone}</p>
-                        </div>
-                    </>
-                ) : (
+            {serviceProvider ? (
+                <>
+                    <h1 className="profile-title">Welcome Back {serviceProvider.serviceProviderName}!</h1>
+                    <h3 className="profile-label">Your Details: </h3>
+                    <div className = 'profile-details'>
+                        <ul>
+                            <li><strong>Organization: </strong><div className='detail'>{serviceProvider.orgName}</div></li>
+                            <li><strong>Address: </strong><div className='detail'>{serviceProvider.serviceProviderAddress}</div></li>
+                            <li><strong>Email: </strong><div className='detail'>{serviceProvider.serviceProviderEmail}</div></li>
+                            <li><strong>Phone Number: </strong><div className='detail'>{serviceProvider.serviceProviderPhone}</div></li>
+                        </ul>
+                        <p className='profile-id'><strong>Service Provider ID </strong><br /><i>{serviceProvider._id}</i></p>
+                    </div>
+                </>
+            ) : (
+                <div>
+                    <h1 className='profile-title'>Service Provider Profile</h1>
                     <p className='loading-message'>Loading service provider details...</p>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     );
 }
