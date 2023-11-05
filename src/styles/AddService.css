@@ -1,0 +1,76 @@
+/* AddService.css */
+
+/* Style the container of your form */
+.add-service-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 40px;
+    padding-top: 20px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Style the heading */
+  .add-service-container h1 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Style the text inputs */
+  .add-service-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-sizing: border-box; /* So the padding and border don't increase the width */
+  }
+  
+  /* Style the button */
+  .add-service-container button {
+    width: 50%;
+    padding: 10px;
+    background-color: #5cb85c; /* A nice green color */
+    color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  /* Change color on hover for button */
+  .add-service-container button:hover {
+    background-color: #3e8e3e;
+  }
+  
+  /* Style the link */
+  .backservice-link {
+    display: block;
+    margin-bottom: 20px;
+    color: blue;
+    text-decoration: none;
+    text-align: left;
+    transition: color 0.3s ease;
+}
+
+.backservice-link:hover {
+    color: rgb(3, 3, 132);
+    text-decoration: underline;
+}
+  
+  /* Responsive design adjustments */
+  @media (max-width: 600px) {
+    .add-service-container {
+      padding: 20px;
+    }
+  
+    .add-service-container button,
+    .add-service-container input[type="text"] {
+      width: calc(100% - 40px); /* accounting for padding */
+    }
+  }
+  

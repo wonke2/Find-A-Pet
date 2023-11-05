@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "../styles/AddService.css";
+import { useSelector } from "react-redux";
 
 const AddService = () => {
   // Initialize the navigate function for routing.
@@ -48,7 +50,8 @@ const AddService = () => {
 
   return (
     <>
-      <div>
+      <div className="add-service-container">
+      <Link className="backservice-link" to="/spdashboard/sp-services">Back to Services</Link>
         <h1>Add a Service</h1>
         {/* Input for Service Name */}
         <input
@@ -74,8 +77,6 @@ const AddService = () => {
         {/* Button to trigger service addition */}
         <button onClick={handleAddService}>Add Service</button>
       </div>
-      {/* Link to navigate back to services dashboard */}
-      <Link to="/spdashboard/sp-services">Back to Services</Link>
     </>
   );
 };
