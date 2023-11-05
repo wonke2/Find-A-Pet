@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { setLogout } from '../state/authSlice';
 import { useSelector, useDispatch } from "react-redux";
-import "../styles/SPProfile.css";
+import "../styles/Profile.css";
 
 const SPProfile = () => {
     const SPToken = useSelector((state) => state.SPToken);
@@ -50,8 +50,8 @@ const SPProfile = () => {
     }, [SPToken, navigate]);
 
     return (
-        <div className='spprofile-container'>
-            <h1>Service Provider Profile</h1>
+        <div className='profile-container'>
+            <h1 className='profile-title'>Service Provider Profile</h1>
             <Link to="/spdashboard" className='dashboard-link'>Dashboard</Link>
             <div>
                 {serviceProvider ? (
