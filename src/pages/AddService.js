@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import "../styles/AddService.css";
 
 const AddService = () => {
   const navigate = useNavigate();
@@ -39,7 +40,8 @@ const AddService = () => {
 
   return (
     <>
-      <div>
+      <div className="add-service-container">
+      <Link className="backservice-link" to="/spdashboard/sp-services">Back to Services</Link>
         <h1>Add a Service</h1>
         <input
           type="text"
@@ -61,7 +63,6 @@ const AddService = () => {
         />
         <button onClick={handleAddService}>Add Service</button>
       </div>
-      <Link to="/spdashboard/sp-services">Back to Services</Link>
     </>
   );
 };
