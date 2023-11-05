@@ -51,6 +51,7 @@ const SPProfile = () => {
                     <h3 className="profile-label">Your Details: </h3>
                     <div className = 'profile-details'>
                         <ul>
+                            <li><strong>Service Provider ID: </strong><div className='detail'>{serviceProvider._id}</div></li>
                             <li><strong>Organization: </strong><div className='detail'>{serviceProvider.orgName}</div></li>
                             <li><strong>Address: </strong><div className='detail'>{serviceProvider.serviceProviderAddress}</div></li>
                             <li><strong>Email: </strong><div className='detail'>{serviceProvider.serviceProviderEmail}</div></li>
