@@ -22,7 +22,7 @@ const Wishlist = () => {
 
             try {
                 // Attempt to fetch wishlist data from the API
-                const response = await fetch("http://localhost:3000/auth/get-wishlist", {
+                const response = await fetch("/auth/get-wishlist", {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -63,7 +63,7 @@ const Wishlist = () => {
     // Function to remove an item from the wishlist
     const removeFromWishlist = async (petID) => {
         // Send the request to remove the item from the wishlist
-        const response = await fetch("http://localhost:3000/auth/remove-from-wishlist", {
+        const response = await fetch("/auth/remove-from-wishlist", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

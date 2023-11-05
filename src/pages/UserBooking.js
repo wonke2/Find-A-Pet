@@ -16,7 +16,7 @@ const UserBookings = () => {
             navigate('/userlogin');
         } else {
             // Fetch user details if token is available
-            fetch("http://localhost:3000/auth/user", {
+            fetch("/auth/user", {
                 headers: {
                     "Authorization": `Bearer ${token}`,
                 },
@@ -27,7 +27,7 @@ const UserBookings = () => {
                     setUserID(data.data._id);
 
                     // Fetch the bookings for the logged-in user using the userID
-                    return fetch(`http://localhost:3000/auth/user-bookings/${data.data._id}`, {
+                    return fetch(`/auth/user-bookings/${data.data._id}`, {
                         headers: {
                             "Authorization": `Bearer ${token}`,
                         },

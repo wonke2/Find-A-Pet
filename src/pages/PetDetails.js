@@ -38,7 +38,7 @@ const PetDetails = () => {
 
         try {
             // Making a POST request to the backend to add a pet to the wishlist
-            const response = await fetch("http://localhost:3000/auth/add-to-wishlist", {
+            const response = await fetch("/auth/add-to-wishlist", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
