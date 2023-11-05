@@ -36,42 +36,31 @@ const SPServices = () => {
   }, [SPToken]);
 
   // Function to handle the deletion of a service with a confirmation dialog.
-  const handleDeleteService = (serviceId) => {
-    confirmAlert({
-      title: "Confirm Deletion",
-      message: "Are you sure you want to delete this service?",
-      buttons: [
-        {
-          label: "Yes",
-          onClick: () => {
-            fetch(`/SPAuth/services/${serviceId}`, {
-              method: "DELETE",
-              headers: {
-                Authorization: `Bearer ${SPToken}`,
-              },
-            })
-              .then((response) => {
-                if (response.ok) {
-                  console.log("Service deleted successfully");
-                  window.location.reload();
-                } else {
-                  console.error("Failed to delete service");
-                }
-              })
-              .catch((error) => {
-                console.error("Error deleting service:", error);
-              });
-          },
+const handleDeleteService = (serviceId) => {
+  const confirmDeletion = window.confirm("Are you sure you want to delete this service?");
+
+  if (confirmDeletion) {
+    // User confirmed deletion, you can proceed with the deletion logic here.
+    fetch(`/SPAuth/services/${serviceId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${SPToken}`,
         },
-        {
-          label: "No",
-          onClick: () => {
-            // Do nothing on cancellation.
-          },
-        },
-      ],
-    });
-  };
+      })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Service deleted successfully");
+          window.location.reload();
+        } else {
+          console.error("Failed to delete service");
+        }
+      })
+      .catch((error) => {
+        console.error("Error deleting service:", error);
+      });
+  }
+};
+
 
   return (
     <div className='spservice-container'>

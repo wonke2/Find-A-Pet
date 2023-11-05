@@ -20,7 +20,7 @@ const UserProfile = () => {
             navigate("/userlogin");
         } else {
             // Fetch user data with authorization header
-            fetch("http://localhost:3000/auth/user", {
+            fetch("/auth/user", {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -56,10 +56,9 @@ const SPBooking = () => {
                 setIsLoading(false);
                 console.error("Error fetching SP bookings:", error);
             });
-    }, [navigate]); // Add navigate to the dependency array
+    }, [SPToken, navigate]); // Add navigate to the dependency array
 
     const removeBooking = (bookingId) => {
-        const SPToken = localStorage.getItem('SPToken');
         fetch(`/SPAuth/bookings/${bookingId}`, {
             method: 'DELETE',
             headers: {
