@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { confirmAlert } from "react-confirm-alert";
 import "../styles/SPServices.css";
 
 const SPServices = () => {
-  const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+  const SPToken = useSelector((state) => state.SPToken);
   const [services, setServices] = useState([]);
 
   useEffect(() => {
