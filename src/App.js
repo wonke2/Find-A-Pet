@@ -12,7 +12,7 @@ import Navbar from "./components/Navbar";
 import ServiceListings from "./pages/ServiceListings";
 import UserDashbord from "./pages/UserDashbord";
 import WishList from "./pages/WishList";
-import DetailedServiceListing from "./pages/detailedServiceListing";
+import ServiceDetails from "./pages/ServiceDetails";
 import SPDashboard from "./pages/SPDashboard";
 import UserBooking from './pages/UserBooking';
 import SPBooking from './pages/SPBooking';
@@ -43,7 +43,7 @@ function App() {
 							<Route path="/spsignup" element={<SPSignup />} />
 							<Route path="/user" element={<UserProfile />} />
 							<Route path="/serviceprovider" element={<SPProfile />} />
-							<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
+							<Route path="/services/:serviceID" element={<ServiceDetails />} />
 							<Route path="/services" element={<ServiceListings />} />
 							<Route path="/userdashboard" element={<UserDashbord />} />
 							<Route path="/wishlist" element={<WishList />} />

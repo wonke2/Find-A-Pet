@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import '../styles/DetailedServiceListing.css';
+import '../styles/ServiceDetails.css';
 
-const DetailedServiceListing = () => {
+const ServiceDetails = () => {
     const { serviceID } = useParams();
     const [serviceDetails, setServiceDetails] = useState(null);
     const [serviceProviderDetails, setServiceProviderDetails] = useState(null);
@@ -129,4 +129,4 @@ const DetailedServiceListing = () => {
     );
 };
 
-export default DetailedServiceListing;
+export default ServiceDetails;
