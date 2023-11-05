@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { setLogout } from '../state/authSlice';
 import { useDispatch } from 'react-redux';
-
+import "../styles/SPProfile.css";
 
 const SPProfile = () => {
     const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
@@ -49,14 +49,14 @@ const SPProfile = () => {
     }, [SPToken, navigate]);
 
     return (
-        <div>
+        <div className='spprofile-container'>
             <h1>Service Provider Profile</h1>
-            <Link to="/spdashboard">Dashboard</Link>
+            <Link to="/spdashboard" className='dashboard-link'>Dashboard</Link>
             <div>
                 {serviceProvider ? (
                     <>
                     <h2>Welcome Back! {serviceProvider.serviceProviderName}</h2>
-                        <div>
+                        <div className='sp-details'>
                             <p>Organization: {serviceProvider.orgName}</p>
                             <p>Address: {serviceProvider.serviceProviderAddress}</p>
                             <p>Email: {serviceProvider.serviceProviderEmail}</p>
@@ -64,10 +64,10 @@ const SPProfile = () => {
                         </div>
                     </>
                 ) : (
-                    <p>Loading service provider details...</p>
+                    <p className='loading-message'>Loading service provider details...</p>
                 )}
             </div>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className='logout-btn'>Logout</button>
         </div>
     );
 }
