@@ -81,11 +81,11 @@ const SPServices = () => {
               <li><strong>Service Description:</strong> {service.serviceDescription}</li>
               <li><strong>Service Location:</strong> {service.serviceLocation}</li>
             </ul>
-            <button onClick={() => handleDeleteService(service._id)}>Delete Service</button>
+            <button onClick={() => handleDeleteService(service._id)} className="remove-service-btn">Delete Service</button>
           </div>
         ))
       )}
-      <Link to="/spdashboard/sp-services/addservice">Add a Service</Link>
+      <Link to="/spdashboard/sp-services/addservice" className="add-service-link">Add a Service</Link>
     </div>
   );
 }
