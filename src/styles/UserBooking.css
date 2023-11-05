@@ -3,8 +3,9 @@
     max-width: 900px;
     margin: 40px auto;
     padding: 20px;
-    background-color: antiquewhite;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
 
@@ -16,8 +17,8 @@
 
 /* Booking Cards */
 .booking-card {
-    background-color: #f7f7f7;
-    border: 1px solid #e1e1e1;
+    background-color:  white;
+    border: 1px solid black;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 4px;
