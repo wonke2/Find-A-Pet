@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../styles/Profile.css";
 
 const UserProfile = () => {
 	const token = useSelector((state) => state.token);
@@ -29,16 +31,28 @@ const UserProfile = () => {
 		}
 	}, [token]);
 	console.log(user);
-	return loading ? (
-		<h1>Loading...</h1>
-	) : (
-		<div>
-			<h1>User Profile</h1>
-			<h2>User Id: {user._id}</h2>
-			<h2>Username: {user.username}</h2>
-			<h2>Email: {user.email}</h2>
-			<h2>Phone No: {user.phoneNo}</h2>
-			<h2>Address: {user.address}</h2>
+	return (
+		<div className="profile-container">
+			<Link to="/userdashboard" className="dashboard-link">Dashboard</Link>
+			{loading ? (
+				<div>
+					<h1 className='profile-title'>User Profile</h1>
+					<p className="loading-message">Loading...</p>
+				</div>
+			) : (
+				<>
+					<h1 className='profile-title'>Welcome Back {user.username}!</h1>
+					<h3 className="profile-label">Your Details: </h3>
+					<div className="profile-details">
+						<ul>
+							<li><strong>User ID: </strong><div className="detail">{user._id}</div></li>
+							<li><strong>Email: </strong><div className="detail">{user.email}</div></li>
+							<li><strong>Phone No: </strong><div className="detail">{user.phoneNo}</div></li>
+							<li><strong>Address: </strong><div className="detail">{user.address}</div></li>
+						</ul>
+					</div>
+				</>
+			)};
 		</div>
 	);
 };
