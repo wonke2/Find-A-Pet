@@ -9,13 +9,6 @@ const SPProfile = () => {
     const SPToken = useSelector((state) => state.SPToken);
     const [serviceProvider, setServiceProvider] = useState(null);
     const navigate = useNavigate()
-    const dispatch = useDispatch();
-
-    const handleLogout = () => {
-        dispatch(setLogout());
-        navigate('/');
-        window.location.reload();
-    }
 
     useEffect(() => {
         if (!SPToken) {
