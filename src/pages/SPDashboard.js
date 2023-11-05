@@ -4,12 +4,14 @@ import "../styles/SPDashboard.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from "react-redux";
+
 import { faCalendarCheck, faList } from '@fortawesome/free-solid-svg-icons';
 
 
 const SPDashboard = () => {
     const navigate = useNavigate();
-    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const SPToken = useSelector((state) => state.SPToken);
 
 
     useEffect(() => {

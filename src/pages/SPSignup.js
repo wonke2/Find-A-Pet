@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import styles from "../styles/UserLogin.module.css"
+import { useSelector } from "react-redux"
+
 
 const SPSignup = () => {
     const [username, setUsername] = useState("")
@@ -20,8 +22,8 @@ const SPSignup = () => {
     const [phoneErrorMessage, setPhoneErrorMessage] = useState("");
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [emailErrorMessage, setEmailErrorMessage] = useState("");
-    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
-    const [token, setToken] = useState(localStorage.getItem("token"))
+    const SPToken = useSelector((state) => state.SPToken);
+    const token = useSelector((state) => state.token)
 
     const navigate = useNavigate();
 
@@ -33,7 +35,7 @@ const SPSignup = () => {
             navigate("/user");
         }
     }, [SPToken, token, navigate])
-    
+
     const signup = async () => {
         if (username === "" || password === "" || email === "" || phoneNo === "" || orgName === "") {
             setShowIncompleteFieldsBanner(true);

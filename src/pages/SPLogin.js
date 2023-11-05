@@ -1,15 +1,15 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "../styles/UserLogin.module.css"
 import { setSPToken } from '../state/authSlice'
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
 const SPLogin = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const [SPToken, setsPToken] = useState(localStorage.getItem("SPToken"));
-    const [token, setToken] = useState(localStorage.getItem("token"))
+    const SPToken = useSelector((state) => state.SPToken);
+    const token = useSelector((state) => state.token)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -40,7 +40,6 @@ const SPLogin = () => {
         } else {
             if (data.status === 'success' && data.SPToken) {
                 dispatch(setSPToken({ SPToken: data.SPToken }))
-                localStorage.setItem('SPToken', data.SPToken)
                 navigate('/')
             }
             else {

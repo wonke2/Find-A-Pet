@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import { setLogout } from '../state/authSlice';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 import "../styles/SPProfile.css";
 
 const SPProfile = () => {
-    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const SPToken = useSelector((state) => state.SPToken);
     const [serviceProvider, setServiceProvider] = useState(null);
     const navigate = useNavigate()
     const dispatch = useDispatch();
 
     const handleLogout = () => {
         dispatch(setLogout());
-        navigate('/splogin');
+        navigate('/');
+        window.location.reload();
     }
 
     useEffect(() => {

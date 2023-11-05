@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import "../styles/SPBooking.css";
 
 const SPBooking = () => {
     const [bookings, setBookings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate(); // Instantiate useNavigate
+    const SPToken = useSelector((state) => state.SPToken);
 
     useEffect(() => {
-        const SPToken = localStorage.getItem('SPToken');
-
         // Redirect to the login page if there's no token
         if (!SPToken) {
             navigate('/SPlogin'); // Navigate to login page
