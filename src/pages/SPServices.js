@@ -31,7 +31,7 @@ const SPServices = () => {
     fetchServices();
   }, [SPToken]);
 
-    const handleDeleteService = (serviceId) => {
+  const handleDeleteService = (serviceId) => {
     confirmAlert({
       title: "Confirm Deletion",
       message: "Are you sure you want to delete this service?",
@@ -68,22 +68,25 @@ const SPServices = () => {
   };
 
   return (
-    <div>
-      <Link to="/spdashboard">Back to Dashboard</Link>
+    <div className='spservice-container'>
+      <Link to="/spdashboard" className='dashboard-link'>Back to Dashboard</Link>
       <h1>Your Services</h1>
-      <ul>
-        {services.map((service) => (
-          <li key={service._id}>
-            <h2>{service.serviceName}<br /></h2>
-            <strong>Service Description:</strong> {service.serviceDescription}<br />
-            <strong>Service Location:</strong> {service.serviceLocation}<br />
+      {services.length === 0 ? (
+        <p className='no-services-message'>No services found</p>
+      ) : (
+        services.map((service) => (
+          <div key={service._id} className='service-details'>
+            <ul>
+              <li><h2>{service.serviceName}</h2></li>
+              <li><strong>Service Description:</strong> {service.serviceDescription}</li>
+              <li><strong>Service Location:</strong> {service.serviceLocation}</li>
+            </ul>
             <button onClick={() => handleDeleteService(service._id)}>Delete Service</button>
-          </li>
-        ))}
-          </ul>
-        <Link to="/spdashboard/sp-services/addservice">Add a Service</Link>
+          </div>
+        ))
+      )}
+      <Link to="/spdashboard/sp-services/addservice">Add a Service</Link>
     </div>
   );
-};
-
+}
 export default SPServices;
