@@ -94,6 +94,218 @@ Weekly extended meetings, lasting at least one hour, provided opportunities to r
 
 ## Guide to Project Source Code
 
+---
+
+# Frontend Source Code Guide
+
+## Overview
+
+This guide provides an overview of the various files in the frontend source code of the React project.
+
+## Files
+
+### 1. **app.js**
+
+- **Description:** The main file that initializes the React application and serves as the entry point.
+- **Location:** Root directory.
+
+### 2. **index.js**
+
+- **Description:** The file responsible for rendering the React application into the DOM.
+- **Location:** Root directory.
+
+### 3. **Styles folder**
+
+- **Description:** Contains styles for all the pages in the React application.
+- **Location:** Root directory.
+
+### 4. **Components folder**
+
+#### - **Navbar.jsx**
+
+  - **Description:** A component that defines the navigation bar for the application.
+  - **Location:** Inside the components folder.
+
+### 5. **Pages folder**
+
+#### - **Home.js**
+
+  - **Description:** The main landing page of the application.
+  - **Location:** Inside the pages folder.
+
+#### - **AddService.js**
+
+  - **Description:** A page for service providers to add new services.
+  - **Location:** Inside the pages folder.
+
+#### - **PetDetails.js**
+
+  - **Description:** A page displaying details about a specific pet.
+  - **Location:** Inside the pages folder.
+
+#### - **PetListings.js**
+
+  - **Description:** A page displaying a list of available pets.
+  - **Location:** Inside the pages folder.
+
+#### - **SpBooking.js**
+
+  - **Description:** A page for service providers to manage bookings.
+  - **Location:** Inside the pages folder.
+
+#### - **SpDashboard.js**
+
+  - **Description:** The dashboard page for service providers.
+  - **Location:** Inside the pages folder.
+
+#### - **SpLogin.js**
+
+  - **Description:** The login page for service providers.
+  - **Location:** Inside the pages folder.
+
+#### - **SpProfile.js**
+
+  - **Description:** A page for service providers to manage their profiles.
+  - **Location:** Inside the pages folder.
+
+#### - **SpServices.js**
+
+  - **Description:** A page displaying services offered by service providers.
+  - **Location:** Inside the pages folder.
+
+#### - **SpSignup.js**
+
+  - **Description:** The signup page for service providers.
+  - **Location:** Inside the pages folder.
+
+#### - **ServiceDetails.js**
+
+  - **Description:** A page displaying details about a specific service.
+  - **Location:** Inside the pages folder.
+
+#### - **ServiceListings.js**
+
+  - **Description:** A page displaying a list of available services.
+  - **Location:** Inside the pages folder.
+
+#### - **UserBookings.js**
+
+  - **Description:** A page for users to manage their bookings.
+  - **Location:** Inside the pages folder.
+
+#### - **UserDashboard.js**
+
+  - **Description:** The dashboard page for users.
+  - **Location:** Inside the pages folder.
+
+#### - **UserLogin.js**
+
+  - **Description:** The login page for users.
+  - **Location:** Inside the pages folder.
+
+#### - **UserProfile.js**
+
+  - **Description:** A page for users to manage their profiles.
+  - **Location:** Inside the pages folder.
+
+#### - **UserSignup.js**
+
+  - **Description:** The signup page for users.
+  - **Location:** Inside the pages folder.
+
+#### - **WishList.js**
+
+  - **Description:** A page for users to manage their wish lists.
+  - **Location:** Inside the pages folder.
+
+### 6. **State folder**
+
+#### - **authslice.js**
+
+  - **Description:** Manages the authentication state of the application using Redux.
+  - **Location:** Inside the state folder.
+
+#### - **store.js**
+
+  - **Description:** Configures the Redux store for effective state management.
+  - **Location:** Inside the state folder.
+
+## Usage
+
+Ensure that the components, pages, and styles are appropriately linked and utilized in the React application. Use the state management with Redux to handle the application's state effectively.
+
+## Maintenance
+
+Regularly update the files to incorporate new features, fix bugs, and enhance the user interface. Conduct thorough testing to ensure the application functions as intended across different browsers and screen sizes.
+
+---
+
+# Backend Source Code Guide
+
+## Overview
+
+This guide provides an overview of the various files in the backend source code of the project.
+
+## Files
+
+### 1. **controllers folder**
+
+#### - **bookingController.js**
+
+  - **Description:** Manages the operations related to bookings.
+  
+#### - **serviceProviderController.js**
+
+  - **Description:** Handles operations related to service providers.
+  
+#### - **userController.js**
+
+  - **Description:** Manages operations related to users.
+
+### 2. **models folder**
+
+#### - **bookingSchema.js**
+
+  - **Description:** Defines the schema for bookings.
+  
+#### - **serviceProviderSchema.js**
+
+  - **Description:** Defines the schema for service providers.
+  
+#### - **userSchema.js**
+
+  - **Description:** Defines the schema for users.
+
+### 3. **routes folder**
+
+#### - **serviceProviderRoutes.js**
+
+  - **Description:** Specifies the routes for service provider operations.
+  
+#### - **userRoutes.js**
+
+  - **Description:** Specifies the routes for user operations.
+
+### 4. **utils folder**
+
+#### - **jwtUtils.js**
+
+  - **Description:** Contains utility functions for handling JWT tokens, including creation and verification.
+
+### 5. **server.js**
+
+- **Description:** The main file that initializes the backend server and handles various API endpoints and database connections.
+
+## Usage
+
+Ensure that the controllers, models, and routes are properly configured to handle the operations specific to users, service providers, and bookings. Use the utility functions in jwtUtils.js to manage JSON Web Tokens effectively.
+
+## Maintenance
+
+Regularly update the files to incorporate new functionalities, improve performance, and ensure security best practices are followed, such as proper handling of sensitive information and user authentication. Conduct thorough testing to ensure the backend functions as intended.
+
+---
+
 ## Prospective Features
 
 - Payment Gateway Integration: To facilitate in-app transactions for services securely.
