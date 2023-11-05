@@ -37,7 +37,7 @@ const Navbar = () => {
 					<Link to="/usersignup" className="btn">
 						Register
 					</Link>
-				)}
+				)}{" "}
 				{SPToken && (
 					<Link to="/serviceprovider" className="btn">
 						Profile
@@ -47,7 +47,7 @@ const Navbar = () => {
 					<Link to="/spdashboard" className="btn">
 						Dashboard
 					</Link>
-				)}{" "}
+				)}
 				{SPToken && (
 					<Link className="btn" onClick={logout}>
 						Logout
