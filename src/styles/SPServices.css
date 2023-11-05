@@ -39,6 +39,9 @@
     font-size: 16px;
 }
 
+.service-details h2 {
+    margin-top: -5px;
+}
 .remove-service-btn {
     padding: 8px 12px;
     border: none;
