@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import styles from "../styles/UserLogin.module.css"
-import { setSPToken } from '../state/authSlice'
-import { useDispatch, useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../styles/UserLogin.module.css";
+import { setSPToken } from '../state/authSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const SPLogin = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const SPToken = useSelector((state) => state.SPToken);
-    const token = useSelector((state) => state.token)
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+    // State variables for username and password.
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
+    // Get SPToken and token from Redux store.
+    const SPToken = useSelector((state) => state.SPToken);
+    const token = useSelector((state) => state.token);
+
+    // Initialize the navigate function for routing and useDispatch for Redux.
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    // Redirect to the appropriate dashboard based on the presence of tokens.
     useEffect(() => {
         if (SPToken) {
             navigate("/serviceprovider");
@@ -20,8 +26,9 @@ const SPLogin = () => {
         if (token) {
             navigate("/user");
         }
-    }, [SPToken, token, navigate])
-    
+    }, [SPToken, token, navigate]);
+
+    // Function to handle the login process.
     const login = async () => {
         const res = await fetch("/SPauth/SPlogin", {
             method: "POST",
@@ -32,21 +39,22 @@ const SPLogin = () => {
                 serviceProviderName: username,
                 serviceProviderPassword: password,
             }),
-        })
-        const data = await res.json()
+        });
+        const data = await res.json();
         if (data.status === "fail") {
-            alert("Username or Password is incorrect")
-            window.location.reload()
+            alert("Username or Password is incorrect");
+            window.location.reload();
         } else {
             if (data.status === 'success' && data.SPToken) {
-                dispatch(setSPToken({ SPToken: data.SPToken }))
-                navigate('/')
+                dispatch(setSPToken({ SPToken: data.SPToken }));
+                navigate('/');
             }
             else {
-                alert("Login Failed. Contact Administrator", data.SPToken, " ", data.status, " ", data.message)
+                alert("Login Failed. Contact Administrator", data.SPToken, " ", data.status, " ", data.message);
             }
         }
-    }
+    };
+
     return (
         <div className={styles.center}>
             <form>
@@ -59,7 +67,7 @@ const SPLogin = () => {
                     placeholder="Business Name"
                     id='username'
                     onChange={(e) => {
-                        setUsername(e.target.value)
+                        setUsername(e.target.value);
                     }}
                 />
 
@@ -70,7 +78,7 @@ const SPLogin = () => {
                     id="password"
                     required
                     onChange={(e) => {
-                        setPassword(e.target.value)
+                        setPassword(e.target.value);
                     }}
                 />
 
@@ -81,7 +89,7 @@ const SPLogin = () => {
                 </div>
             </form>
         </div>
-    )
+    );
 }
 
-export default SPLogin
+export default SPLogin;
