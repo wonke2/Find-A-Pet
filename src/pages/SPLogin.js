@@ -8,8 +8,20 @@ import { Link } from "react-router-dom"
 const SPLogin = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [SPToken, setSPToken] = useState(localStorage.getItem("SPToken"));
+    const [token, setToken] = useState(localStorage.getItem("token"))
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (SPToken) {
+            navigate("/serviceprovider");
+        }
+        if (token) {
+            navigate("/user");
+        }
+    }, [SPToken, token, navigate])
+    
     const login = async () => {
         const res = await fetch("/SPauth/SPlogin", {
             method: "POST",
