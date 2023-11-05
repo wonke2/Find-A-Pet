@@ -49,6 +49,14 @@
 .detail {
     text-align: center;
 }
+
+.profile-id {
+    font-size: 14px;
+    color: #999;
+    margin-top: 10px;
+    text-align: right;
+}
+
 .dashboard-link {
     display: block;
     margin-bottom: 20px;

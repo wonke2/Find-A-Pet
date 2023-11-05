@@ -45,11 +45,11 @@ const UserProfile = () => {
 					<h3 className="profile-label">Your Details: </h3>
 					<div className="profile-details">
 						<ul>
-							<li><strong>User ID: </strong><div className="detail">{user._id}</div></li>
 							<li><strong>Email: </strong><div className="detail">{user.email}</div></li>
 							<li><strong>Phone No: </strong><div className="detail">{user.phoneNo}</div></li>
 							<li><strong>Address: </strong><div className="detail">{user.address}</div></li>
 						</ul>
+						<p className="profile-id"><strong>User ID </strong><br /><i>{user._id}</i></p>
 					</div>
 				</>
 			)};
