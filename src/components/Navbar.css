@@ -1,10 +1,17 @@
 * {
+	/* Define the standard properties first */
+	transition-property: all;
+	transition-duration: 0.2s;
+	transition-timing-function: cubic-bezier(100, 50, 21, 6);
+  
+	/* Then define the vendor-prefixed versions */
 	-webkit-transition-property: all;
 	-webkit-transition-duration: 0.2s;
-	-moz-transition-timing-function: cubic-bezier(100, 50, 21, 6);
+	-webkit-transition-timing-function: cubic-bezier(100, 50, 21, 6);
 	-moz-transition-property: all;
+	-moz-transition-duration: 0.2s;
 	-moz-transition-timing-function: cubic-bezier(100, 50, 21, 6);
-}
+  }
 .logo {
 	height: 40px;
 	width: 40px;
