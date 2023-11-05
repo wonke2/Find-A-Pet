@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import '../styles/ServiceDetails.css';
 
 const ServiceDetails = () => {
+    // Extract the serviceID from URL parameters.
     const { serviceID } = useParams();
+
+    // State variables to hold service, service provider, and user details.
     const [serviceDetails, setServiceDetails] = useState(null);
     const [serviceProviderDetails, setServiceProviderDetails] = useState(null);
     const [user, setUser] = useState(null);
-    const authTokenFromRedux = useSelector((state) => state.token);
-    const navigate = useNavigate();
 
+    // Get the authentication token from Redux store.
+    const authTokenFromRedux = useSelector((state) => state.token);
+
+    // Fetch service details when the serviceID changes.
     useEffect(() => {
         fetch(`/api/services/${serviceID}`)
             .then(response => response.json())
@@ -21,6 +26,7 @@ const ServiceDetails = () => {
             .catch(error => console.error('Error fetching service details:', error));
     }, [serviceID]);
 
+    // Fetch service provider details when serviceDetails is available.
     useEffect(() => {
         if (serviceDetails) {
             fetch(`/api/serviceProviders`)
@@ -37,8 +43,7 @@ const ServiceDetails = () => {
         }
     }, [serviceDetails]);
 
-    
-
+    // Fetch user information when authTokenFromRedux changes.
     useEffect(() => {
         if (authTokenFromRedux) {
             fetch("http://localhost:3000/auth/user", {
@@ -54,28 +59,28 @@ const ServiceDetails = () => {
             });
         }
     }, [authTokenFromRedux]);
-    
 
+    // Function to book the service.
     const bookService = async () => {
         if (!authTokenFromRedux) {
             alert("Please login to book this service!");
             return;
         }
-    
+
         if (!user) {
             alert("User information not loaded. Please try again.");
             return;
         }
-    
+
         try {
             const serviceIndex = serviceProviderDetails.servicesProvided.findIndex(
                 service => service.serviceName === serviceDetails.serviceName
             );
-    
+
             if (serviceIndex === -1) {
                 throw new Error('Service not found in provider list.');
             }
-    
+
             const response = await fetch("http://localhost:3000/auth/bookings", { 
                 method: "POST",
                 headers: {
@@ -88,7 +93,7 @@ const ServiceDetails = () => {
                     serviceIndex
                 })
             });
-    
+
             const data = await response.json();
             if (data.status === "fail") {
                 alert(data.message);
@@ -99,10 +104,9 @@ const ServiceDetails = () => {
             console.error("There was an error booking the service!", error);
         }
     };
-    
-
 
     if (!serviceDetails || !serviceProviderDetails) {
+        // Loading message when data is not available.
         return <p>Loading...</p>;
     }
 
