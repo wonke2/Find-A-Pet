@@ -80,10 +80,10 @@ const ServiceListings = () => {
         <div className="top-bar"> 
             <div className='search'>
                 <input 
-                    type="text" 
-                    placeholder="Search for services..." 
-                    value={searchTerm} 
-                    onChange={e => setSearchTerm(e.target.value} />
+                    type="text"
+                    placeholder="Search for services..."
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)} />
                 </div>
             </div>
 
