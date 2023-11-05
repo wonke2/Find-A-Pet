@@ -35,7 +35,8 @@ const SPLogin = () => {
         })
         const data = await res.json()
         if (data.status === "fail") {
-            alert("Login Failed 1")
+            alert("Username or Password is incorrect")
+            window.location.reload()
         } else {
             if (data.status === 'success' && data.SPToken) {
                 dispatch(setSPToken({ SPToken: data.SPToken }))
@@ -43,7 +44,7 @@ const SPLogin = () => {
                 navigate('/')
             }
             else {
-                alert("Login Failed 2", data.SPToken, " ", data.status, " ", data.message)
+                alert("Login Failed. Contact Administrator", data.SPToken, " ", data.status, " ", data.message)
             }
         }
     }
