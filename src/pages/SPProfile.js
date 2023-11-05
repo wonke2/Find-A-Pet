@@ -68,7 +68,6 @@ const SPProfile = () => {
                     <p className='loading-message'>Loading service provider details...</p>
                 )}
             </div>
-            <button onClick={handleLogout} className='logout-btn'>Logout</button>
         </div>
     );
 }
