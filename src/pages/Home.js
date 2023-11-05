@@ -27,7 +27,7 @@ const Home = () => {
 		<div className={styles.home_container}>
 			<div className={styles.main} ref={el}></div>
 			<div className={styles.content} >
-				Your One-Stop Pet Adoption and SErvice Platform
+				Your One-Stop Pet Adoption and Service Platform
 			</div>
 		</div>
 	);
