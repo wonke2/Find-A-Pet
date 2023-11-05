@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import '../styles/DetailedServiceListing.css';
+import '../styles/ServiceDetails.css';
 
-const DetailedServiceListing = () => {
+const ServiceDetails = () => {
     const { serviceID } = useParams();
     const [serviceDetails, setServiceDetails] = useState(null);
     const [serviceProviderDetails, setServiceProviderDetails] = useState(null);
@@ -106,21 +107,26 @@ const DetailedServiceListing = () => {
     }
 
     return (
-        <div className="detailed-service-listing">
-            <h2>{serviceDetails.serviceName}</h2>
-            <p>{serviceDetails.serviceDescription}</p>
-            <p>Location: {serviceDetails.serviceLocation}</p>
-            <div className="provider-details">
-                <h4>Service Provider Details:</h4>
-                <p>Name: {serviceProviderDetails.serviceProviderName}</p>
-                <p>Email: {serviceProviderDetails.serviceProviderEmail}</p>
-                <p>Phone: {serviceProviderDetails.serviceProviderPhone}</p>
-                <p>Organization: {serviceProviderDetails.orgName}</p>
-                <p>Address: {serviceProviderDetails.serviceProviderAddress}</p>
+        <div className="det-container">
+            <Link to="/services" className='services-link'>Back to Services</Link>
+            <div className='details-wrapper'>
+                <div className='details-left'>
+                    <h2>{serviceDetails.serviceName}</h2>
+                    <p>{serviceDetails.serviceDescription}</p>
+                    <small>Location: {serviceDetails.serviceLocation}</small>
+                    <button onClick={bookService}>Book Now</button>
+                </div>
+                <div className="details-right">
+                    <h3>Service Provider Details:</h3>
+                    <p>Name: {serviceProviderDetails.serviceProviderName}</p>
+                    <p>Email: {serviceProviderDetails.serviceProviderEmail}</p>
+                    <p>Phone: {serviceProviderDetails.serviceProviderPhone}</p>
+                    <p>Organization: {serviceProviderDetails.orgName}</p>
+                    <p>Address: {serviceProviderDetails.serviceProviderAddress}</p>
+                </div>
             </div>
-            <button onClick={bookService}>Book Now</button>
         </div>
     );
 };
 
-export default DetailedServiceListing;
+export default ServiceDetails;

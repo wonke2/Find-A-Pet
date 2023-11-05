@@ -12,12 +12,12 @@ import Navbar from "./components/Navbar";
 import ServiceListings from "./pages/ServiceListings";
 import UserDashbord from "./pages/UserDashbord";
 import WishList from "./pages/WishList";
-import DetailedServiceListing from "./pages/detailedServiceListing";
+import ServiceDetails from "./pages/ServiceDetails";
 import SPDashboard from "./pages/SPDashboard";
 import UserBooking from './pages/UserBooking';
 import SPBooking from './pages/SPBooking';
 import AddService from "./pages/AddService";
-import ServiceProviderServices from "./pages/serviceProviderServices";
+import SPServices from "./pages/SPServices";
 import SPProfile from "./pages/SPProfile";
 import { Provider } from 'react-redux'
 import { store, persistor } from './state/store'
@@ -43,15 +43,15 @@ function App() {
 							<Route path="/spsignup" element={<SPSignup />} />
 							<Route path="/user" element={<UserProfile />} />
 							<Route path="/serviceprovider" element={<SPProfile />} />
-							<Route path="/services/:serviceID" element={<DetailedServiceListing />} />
+							<Route path="/services/:serviceID" element={<ServiceDetails />} />
 							<Route path="/services" element={<ServiceListings />} />
 							<Route path="/userdashboard" element={<UserDashbord />} />
 							<Route path="/wishlist" element={<WishList />} />
 							<Route path="/userbooking" element={<UserBooking />} />
 							<Route path="/spdashboard/sp-services/addservice" element={<AddService />} />
-							<Route path="/spdashboard/sp-services" element={<ServiceProviderServices />} />
-							<Route path="/spdashboard" element={<SPDashboard />} />
+							<Route path="/spdashboard/sp-services" element={<SPServices />} />
 							<Route path="/spdashboard/sp-bookings" element={<SPBooking />} />
+							<Route path="/spdashboard" element={<SPDashboard />} />
 					
 							<Route path="*" element={<Home />} />
 						</Routes>
